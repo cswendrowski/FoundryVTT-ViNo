@@ -2,10 +2,9 @@
 [![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%243-orange)](https://www.buymeacoffee.com/T2tZvWJ)
 
 
-# FoundryVTT Module
+# VINO - Visual Interactive Novel Overlay
 
-Does something, probably
+An opinionated, mad, broken replacement for an abandoned module.
 
 
 ## Changelog
-
