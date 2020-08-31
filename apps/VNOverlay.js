@@ -19,12 +19,14 @@ export default class VNOverlay extends Application {
 
   static init() {
     const instance = new this();
-    ui.butlerOverlay = instance;
+    ui.vinoOverlay = instance;
 
     instance.render(true);
   }
 
   activateListeners(html) {
     super.activateListeners(html);
+    $("#vino-overlay").hide();
   }
+
 }
