@@ -10,6 +10,9 @@
     "./vino.js"
   ],
   "scripts": [
+    "greensock/dist/TweenMax.min.js",
+    "greensock/dist/plugins/TextPlugin.min.js",
+    "greensock/dist/plugins/ScrollToPlugin.min.js"
   ],
   "styles": [
     "/styles/vino.css"

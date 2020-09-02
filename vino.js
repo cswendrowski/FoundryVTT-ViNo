@@ -1,6 +1,7 @@
 import VNOverlay from './apps/VNOverlay.js';
 // eslint-disable-next-line no-unused-vars
 import constants from './constants.js';
+//import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
 
 (() => { })();
 
@@ -10,7 +11,9 @@ Hooks.once('init', async () => {
 
 let DEBUG = true;
 let secondsPerWord = 1.0;
+let animatedSecondsPerWord = 0.3;
 let minimumTimeOnscreen = 5 * 1000;
+let timeBetweenScrollingMs = 500;
 let onscreen = [];
 let queue = [];
 let maxOnscreen = 4;
@@ -62,7 +65,7 @@ function getMood(messageText) {
   if (messageText.startsWith(commandKey + "joy")) return "joy";
   if (messageText.startsWith(commandKey + "fear")) return "fear";
 
-  return "neutral";
+  return "";
 }
 
 function removeCommands(messageText) {
@@ -82,23 +85,27 @@ function removeFromArray(array, element) {
 
 function addSpeakingActor(actorName, mood, text, img, id)
 {
+  var previousLength = onscreen.length;
+  onscreen.push(actorName);
   log("Appending " + actorName);
 
   let html = `<div id="${id}" class="vino-chat-frame" style="display:none;">`;
   html +=   `<img src="${img}" class="vino-chat-actor-portrait" />`;
   html +=   `<div class="vino-chat-flexy-boi">`;
-  html +=   `  <div class="vino-chat-actor-name">${actorName}</div>`;
-  html +=   `  <div class="vino-chat-emotion-flare">${mood}</div>`;
-  html +=   `</div>`;
-  html +=   `<div class="vino-chat-text-body">`;
-  html +=   `  <p>"${text}"</p>`;
+  html +=   `  <div class="vino-chat-body">`
+  html +=   `    <div class="vino-chat-actor-name">${actorName}</div>`;
+  html +=   `    <div class="vino-chat-emotion-flare">${mood}</div>`;
+  html +=   `    <div id="${id}-vino-chat-text-body" class="vino-chat-text-body">`;
+  html +=   `      <p id="${id}-vino-chat-text-paragraph"></p>`;
+  html +=   `    </div>`;
+  html +=   `  </div>`;
   html +=   `</div>`;
   html +=   `</div>`;
 
   $("#vino-chat-lane")
     .append(html);
 
-  if (onscreen.length == 0) {
+  if (previousLength == 0) {
     log("Showing vino overlay");
     $("#vino-overlay").fadeIn(500);
   }
@@ -106,15 +113,23 @@ function addSpeakingActor(actorName, mood, text, img, id)
 
   log("Appended " + actorName);
 
-  onscreen.push(actorName);
 
+  TweenLite.to(`#${id}-vino-chat-text-paragraph`, wordCount(text) * animatedSecondsPerWord, { text: { value: `"${text}"`, delimiter:"" }, ease: Linear.easeIn });
+
+  var scrollFn = setInterval(function(){
+    console.log("Scrollin' ");
+    TweenLite.to(`#${id}-vino-chat-text-body`, timeBetweenScrollingMs / 1000, { scrollTo: "max" });
+  }, timeBetweenScrollingMs);
+  
   var timeout = wordCount(text) * (1000 * secondsPerWord);
   if (timeout < minimumTimeOnscreen) {
     timeout = minimumTimeOnscreen;
   }
 
   setTimeout(function(){
+    clearInterval(scrollFn);
     let frame = $("#" + id + ".vino-chat-frame");
+    //TweenLite.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
     frame.fadeOut(1000, function() {
       frame.remove();
       removeFromArray(onscreen, actorName);
