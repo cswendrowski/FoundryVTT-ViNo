@@ -1,4 +1,5 @@
 import VNOverlay from './apps/VNOverlay.js';
+import { Settings } from "./settings.js";
 // eslint-disable-next-line no-unused-vars
 import constants from './constants.js';
 //import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
@@ -10,10 +11,11 @@ Hooks.once('init', async () => {
 });
 
 let DEBUG = true;
+let DEBUGGING_LAYOUT = false;
 let secondsPerWord = 1.0;
 let animatedSecondsPerWord = 0.3;
-let minimumTimeOnscreen = 5 * 1000;
-let timeBetweenScrollingMs = 500;
+let minimumTimeOnscreen = 5;
+let timeBetweenScrolling = 0.5;
 let onscreen = [];
 let queue = [];
 let maxOnscreen = 4;
@@ -31,6 +33,20 @@ function logObject(object) {
     }
 }
 
+Hooks.once('ready', async function() {
+  Settings.registerSettings();
+
+  DEBUG = Settings.get("debugMode");
+  if (!DEBUG) {
+    DEBUGGING_LAYOUT = false;
+  }
+  secondsPerWord = Settings.get("secondsPerWord");
+  animatedSecondsPerWord = Settings.get("animatedSecondsPerWord");
+  minimumTimeOnscreen = Settings.get("minimumTimeOnScreen");
+  timeBetweenScrolling = Settings.get("timeBetweenScrolling");
+  maxOnscreen = Settings.get("maxOnScreen");
+});
+
 Hooks.once('canvasReady', async () => {
   ui.vinoOverlay = new VNOverlay();
 
@@ -47,11 +63,15 @@ Hooks.on("createChatMessage", function(message) {
 
   if (!speakingActor) return;
 
+  let mood = getMood(message.data.content);
+  let img = getMoodImage(speakingActor, mood);
+
   if (onscreen.length <= maxOnscreen && !onscreen.includes(speakingActor.name)) {
-    addSpeakingActor(speakingActor.name, getMood(message.data.content), removeCommands(message.data.content), speakingActor.img, message.data._id);
+    addSpeakingActor(speakingActor.name, mood, removeCommands(message.data.content), img, message.data._id);
   }
   else {
-    queue.push({name: speakingActor.name, mood: getMood(message.data.content), text: removeCommands(message.data.content), img: speakingActor.img, id: message.data._id});
+
+    queue.push({name: speakingActor.name, mood: mood, text: removeCommands(message.data.content), img: img, id: message.data._id});
   }
 });
 
@@ -59,17 +79,52 @@ Hooks.on("createChatMessage", function(message) {
 //   return false;
 // });
 
+function getMoodImage(actor, mood)
+{
+  logObject(actor);
+
+  if (mood == "mad" && actor.data.data.attributes.madimg) {
+    return actor.data.data.attributes.madimg;
+  }
+  if (mood == "sad" && actor.data.data.attributes.sadimg) {
+    return actor.data.data.attributes.sadimg;
+  }
+  if (mood == "joy" && actor.data.data.attributes.joyimg) {
+    return actor.data.data.attributes.joyimg;
+  }
+  if (mood == "fear" && actor.data.data.attributes.fearimg) {
+    return actor.data.data.attributes.fearimg;
+  }
+
+  if (actor.data.data.attributes.altdefault) {
+    return actor.data.data.attributes.altdefault;
+  }
+
+  return actor.img;
+}
+
 function getMood(messageText) {
-  if (messageText.startsWith(commandKey + "mad")) return "mad";
-  if (messageText.startsWith(commandKey + "sad")) return "sad";
-  if (messageText.startsWith(commandKey + "joy")) return "joy";
-  if (messageText.startsWith(commandKey + "fear")) return "fear";
+  if (messageText.toLowerCase().startsWith(commandKey + "mad")) return "mad";
+  if (messageText.toLowerCase().startsWith(commandKey + "sad")) return "sad";
+  if (messageText.toLowerCase().startsWith(commandKey + "joy")) return "joy";
+  if (messageText.toLowerCase().startsWith(commandKey + "fear")) return "fear";
 
   return "";
 }
 
+function caseInsensitiveReplace(line, word, replaceWith) {
+  var regex = new RegExp( '(' + word + ')', 'gi' );
+  return line.replace( regex, replaceWith );
+}
+
 function removeCommands(messageText) {
-  return messageText.replace(commandKey + "mad", "").replace(commandKey + "sad", "").replace(commandKey + "joy", "").replace(commandKey + "fear", "").trim();
+
+  messageText = caseInsensitiveReplace(messageText, commandKey + "mad", "");
+  messageText = caseInsensitiveReplace(messageText, commandKey + "sad", "");
+  messageText = caseInsensitiveReplace(messageText, commandKey + "joy", "");
+  messageText = caseInsensitiveReplace(messageText, commandKey + "fear", "");
+
+  return messageText.trim();
 }
 
 function wordCount(str) { 
@@ -117,28 +172,30 @@ function addSpeakingActor(actorName, mood, text, img, id)
   TweenLite.to(`#${id}-vino-chat-text-paragraph`, wordCount(text) * animatedSecondsPerWord, { text: { value: `"${text}"`, delimiter:"" }, ease: Linear.easeIn });
 
   var scrollFn = setInterval(function(){
-    console.log("Scrollin' ");
-    TweenLite.to(`#${id}-vino-chat-text-body`, timeBetweenScrollingMs / 1000, { scrollTo: "max" });
-  }, timeBetweenScrollingMs);
+    TweenLite.to(`#${id}-vino-chat-text-body`, timeBetweenScrolling / 1000, { scrollTo: "max" });
+  }, timeBetweenScrolling * 1000);
   
   var timeout = wordCount(text) * (1000 * secondsPerWord);
-  if (timeout < minimumTimeOnscreen) {
-    timeout = minimumTimeOnscreen;
+  if (timeout < (minimumTimeOnscreen * 1000)) {
+    timeout = (minimumTimeOnscreen * 1000);
   }
 
-  setTimeout(function(){
-    clearInterval(scrollFn);
-    let frame = $("#" + id + ".vino-chat-frame");
-    //TweenLite.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
-    frame.fadeOut(1000, function() {
-      frame.remove();
-      removeFromArray(onscreen, actorName);
-      handleQueue();
-    });
-  }, timeout);
+  if (!DEBUGGING_LAYOUT) {
+    setTimeout(function(){
+      clearInterval(scrollFn);
+      let frame = $("#" + id + ".vino-chat-frame");
+      //TweenLite.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
+      frame.fadeOut(1000, function() {
+        frame.remove();
+        removeFromArray(onscreen, actorName);
+        handleQueue();
+      });
+    }, timeout);
+  }
 }
 
 function handleQueue() {
+  log("Handling Queue");
   logObject(queue);
   logObject(onscreen);
   if (queue.length == 0) {
@@ -152,3 +209,37 @@ function handleQueue() {
   var data = queue.pop();
   addSpeakingActor(data.name, data.mood, data.text, data.img, data.id);
 }
+
+class ActorPortraitSheet extends ActorSheet {
+  get template() {
+    return "modules/vino/templates/actor-portraits.html";
+  }
+
+  getData() {
+    const sheetData = super.getData();
+
+    if (sheetData.actor.data.attributes.altdefault == undefined) {
+      sheetData.actor.data.attributes.altdefault = "";
+    }
+    if (sheetData.actor.data.attributes.madimg == undefined) {
+      sheetData.actor.data.attributes.madimg = "";
+    }
+    if (sheetData.actor.data.attributes.sadimg == undefined) {
+      sheetData.actor.data.attributes.sadimg = "";
+    }
+    if (sheetData.actor.data.attributes.joyimg == undefined) {
+      sheetData.actor.data.attributes.joyimg = "";
+    }
+    if (sheetData.actor.data.attributes.fearimg == undefined) {
+      sheetData.actor.data.attributes.fearimg = "";
+    }
+
+    return sheetData;
+  }
+}
+
+
+Actors.registerSheet("VINO", ActorPortraitSheet, {
+  types: [],
+  makeDefault: false
+});

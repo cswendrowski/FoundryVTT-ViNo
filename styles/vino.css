@@ -2,7 +2,7 @@
     height: 100%;
     width: 85%;
     pointer-events: none;
-    
+    margin-left: 5%;
 }
 
 #vino-chat-lane {
@@ -46,7 +46,7 @@
     order: 0;
     -webkit-flex: 0 1 auto;
     -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     -webkit-align-self: baseline;
     -ms-flex-item-align: baseline;
     align-self: baseline;
@@ -67,13 +67,15 @@
 }
 
 .vino-chat-flexy-boi {
-        display: inline-flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        flex-basis: 2, 1;
-        min-width: 100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    flex-basis: 2, 1;
+    min-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-height: 15vh;
+    width: 320px;
 }
 
 .vino-chat-actor-name {
@@ -88,7 +90,7 @@
 }
 .vino-chat-text-body {
     font-size: 1.05rem;
-    max-height: 20vh;
+    max-height: 12vh;
     overflow-y: hidden;
     width: 100%;
 }
