@@ -1,4 +1,5 @@
 import VNOverlay from './apps/VNOverlay.js';
+import Queue from "./scripts/Queue.js";
 import { Settings } from "./settings.js";
 // eslint-disable-next-line no-unused-vars
 import constants from './constants.js';
@@ -17,7 +18,7 @@ let animatedSecondsPerWord = 0.3;
 let minimumTimeOnscreen = 5;
 let timeBetweenScrolling = 0.5;
 let onscreen = [];
-let queue = [];
+let queue = new Queue();
 let maxOnscreen = 4;
 let commandKey = "!";
 
@@ -58,6 +59,11 @@ Hooks.once('canvasReady', async () => {
 Hooks.on("createChatMessage", function(message) {
   logObject(message);
 
+  if (message.data.type != 2 && message.data.type != 3) {
+    log("Message was not Type 2 (IC) or 3 (Emote), cancelling");
+    return;
+  }
+
   let speakingActor = game.actors.get(message.data.speaker.actor);
   logObject(speakingActor);
 
@@ -70,8 +76,7 @@ Hooks.on("createChatMessage", function(message) {
     addSpeakingActor(speakingActor.name, mood, removeCommands(message.data.content), img, message.data._id);
   }
   else {
-
-    queue.push({name: speakingActor.name, mood: mood, text: removeCommands(message.data.content), img: img, id: message.data._id});
+    queue.enqueue({name: speakingActor.name, mood: mood, text: removeCommands(message.data.content), img: img, id: message.data._id});
   }
 });
 
@@ -198,7 +203,7 @@ function handleQueue() {
   log("Handling Queue");
   logObject(queue);
   logObject(onscreen);
-  if (queue.length == 0) {
+  if (queue.isEmpty()) {
     if (onscreen.length == 0) {
       log("Hiding overlay");
       $("#vino-overlay").fadeOut(1000);
@@ -206,7 +211,7 @@ function handleQueue() {
     return;
   };
 
-  var data = queue.pop();
+  var data = queue.dequeue();
   addSpeakingActor(data.name, data.mood, data.text, data.img, data.id);
 }
 
