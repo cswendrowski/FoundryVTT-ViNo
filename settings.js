@@ -1,4 +1,4 @@
-export const modName = 'Vino';
+export const modName = 'ViNo';
 const mod = 'vino';
 
 /**
@@ -72,6 +72,34 @@ export class Settings {
             type: Number,
             default: 4
         });
+
+        game.settings.register(mod, "autoQuote", {
+            name: game.i18n.localize("VINO.SETTINGS.AutoQuoteName"),
+            hint: game.i18n.localize("VINO.SETTINGS.AutoQuoteHint"),
+            scope: 'client',
+            config: true,
+            type: Boolean,
+            default: true
+        });
+
+        game.settings.register(mod, "quoteOpening", {
+            name: game.i18n.localize("VINO.SETTINGS.QuoteOpeningName"),
+            hint: game.i18n.localize("VINO.SETTINGS.QuoteOpeningHint"),
+            scope: 'client',
+            config: true,
+            type: String,
+            default: "\""
+        });
+
+        game.settings.register(mod, "quoteClosing", {
+            name: game.i18n.localize("VINO.SETTINGS.QuoteClosingName"),
+            hint: game.i18n.localize("VINO.SETTINGS.QuoteClosingHint"),
+            scope: 'client',
+            config: true,
+            type: String,
+            default: "\""
+        });
+        
 
         // game.settings.registerMenu(mod, 'settingsMenu', {
         //     name: 'Custom CSS Rules',

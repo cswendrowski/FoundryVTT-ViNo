@@ -73,10 +73,10 @@ Hooks.on("createChatMessage", function(message) {
   let img = getMoodImage(speakingActor, mood);
 
   if (onscreen.length <= maxOnscreen && !onscreen.includes(speakingActor.name)) {
-    addSpeakingActor(speakingActor.name, mood, removeCommands(message.data.content), img, message.data._id);
+    addSpeakingActor(speakingActor.name, mood, removeCommands(message.data.content), img, message.data._id, message.data.type == 3);
   }
   else {
-    queue.enqueue({name: speakingActor.name, mood: mood, text: removeCommands(message.data.content), img: img, id: message.data._id});
+    queue.enqueue({name: speakingActor.name, mood: mood, text: removeCommands(message.data.content), img: img, id: message.data._id, isEmoting: message.data.type == 3});
   }
 });
 
@@ -143,7 +143,7 @@ function removeFromArray(array, element) {
   }
 }
 
-function addSpeakingActor(actorName, mood, text, img, id)
+function addSpeakingActor(actorName, mood, text, img, id, isEmoting)
 {
   var previousLength = onscreen.length;
   onscreen.push(actorName);
@@ -173,8 +173,14 @@ function addSpeakingActor(actorName, mood, text, img, id)
 
   log("Appended " + actorName);
 
+  if (isEmoting) {
+    text = `<i>${text}</i>`;
+  }
+  else if (Settings.get('autoQuote')) {
+    text = `${Settings.get('quoteOpening')}${text}${Settings.get('quoteClosing')}`;
+  }
 
-  TweenLite.to(`#${id}-vino-chat-text-paragraph`, wordCount(text) * animatedSecondsPerWord, { text: { value: `"${text}"`, delimiter:"" }, ease: Linear.easeIn });
+  TweenLite.to(`#${id}-vino-chat-text-paragraph`, wordCount(text) * animatedSecondsPerWord, { text: { value: `${text}`, delimiter:"" }, ease: Linear.easeIn });
 
   var scrollFn = setInterval(function(){
     TweenLite.to(`#${id}-vino-chat-text-body`, timeBetweenScrolling / 1000, { scrollTo: "max" });
@@ -212,7 +218,7 @@ function handleQueue() {
   };
 
   var data = queue.dequeue();
-  addSpeakingActor(data.name, data.mood, data.text, data.img, data.id);
+  addSpeakingActor(data.name, data.mood, data.text, data.img, data.id, data.isEmoting);
 }
 
 class ActorPortraitSheet extends ActorSheet {
@@ -244,7 +250,7 @@ class ActorPortraitSheet extends ActorSheet {
 }
 
 
-Actors.registerSheet("VINO", ActorPortraitSheet, {
+Actors.registerSheet("ViNo", ActorPortraitSheet, {
   types: [],
   makeDefault: false
 });

@@ -15,5 +15,14 @@
     "VINO.SETTINGS.SecondsBetweenScrollHint": "Default: 0.5 seconds. Turning this down will increase smoothness of scrolling at the cost of performance.",
     
     "VINO.SETTINGS.MaxOnscreenName": "What is the max number of messages that should be shown onscreen before being put in the Queue?",
-    "VINO.SETTINGS.MaxOnscreenHint": "Default: 4. Lower this for small screens, increase for large screens."
+    "VINO.SETTINGS.MaxOnscreenHint": "Default: 4. Lower this for small screens, increase for large screens.",
+
+    "VINO.SETTINGS.AutoQuoteName": "Should messages be automatically wrapped in quote characters?",
+    "VINO.SETTINGS.AutoQuoteHint": "Default: True. Disable this if you tend to have longer messages that mix action and text",
+
+    "VINO.SETTINGS.QuoteOpeningName": "When autoquoting, what character should the message be prepended with?",
+    "VINO.SETTINGS.QuoteOpeningHint": "Default: \". English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+
+    "VINO.SETTINGS.QuoteClosingName": "When autoquoting, what character should the message be appended with?",
+    "VINO.SETTINGS.QuoteClosingHint": "Default: \". English tends to use the same quote character for both opening and closing, while Japanese uses different ones."
 }
