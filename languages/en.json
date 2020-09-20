@@ -2,6 +2,9 @@
     "VINO.SETTINGS.ShowDebugLogsName": "Show debug logs?",
     "VINO.SETTINGS.ShowDebugLogsHint": "Turn this on for bug reports",
 
+    "VINO.SETTINGS.DefaultFontName": "What should the default font for your ViNo messages be, if an Actor doesn't override it?",
+    "VINO.SETTINGS.DefaultFontHint": "Default: \"Signika, sans-serif;\". Supports font families and fallbacks. https://github.com/Forien/foundryvtt-forien-custom-fonts can install additional fonts.",
+
     "VINO.SETTINGS.SecondsToRenderName": "How many seconds should it take for a word to render?",
     "VINO.SETTINGS.SecondsToRenderHint": "Default: 0.3 seconds",
 
@@ -21,8 +24,10 @@
     "VINO.SETTINGS.AutoQuoteHint": "Default: True. Disable this if you tend to have longer messages that mix action and text",
 
     "VINO.SETTINGS.QuoteOpeningName": "When autoquoting, what character should the message be prepended with?",
-    "VINO.SETTINGS.QuoteOpeningHint": "Default: \". English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+    "VINO.SETTINGS.QuoteOpeningHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+    "VINO.SETTINGS.QuoteOpeningDefault": "\"",
 
     "VINO.SETTINGS.QuoteClosingName": "When autoquoting, what character should the message be appended with?",
-    "VINO.SETTINGS.QuoteClosingHint": "Default: \". English tends to use the same quote character for both opening and closing, while Japanese uses different ones."
+    "VINO.SETTINGS.QuoteClosingHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+    "VINO.SETTINGS.QuoteClosingDefault": "\""
 }

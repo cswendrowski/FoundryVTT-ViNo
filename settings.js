@@ -28,6 +28,15 @@ export class Settings {
             default: false
         });
 
+        game.settings.register(mod, "defaultFont", {
+            name: game.i18n.localize("VINO.SETTINGS.DefaultFontName"),
+            hint: game.i18n.localize("VINO.SETTINGS.DefaultFontHint"),
+            scope: 'client',
+            config: true,
+            type: String,
+            default: "Signika, sans-serif;"
+        });
+
         game.settings.register(mod, "animatedSecondsPerWord", {
             name: game.i18n.localize("VINO.SETTINGS.SecondsToRenderName"),
             hint: game.i18n.localize("VINO.SETTINGS.SecondsToRenderHint"),
@@ -88,7 +97,7 @@ export class Settings {
             scope: 'client',
             config: true,
             type: String,
-            default: "\""
+            default: game.i18n.localize("VINO.SETTINGS.QuoteOpeningDefault")
         });
 
         game.settings.register(mod, "quoteClosing", {
@@ -97,7 +106,7 @@ export class Settings {
             scope: 'client',
             config: true,
             type: String,
-            default: "\""
+            default: game.i18n.localize("VINO.SETTINGS.QuoteClosingDefault")
         });
         
 
