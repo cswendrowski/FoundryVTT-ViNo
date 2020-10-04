@@ -52,7 +52,7 @@ export class Settings {
             scope: 'client',
             config: true,
             type: Number,
-            default: 1.0
+            default: 0.5
         });
 
         game.settings.register(mod, "minimumTimeOnScreen", {

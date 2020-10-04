@@ -1,4 +1,5 @@
 import VNOverlay from './apps/VNOverlay.js';
+import ActorConfiguration from './apps/ActorConfiguration.js';
 import Queue from "./scripts/Queue.js";
 import { Settings } from "./settings.js";
 // eslint-disable-next-line no-unused-vars
@@ -33,6 +34,16 @@ function logObject(object) {
         console.log(object);
     }
 }
+
+Hooks.on('renderActorSheet', function(sheet, html, data) {
+  html.find('.configure-sheet').before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
+  
+  html.find(".configure-vino").click(event => { 
+    let actorId = data.actor._id;
+    let configurationApp = new ActorConfiguration(actorId);
+    configurationApp.render(true);
+  });
+});
 
 Hooks.once('ready', async function() {
   Settings.registerSettings();
@@ -69,9 +80,9 @@ Hooks.on("createChatMessage", function(message) {
 
   if (!speakingActor) return;
 
-  let mood = getMood(message.data.content);
+  let mood = message.data.flags.vino.mood;
   let img = getMoodImage(speakingActor, mood);
-  let text = removeCommands(message.data.content);
+  let text = message.data.content;
   let font = getFont(speakingActor);
 
   let chatDisplayData = {
@@ -95,12 +106,16 @@ Hooks.on("createChatMessage", function(message) {
   }
 });
 
-// Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
-//   if (messageText != removeCommands(messageText)) {
-//     ChatMessage.create(chatData);
-//     return false;
-//   }
-// });
+Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
+  let mood = getMood(messageText);
+  if (mood != "") {
+    chatData.content = removeCommands(messageText);
+    chatData.type = 2;
+    setProperty(chatData, 'flags.vino.mood', mood);
+    ChatMessage.create(chatData);
+    return false;
+  }
+});
 
 function getFont(actor) {
   var actorFont = actor.data.data.attributes.font;
@@ -251,40 +266,3 @@ function handleQueue() {
   var data = queue.dequeue();
   addSpeakingActor(data);
 }
-
-class ActorViNoConfigurationSheet extends ActorSheet {
-  get template() {
-    return "modules/vino/templates/actor-vino-configuration.html";
-  }
-
-  getData() {
-    const sheetData = super.getData();
-
-    if (sheetData.actor.data.attributes.font == undefined) {
-      sheetData.actor.data.attributes.font = "";
-    }
-    if (sheetData.actor.data.attributes.altdefault == undefined) {
-      sheetData.actor.data.attributes.altdefault = "";
-    }
-    if (sheetData.actor.data.attributes.madimg == undefined) {
-      sheetData.actor.data.attributes.madimg = "";
-    }
-    if (sheetData.actor.data.attributes.sadimg == undefined) {
-      sheetData.actor.data.attributes.sadimg = "";
-    }
-    if (sheetData.actor.data.attributes.joyimg == undefined) {
-      sheetData.actor.data.attributes.joyimg = "";
-    }
-    if (sheetData.actor.data.attributes.fearimg == undefined) {
-      sheetData.actor.data.attributes.fearimg = "";
-    }
-
-    return sheetData;
-  }
-}
-
-
-Actors.registerSheet("ViNo", ActorViNoConfigurationSheet, {
-  types: [],
-  makeDefault: false
-});
