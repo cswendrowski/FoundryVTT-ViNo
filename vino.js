@@ -115,6 +115,12 @@ Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
     ChatMessage.create(chatData);
     return false;
   }
+
+  chatData.flags = {
+    vino: {
+      mood: ""
+    }
+  };
 });
 
 function getFont(actor) {
