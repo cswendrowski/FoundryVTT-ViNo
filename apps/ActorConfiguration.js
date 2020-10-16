@@ -23,25 +23,17 @@ export default class ActorConfiguration extends FormApplication {
   }
 
   getData() {
-    let attributes = this.actor.data.data.attributes;
+    let data = this.actor.data.data;
 
-    if (attributes.font == undefined) {
-        attributes.font = "";
-    }
-    if (attributes.altdefault == undefined) {
-        attributes.altdefault = "";
-    }
-    if (attributes.madimg == undefined) {
-        attributes.madimg = "";
-    }
-    if (attributes.sadimg == undefined) {
-        attributes.sadimg = "";
-    }
-    if (attributes.joyimg == undefined) {
-        attributes.joyimg = "";
-    }
-    if (attributes.fearimg == undefined) {
-        attributes.fearimg = "";
+    if (data.vino == undefined) {
+      data.vino = {
+        font: "",
+        altdefault: "",
+        madimg: "",
+        sadimg: "",
+        joyimg: "",
+        fearimg: ""
+      };
     }
 
     return {

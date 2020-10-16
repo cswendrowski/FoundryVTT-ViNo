@@ -1,25 +1,25 @@
 <form class="{{cssClass}}" autocomplete="off" onsubmit="event.preventDefault();">
 
     <h2>Actor Font</h2>
-    <h4><input name="data.attributes.font" type="text" value="{{actor.data.data.attributes.font}}" placeholder="Signika, sans-serif;"/></h4>
+    <h4><input name="data.vino.font" type="text" value="{{actor.data.data.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
 
     <h2>Actor Portrait</h2>
     <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
 
     <h2>Alternate Default</h2>
-    <img class="sheet-profile" src="{{actor.data.data.attributes.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="data.attributes.altdefault" />
+    <img class="sheet-profile" src="{{actor.data.data.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="data.vino.altdefault" />
 
     <h2>Mad</h2>
-    <img class="sheet-profile" src="{{actor.data.data.attributes.madimg}}" title="{{actor.name}} mad" height="220" width="220" data-edit="data.attributes.madimg" />
+    <img class="sheet-profile" src="{{actor.data.data.vino.madimg}}" title="{{actor.name}} mad" height="220" width="220" data-edit="data.vino.madimg" />
 
     <h2>Sad</h2>
-    <img class="sheet-profile" src="{{actor.data.data.attributes.sadimg}}" title="{{actor.name}} sad" height="220" width="220" data-edit="data.attributes.sadimg" />
+    <img class="sheet-profile" src="{{actor.data.data.vino.sadimg}}" title="{{actor.name}} sad" height="220" width="220" data-edit="data.vino.sadimg" />
 
     <h2>Joy</h2>
-    <img class="sheet-profile" src="{{actor.data.data.attributes.joyimg}}" title="{{actor.name}} joy" height="220" width="220" data-edit="data.attributes.joyimg" />
+    <img class="sheet-profile" src="{{actor.data.data.vino.joyimg}}" title="{{actor.name}} joy" height="220" width="220" data-edit="data.vino.joyimg" />
 
     <h2>Fear</h2>
-    <img class="sheet-profile" src="{{actor.data.data.attributes.fearimg}}" title="{{actor.name}} fear" height="220" width="220" data-edit="data.attributes.fearimg" />
+    <img class="sheet-profile" src="{{actor.data.data.vino.fearimg}}" title="{{actor.name}} fear" height="220" width="220" data-edit="data.vino.fearimg" />
 
     <button type="submit" name="submit" class="btn btn-primary vino-configure-submit">Save</button>
 </form>
