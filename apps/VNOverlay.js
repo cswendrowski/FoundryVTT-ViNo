@@ -26,7 +26,6 @@ export default class VNOverlay extends Application {
 
   activateListeners(html) {
     super.activateListeners(html);
-    $("#vino-overlay").hide();
   }
 
 }

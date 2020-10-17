@@ -23,10 +23,10 @@ export default class ActorConfiguration extends FormApplication {
   }
 
   getData() {
-    let data = this.actor.data.data;
+    let flags = this.actor.data.flags;
 
-    if (data.vino == undefined) {
-      data.vino = {
+    if (flags.vino == undefined) {
+      flags.vino = {
         font: "",
         altdefault: "",
         madimg: "",
