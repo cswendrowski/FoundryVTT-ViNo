@@ -1,9 +1,11 @@
+import { gsap, ScrollToPlugin, TextPlugin } from "/scripts/greensock/esm/all.js";
 import VNOverlay from './apps/VNOverlay.js';
 import ActorConfiguration from './apps/ActorConfiguration.js';
 import Queue from "./scripts/Queue.js";
 import { Settings } from "./settings.js";
 // eslint-disable-next-line no-unused-vars
 import constants from './constants.js';
+
 //import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
 
 (() => { })();
@@ -47,6 +49,8 @@ Hooks.on('renderActorSheet', function(sheet, html, data) {
 
 Hooks.once('ready', async function() {
   Settings.registerSettings();
+
+  gsap.registerPlugin(ScrollToPlugin, TextPlugin);
 
   DEBUG = Settings.get("debugMode");
   if (!DEBUG) {
@@ -124,7 +128,7 @@ Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
 });
 
 function getFont(actor) {
-  var actorFont = actor.data.data.attributes.font;
+  var actorFont = actor.data.data.vino.font;
   if (actorFont != undefined && actorFont != "") {
     return "100% " + actorFont;
   }
@@ -136,21 +140,21 @@ function getMoodImage(actor, mood)
 {
   logObject(actor);
 
-  if (mood == "mad" && actor.data.data.attributes.madimg) {
-    return actor.data.data.attributes.madimg;
+  if (mood == "mad" && actor.data.data.vino.madimg) {
+    return actor.data.data.vino.madimg;
   }
-  if (mood == "sad" && actor.data.data.attributes.sadimg) {
-    return actor.data.data.attributes.sadimg;
+  if (mood == "sad" && actor.data.data.vino.sadimg) {
+    return actor.data.data.vino.sadimg;
   }
-  if (mood == "joy" && actor.data.data.attributes.joyimg) {
-    return actor.data.data.attributes.joyimg;
+  if (mood == "joy" && actor.data.data.vino.joyimg) {
+    return actor.data.data.vino.joyimg;
   }
-  if (mood == "fear" && actor.data.data.attributes.fearimg) {
-    return actor.data.data.attributes.fearimg;
+  if (mood == "fear" && actor.data.data.vino.fearimg) {
+    return actor.data.data.vino.fearimg;
   }
 
-  if (actor.data.data.attributes.altdefault) {
-    return actor.data.data.attributes.altdefault;
+  if (actor.data.data.vino.altdefault) {
+    return actor.data.data.vino.altdefault;
   }
 
   return actor.img;
@@ -232,10 +236,10 @@ function addSpeakingActor(chatDisplayData)
     chatDisplayData.text = `${Settings.get('quoteOpening')}${chatDisplayData.text}${Settings.get('quoteClosing')}`;
   }
 
-  TweenLite.to(`#${chatDisplayData.id}-vino-chat-text-paragraph`, wordCount(chatDisplayData.text) * animatedSecondsPerWord, { text: { value: `${chatDisplayData.text}`, delimiter:"" }, ease: Linear.easeIn });
+  gsap.to(`#${chatDisplayData.id}-vino-chat-text-paragraph`, wordCount(chatDisplayData.text) * animatedSecondsPerWord, { text: { value: `${chatDisplayData.text}`, delimiter:"" }, ease: "none" });
 
   var scrollFn = setInterval(function(){
-    TweenLite.to(`#${chatDisplayData.id}-vino-chat-text-body`, timeBetweenScrolling / 1000, { scrollTo: "max" });
+    gsap.to(`#${chatDisplayData.id}-vino-chat-text-body`, timeBetweenScrolling / 1000, { scrollTo: "max" });
   }, timeBetweenScrolling * 1000);
   
   var timeout = wordCount(chatDisplayData.text) * (1000 * secondsPerWord);
@@ -247,7 +251,7 @@ function addSpeakingActor(chatDisplayData)
     setTimeout(function(){
       clearInterval(scrollFn);
       let frame = $("#" + chatDisplayData.id + ".vino-chat-frame");
-      //TweenLite.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
+      //gsap.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
       frame.fadeOut(1000, function() {
         frame.remove();
         removeFromArray(onscreen, chatDisplayData.name);
