@@ -2,9 +2,9 @@
   "name": "vino",
   "title": "ViNo - Visual Interactive Novel Overlay",
   "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "minimumCoreVersion": "0.6.2",
-  "compatibleCoreVersion": "0.7.4",
+  "compatibleCoreVersion": "0.7.5",
   "author": "Cody Swendrowski <cody@swendrowski.us>",
   "esmodules": [
     "./vino.js"
@@ -19,9 +19,14 @@
       "lang": "en",
       "name": "English",
       "path": "languages/en.json"
-    }
+    },
+    {
+      "lang": "ja",
+      "name": "日本語",
+      "path": "languages/ja.json"
+}
   ],
-  "url": "https://github.com/cswendrowski//FoundryVTT-Visual-Novel-Chat",
+  "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
   "manifest": "",
   "download": ""
 }

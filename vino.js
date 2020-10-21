@@ -136,7 +136,7 @@ Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
 });
 
 function getFont(actor) {
-  var actorFont = actor.data.data.vino.font;
+  var actorFont = actor.data.flags.vino?.font;
   if (actorFont != undefined && actorFont != "") {
     return "100% " + actorFont;
   }
@@ -148,20 +148,20 @@ function getMoodImage(actor, mood)
 {
   logObject(actor);
 
-  if (mood == "mad" && actor.data.flags.vino.madimg) {
+  if (mood == "mad" && actor.data.flags.vino?.madimg) {
     return actor.data.flags.vino.madimg;
   }
-  if (mood == "sad" && actor.data.flags.vino.sadimg) {
+  if (mood == "sad" && actor.data.flags.vino?.sadimg) {
     return actor.data.flags.vino.sadimg;
   }
-  if (mood == "joy" && actor.data.flags.vino.joyimg) {
+  if (mood == "joy" && actor.data.flags.vino?.joyimg) {
     return actor.data.flags.vino.joyimg;
   }
-  if (mood == "fear" && actor.data.flags.vino.fearimg) {
+  if (mood == "fear" && actor.data.flags.vino?.fearimg) {
     return actor.data.flags.vino.fearimg;
   }
 
-  if (actor.data.flags.vino.altdefault) {
+  if (actor.data.flags.vino?.altdefault) {
     return actor.data.flags.vino.altdefault;
   }
 
