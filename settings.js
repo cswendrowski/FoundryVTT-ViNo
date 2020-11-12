@@ -1,3 +1,5 @@
+import { SettingsForm } from './scripts/settingsForm.js';
+
 export const modName = 'ViNo';
 const mod = 'vino';
 
@@ -14,6 +16,71 @@ export class Settings {
         game.settings.set(mod, setting, value);
     }
 
+    static getDefaultMood(index) {
+        return game.settings.get(mod, 'defaultMood' + index);
+    }
+
+    static getDefaultMoods() {
+        var defaultMoods = [];
+        for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+            defaultMoods.push(Settings.getDefaultMood(x));
+        }
+        return defaultMoods;
+    }
+
+    static setDefaultMood(index, val) {
+        if (val == undefined) return;
+        game.settings.set(mod, 'defaultMood' + index, val).then(function() {
+            var sheet = window.document.styleSheets[0];
+
+            for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+             var DefaultMood = Settings.getDefaultMood(x);
+             if (DefaultMood == "<DELETED>") continue;
+             if (DefaultMood != "") {
+               console.log("ViNo | Inserting DefaultMood " + DefaultMood);
+              }
+            }
+            
+            ui.players.render();
+        });
+    }
+
+    static getMaxDefaultMoods() {
+        return game.settings.get(mod, 'numberOfDefaultMoods');
+    }
+
+    static setMaxDefaultMoods(val) {
+        game.settings.set(mod, 'numberOfDefaultMoods', val);
+    }
+
+    static addMaxDefaultMood() {
+        var newMax = this.getMaxDefaultMoods() + 1;
+        game.settings.register(mod, 'defaultMood' + newMax, {
+            scope: 'world',
+            config: false,
+            type: String,
+            default: ""
+        });
+        game.settings.set(mod, 'numberOfDefaultMoods', newMax);
+    }
+
+    static removeMaxDefaultMood() {
+        var maxDefaultMoods = this.getMaxDefaultMoods();
+        if (maxDefaultMoods == 0) {
+            console.log("ViNo | Cannot have less than 0 DefaultMoods");
+            return;
+        }
+        game.settings.set(mod, 'numberOfDefaultMoods', maxDefaultMoods - 1);
+    }
+
+    static getDefaultMoodDefaultValue(index) {
+        if (index == 1) return "mad";
+        if (index == 2) return "sad";
+        if (index == 3) return "joy";
+        if (index == 4) return "fear";
+        return "";
+    }
+
     /**
      * Registers all of the necessary game settings for the module
      */
@@ -27,6 +94,30 @@ export class Settings {
             type: Boolean,
             default: false
         });
+
+        game.settings.register(mod, "numberOfDefaultMoods", {
+            scope: 'world',
+            config: false,
+            type: Number,
+            default: 4
+        })
+
+        game.settings.registerMenu(mod, 'settingsMenu', {
+            name: 'Default Moods',
+            label: 'Default Moods',
+            icon: 'fas fa-address-book',
+            type: SettingsForm,
+            restricted: true
+        });
+
+        for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+            game.settings.register(mod, 'defaultMood' + x, {
+                scope: 'world',
+                config: false,
+                type: String,
+                default: this.getDefaultMoodDefaultValue(x)
+            });
+        }
 
         game.settings.register(mod, "defaultFont", {
             name: game.i18n.localize("VINO.SETTINGS.DefaultFontName"),
@@ -111,8 +202,8 @@ export class Settings {
         
 
         // game.settings.registerMenu(mod, 'settingsMenu', {
-        //     name: 'Custom CSS Rules',
-        //     label: 'Custom CSS Rules',
+        //     name: 'Custom CSS DefaultMoods',
+        //     label: 'Custom CSS DefaultMoods',
         //     icon: 'fas fa-wrench',
         //     type: SettingsForm,
         //     restricted: true

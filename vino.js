@@ -15,7 +15,7 @@ Hooks.once('init', async () => {
 });
 
 let DEBUG = false;
-let DEBUGGING_LAYOUT = false;
+let DEBUGGING_LAYOUT = true;
 let secondsPerWord = 0.5;
 let animatedSecondsPerWord = 0.3;
 let minimumTimeOnscreen = 5;
@@ -169,10 +169,16 @@ function getMoodImage(actor, mood)
 }
 
 function getMood(messageText) {
-  if (messageText.toLowerCase().startsWith(commandKey + "mad")) return "mad";
-  if (messageText.toLowerCase().startsWith(commandKey + "sad")) return "sad";
-  if (messageText.toLowerCase().startsWith(commandKey + "joy")) return "joy";
-  if (messageText.toLowerCase().startsWith(commandKey + "fear")) return "fear";
+
+  var matchString = messageText.toLowerCase();
+
+  for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+    var defaultMood = Settings.getDefaultMood(x).toLowerCase();
+    if (defaultMood == "<DELETED>") continue;
+    if (defaultMood != "" && matchString.startsWith(commandKey + defaultMood)) {
+      return defaultMood;
+    }
+   }
 
   return "";
 }
@@ -184,12 +190,15 @@ function caseInsensitiveReplace(line, word, replaceWith) {
 
 function removeCommands(messageText) {
 
-  messageText = caseInsensitiveReplace(messageText, commandKey + "mad", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "sad", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "joy", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "fear", "");
+  for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+    var defaultMood = Settings.getDefaultMood(x);
+    if (defaultMood == "<DELETED>") continue;
+    if (defaultMood != "") {
+      messageText = caseInsensitiveReplace(messageText, commandKey + defaultMood, "");
+    }
+   }
 
-  return messageText.trim();
+   return messageText.trim();
 }
 
 function removeExtraneousHtml(messageText) {
@@ -269,7 +278,6 @@ function addSpeakingActor(chatDisplayData)
     setTimeout(function(){
       clearInterval(scrollFn);
       let frame = $("#V" + chatDisplayData.id + ".vino-chat-frame");
-      //gsap.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
       frame.fadeOut(1000, function() {
         frame.remove();
         removeFromArray(onscreen, chatDisplayData.name);

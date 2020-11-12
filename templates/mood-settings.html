@@ -1,0 +1,23 @@
+<form autocomplete="off" class="vinoDefaultMooodSettings" onsubmit="event.preventDefault()">
+    <div>
+        <div class="list-group base" id="vinoDefaultMooodSettings">
+            {{#each moods}}
+            <div class="form-group list-group-item" data-id="mood{{this.index}}">
+                <!-- <label>Mood {{this.index}}</label> -->
+                <input name="defaultmood{{this.index}}" class="mood" type="text" value="{{this.value}}" />
+                <i class="fas fa-trash mood-delete" data-moodid="{{this.index}}" style="flex: 0; padding-left: 5px; "></i>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div style="display: flex; padding-top: 10px;">
+        <button type="submit" name="addMood" value="addMood">
+            <i class="fas fa-plus"></i> Add
+        </button>
+    </div>
+
+    <button type="submit" name="submit">
+        <i class="fas fa-save"></i> Save
+    </button>
+</form>
