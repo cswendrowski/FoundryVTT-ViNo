@@ -9,17 +9,14 @@
     <h2>Alternate Default</h2>
     <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
 
-    <h2>Mad</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.madimg}}" title="{{actor.name}} mad" height="220" width="220" data-edit="flags.vino.madimg" />
-
-    <h2>Sad</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.sadimg}}" title="{{actor.name}} sad" height="220" width="220" data-edit="flags.vino.sadimg" />
-
-    <h2>Joy</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.joyimg}}" title="{{actor.name}} joy" height="220" width="220" data-edit="flags.vino.joyimg" />
-
-    <h2>Fear</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.fearimg}}" title="{{actor.name}} fear" height="220" width="220" data-edit="flags.vino.fearimg" />
+    <div style="display: flex;">
+    {{#each actor.data.flags.vino.images as |image i|}}
+        <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 1;" >
+            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" /></h2>
+            <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
+        </div>
+    {{/each}}
+    </div>
 
     <button type="submit" name="submit" class="btn btn-primary vino-configure-submit">Save</button>
 </form>

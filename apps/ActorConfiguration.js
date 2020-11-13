@@ -1,4 +1,5 @@
 import constants from '../constants.js';
+import { Settings } from "../settings.js";
 
 export default class ActorConfiguration extends FormApplication {
   /* const app = ;
@@ -9,7 +10,7 @@ export default class ActorConfiguration extends FormApplication {
       id: 'vino-actor-configuration',
       template: `${constants.modulePath}/templates/actor-vino-configuration.html`,
       popOut: true,
-      width: 600,
+      width: 1200,
       height: 1000,
       closeOnSubmit: false
     });
@@ -28,12 +29,41 @@ export default class ActorConfiguration extends FormApplication {
     if (flags.vino == undefined) {
       flags.vino = {
         font: "",
-        altdefault: "",
-        madimg: "",
-        sadimg: "",
-        joyimg: "",
-        fearimg: ""
+        images: [],
+        altdefault: ""
       };
+    }
+
+    if (flags.vino.images == undefined) {
+      flags.vino.images = [];
+    }
+
+    if (flags.vino.images.length == 0) {
+      for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+        var defaultMood = Settings.getDefaultMood(x).toLowerCase();
+        if (defaultMood == "<DELETED>") continue;
+        if (defaultMood != "") {
+          let moodInfo = {
+            name: defaultMood,
+            path: ""
+          };
+
+          if (defaultMood == "mad") {
+            moodInfo.path = flags.vino.madimg;
+          }
+          else if (defaultMood == "sad") {
+            moodInfo.path = flags.vino.sadimg;
+          }
+          else if (defaultMood == "joy") {
+            moodInfo.path = flags.vino.joyimg;
+          }
+          else if (defaultMood == "fear") {
+            moodInfo.path = flags.vino.fearimg;
+          }
+
+          flags.vino.images.push(moodInfo);
+        }
+       }
     }
 
     return {

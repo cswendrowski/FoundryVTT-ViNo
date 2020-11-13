@@ -3,10 +3,6 @@ import VNOverlay from './apps/VNOverlay.js';
 import ActorConfiguration from './apps/ActorConfiguration.js';
 import Queue from "./scripts/Queue.js";
 import { Settings } from "./settings.js";
-// eslint-disable-next-line no-unused-vars
-import constants from './constants.js';
-
-//import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
 
 (() => { })();
 
