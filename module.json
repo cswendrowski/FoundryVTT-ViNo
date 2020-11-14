@@ -10,6 +10,7 @@
     "./vino.js"
   ],
   "scripts": [
+    "scripts/greensock/dist/gsap.min"
   ],
   "styles": [
     "/styles/vino.css"

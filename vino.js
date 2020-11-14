@@ -3,10 +3,6 @@ import VNOverlay from './apps/VNOverlay.js';
 import ActorConfiguration from './apps/ActorConfiguration.js';
 import Queue from "./scripts/Queue.js";
 import { Settings } from "./settings.js";
-// eslint-disable-next-line no-unused-vars
-import constants from './constants.js';
-
-//import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
 
 (() => { })();
 
@@ -147,21 +143,21 @@ function getFont(actor) {
 function getMoodImage(actor, mood)
 {
   logObject(actor);
+  log(mood);
 
-  if (mood == "mad" && actor.data.flags.vino?.madimg) {
-    return actor.data.flags.vino.madimg;
-  }
-  if (mood == "sad" && actor.data.flags.vino?.sadimg) {
-    return actor.data.flags.vino.sadimg;
-  }
-  if (mood == "joy" && actor.data.flags.vino?.joyimg) {
-    return actor.data.flags.vino.joyimg;
-  }
-  if (mood == "fear" && actor.data.flags.vino?.fearimg) {
-    return actor.data.flags.vino.fearimg;
+  if (mood != undefined && mood != "") {
+    let images = actor.data.flags.vino.images;
+    logObject(images);
+
+    for (var x = 0; x < Object.keys(images).length; x++) {
+      let image = images[x];
+      if (image.name.toLowerCase() == mood.toLowerCase()) {
+        if (image.path != "") return image.path;
+      }
+    }
   }
 
-  if (actor.data.flags.vino?.altdefault) {
+  if (actor.data.flags.vino?.altdefault && actor.data.flags.vino.altdefault != "") {
     return actor.data.flags.vino.altdefault;
   }
 
@@ -169,10 +165,16 @@ function getMoodImage(actor, mood)
 }
 
 function getMood(messageText) {
-  if (messageText.toLowerCase().startsWith(commandKey + "mad")) return "mad";
-  if (messageText.toLowerCase().startsWith(commandKey + "sad")) return "sad";
-  if (messageText.toLowerCase().startsWith(commandKey + "joy")) return "joy";
-  if (messageText.toLowerCase().startsWith(commandKey + "fear")) return "fear";
+
+  var matchString = messageText.toLowerCase();
+
+  for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+    var defaultMood = Settings.getDefaultMood(x).toLowerCase();
+    if (defaultMood == "<DELETED>") continue;
+    if (defaultMood != "" && matchString.startsWith(commandKey + defaultMood)) {
+      return defaultMood;
+    }
+   }
 
   return "";
 }
@@ -184,12 +186,15 @@ function caseInsensitiveReplace(line, word, replaceWith) {
 
 function removeCommands(messageText) {
 
-  messageText = caseInsensitiveReplace(messageText, commandKey + "mad", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "sad", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "joy", "");
-  messageText = caseInsensitiveReplace(messageText, commandKey + "fear", "");
+  for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+    var defaultMood = Settings.getDefaultMood(x);
+    if (defaultMood == "<DELETED>") continue;
+    if (defaultMood != "") {
+      messageText = caseInsensitiveReplace(messageText, commandKey + defaultMood, "");
+    }
+   }
 
-  return messageText.trim();
+   return messageText.trim();
 }
 
 function removeExtraneousHtml(messageText) {
@@ -269,7 +274,6 @@ function addSpeakingActor(chatDisplayData)
     setTimeout(function(){
       clearInterval(scrollFn);
       let frame = $("#V" + chatDisplayData.id + ".vino-chat-frame");
-      //gsap.to(`#${id}-vino-chat-text-paragraph`, 1, {text:{value:``, delimiter:""}, ease:Linear.easeNone});
       frame.fadeOut(1000, function() {
         frame.remove();
         removeFromArray(onscreen, chatDisplayData.name);
