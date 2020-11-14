@@ -48,16 +48,16 @@ export default class ActorConfiguration extends FormApplication {
             path: ""
           };
 
-          if (defaultMood == "mad") {
+          if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Mad")) {
             moodInfo.path = flags.vino.madimg;
           }
-          else if (defaultMood == "sad") {
+          else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Sad")) {
             moodInfo.path = flags.vino.sadimg;
           }
-          else if (defaultMood == "joy") {
+          else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Joy")) {
             moodInfo.path = flags.vino.joyimg;
           }
-          else if (defaultMood == "fear") {
+          else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Fear")) {
             moodInfo.path = flags.vino.fearimg;
           }
 

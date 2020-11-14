@@ -36,5 +36,9 @@
     "VINO.ACTORCONFIG.Font": "Font",
     "VINO.ACTORCONFIG.ActorPortrait": "Actor Portrait",
     "VINO.ACTORCONFIG.AlternateDefault": "Alternate Default",
-    "VINO.ACTORCONFIG.Moods": "Moods"
+    "VINO.ACTORCONFIG.Moods": "Moods",
+    "VINO.ACTORCONFIG.DefaultMoods.Mad": "mad",
+    "VINO.ACTORCONFIG.DefaultMoods.Sad": "sad",
+    "VINO.ACTORCONFIG.DefaultMoods.Joy": "joy",
+    "VINO.ACTORCONFIG.DefaultMoods.Fear": "fear"
 }

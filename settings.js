@@ -74,10 +74,10 @@ export class Settings {
     }
 
     static getDefaultMoodDefaultValue(index) {
-        if (index == 1) return "mad";
-        if (index == 2) return "sad";
-        if (index == 3) return "joy";
-        if (index == 4) return "fear";
+        if (index == 1) return game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Mad");
+        if (index == 2) return game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Sad");
+        if (index == 3) return game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Joy");
+        if (index == 4) return game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Fear");
         return "";
     }
 

@@ -36,5 +36,9 @@
     "VINO.ACTORCONFIG.Font": "字体",
     "VINO.ACTORCONFIG.ActorPortrait": "俳優の肖像画",
     "VINO.ACTORCONFIG.AlternateDefault": "代替デフォルト",
-    "VINO.ACTORCONFIG.Moods": "ムード"
+    "VINO.ACTORCONFIG.Moods": "ムード",
+    "VINO.ACTORCONFIG.DefaultMoods.Mad": "狂った",
+    "VINO.ACTORCONFIG.DefaultMoods.Sad": "悲しい",
+    "VINO.ACTORCONFIG.DefaultMoods.Joy": "喜び",
+    "VINO.ACTORCONFIG.DefaultMoods.Fear": "恐れ"
 }
