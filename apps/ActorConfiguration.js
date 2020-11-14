@@ -38,11 +38,13 @@ export default class ActorConfiguration extends FormApplication {
       flags.vino.images = [];
     }
 
-    if (flags.vino.images.length == 0) {
-      for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+    var moodsLength = Settings.getMaxDefaultMoods();
+    if (Object.keys(flags.vino.images).length < moodsLength) {
+      for (var x = 1; x <= moodsLength; x++) {
         var defaultMood = Settings.getDefaultMood(x).toLowerCase();
         if (defaultMood == "<DELETED>") continue;
-        if (defaultMood != "") {
+
+        if (defaultMood != "" && (flags.vino.images[x] == undefined || flags.vino.images[x] == "")) {
           let moodInfo = {
             name: defaultMood,
             path: ""
@@ -61,7 +63,7 @@ export default class ActorConfiguration extends FormApplication {
             moodInfo.path = flags.vino.fearimg;
           }
 
-          flags.vino.images.push(moodInfo);
+          flags.vino.images[x] = moodInfo;
         }
        }
     }
@@ -74,6 +76,11 @@ export default class ActorConfiguration extends FormApplication {
   async _updateObject(event, formData) {
     formData["_id"] = this.actorId;
     let actor = game.actors.get(this.actorId);
+
+    for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
+      formData["flags.vino.images." + x + ".name"] = Settings.getDefaultMood(x).toLowerCase();
+    }
+    
     actor.update(formData);
     if (this.shouldClose) {
       this.close();
