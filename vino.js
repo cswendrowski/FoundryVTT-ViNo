@@ -143,21 +143,21 @@ function getFont(actor) {
 function getMoodImage(actor, mood)
 {
   logObject(actor);
+  log(mood);
 
-  if (mood == "mad" && actor.data.flags.vino?.madimg) {
-    return actor.data.flags.vino.madimg;
-  }
-  if (mood == "sad" && actor.data.flags.vino?.sadimg) {
-    return actor.data.flags.vino.sadimg;
-  }
-  if (mood == "joy" && actor.data.flags.vino?.joyimg) {
-    return actor.data.flags.vino.joyimg;
-  }
-  if (mood == "fear" && actor.data.flags.vino?.fearimg) {
-    return actor.data.flags.vino.fearimg;
+  if (mood != undefined && mood != "") {
+    let images = actor.data.flags.vino.images;
+    logObject(images);
+
+    for (var x = 0; x < Object.keys(images).length; x++) {
+      let image = images[x];
+      if (image.name.toLowerCase() == mood.toLowerCase()) {
+        if (image.path != "") return image.path;
+      }
+    }
   }
 
-  if (actor.data.flags.vino?.altdefault) {
+  if (actor.data.flags.vino?.altdefault && actor.data.flags.vino.altdefault != "") {
     return actor.data.flags.vino.altdefault;
   }
 

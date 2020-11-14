@@ -94,3 +94,16 @@
     overflow-y: hidden;
     width: 100%;
 }
+
+.vino-actor-configuration-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vino-actor-configuration-row-item {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    margin-bottom: 10px;
+}

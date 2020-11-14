@@ -1,18 +1,25 @@
 <form class="{{cssClass}}" autocomplete="off" onsubmit="event.preventDefault();">
 
-    <h2>Actor Font</h2>
+    <h1>Actor Core Settings</h1>
+    <h2>Font</h2>
     <h4><input name="flags.vino.font" type="text" value="{{actor.data.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
 
-    <h2>Actor Portrait</h2>
-    <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
+    <div class="vino-actor-configuration-row">
+        <div class="vino-actor-configuration-row-item" >
+            <h2>Actor Portrait</h2>
+            <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
+        </div>
+        <div class="vino-actor-configuration-row-item" >
+            <h2>Alternate Default</h2>
+            <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
+        </div>
+    </div>
 
-    <h2>Alternate Default</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
-
-    <div style="display: flex;">
+    <h1>Moods</h1>
+    <div class="vino-actor-configuration-row">
     {{#each actor.data.flags.vino.images as |image i|}}
-        <div style="display: flex; flex-direction: column; flex-basis: 100%; flex: 1;" >
-            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" /></h2>
+        <div class="vino-actor-configuration-row-item" >
+            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
             <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
         </div>
     {{/each}}

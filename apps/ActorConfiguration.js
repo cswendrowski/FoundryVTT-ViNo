@@ -10,8 +10,8 @@ export default class ActorConfiguration extends FormApplication {
       id: 'vino-actor-configuration',
       template: `${constants.modulePath}/templates/actor-vino-configuration.html`,
       popOut: true,
-      width: 1200,
-      height: 1000,
+      width: 1000,
+      height: 700,
       closeOnSubmit: false
     });
   }
