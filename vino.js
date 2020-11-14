@@ -11,7 +11,7 @@ Hooks.once('init', async () => {
 });
 
 let DEBUG = false;
-let DEBUGGING_LAYOUT = true;
+let DEBUGGING_LAYOUT = false;
 let secondsPerWord = 0.5;
 let animatedSecondsPerWord = 0.3;
 let minimumTimeOnscreen = 5;

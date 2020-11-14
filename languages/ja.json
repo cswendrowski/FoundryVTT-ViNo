@@ -29,5 +29,12 @@
 
     "VINO.SETTINGS.QuoteClosingName": "自動的にキャラ発言用に使用する後文字",
     "VINO.SETTINGS.QuoteClosingHint": "英語ではクオテーションマークなどの同じ文字を使用し、日本語では前と後ろで別の文字を使用します。",
-    "VINO.SETTINGS.QuoteClosingDefault": "\""
+    "VINO.SETTINGS.QuoteClosingDefault": "\"",
+
+
+    "VINO.ACTORCONFIG.CoreSettings": "アクターコア設定",
+    "VINO.ACTORCONFIG.Font": "字体",
+    "VINO.ACTORCONFIG.ActorPortrait": "俳優の肖像画",
+    "VINO.ACTORCONFIG.AlternateDefault": "代替デフォルト",
+    "VINO.ACTORCONFIG.Moods": "ムード"
 }
