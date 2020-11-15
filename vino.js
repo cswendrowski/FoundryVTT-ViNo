@@ -6,9 +6,6 @@ import { Settings } from "./settings.js";
 
 (() => { })();
 
-Hooks.once('init', async () => {
-
-});
 
 let DEBUG = false;
 let DEBUGGING_LAYOUT = false;
@@ -66,6 +63,7 @@ Hooks.once('ready', async function() {
   minimumTimeOnscreen = Settings.get("minimumTimeOnScreen");
   timeBetweenScrolling = Settings.get("timeBetweenScrolling");
   maxOnscreen = Settings.get("maxOnScreen");
+  commandKey = Settings.get("commandKey");
 });
 
 Hooks.once('canvasReady', async () => {

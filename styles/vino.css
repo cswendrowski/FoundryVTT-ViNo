@@ -1,6 +1,4 @@
-#vino-overlay{
-    height: 100%;
-    width: 85%;
+#vino-overlay {
     pointer-events: none;
     margin-left: 10%;
 }

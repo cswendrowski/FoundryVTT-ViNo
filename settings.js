@@ -119,6 +119,15 @@ export class Settings {
             });
         }
 
+        game.settings.register(mod, "commandKey", {
+            name: game.i18n.localize("VINO.SETTINGS.CommandKeyName"),
+            hint: game.i18n.localize("VINO.SETTINGS.CommandKeyHint"),
+            scope: 'client',
+            config: true,
+            type: String,
+            default: game.i18n.localize("VINO.SETTINGS.CommandKeyDefault")
+        });
+
         game.settings.register(mod, "defaultFont", {
             name: game.i18n.localize("VINO.SETTINGS.DefaultFontName"),
             hint: game.i18n.localize("VINO.SETTINGS.DefaultFontHint"),

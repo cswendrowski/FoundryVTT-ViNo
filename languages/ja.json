@@ -31,6 +31,10 @@
     "VINO.SETTINGS.QuoteClosingHint": "英語ではクオテーションマークなどの同じ文字を使用し、日本語では前と後ろで別の文字を使用します。",
     "VINO.SETTINGS.QuoteClosingDefault": "\"",
 
+    "VINO.SETTINGS.CommandKeyName": "/ joyなど、コマンドの開始を示す文字はどれですか。",
+    "VINO.SETTINGS.CommandKeyHint": "デフォルト： /",
+    "VINO.SETTINGS.CommandKeyDefault": "/",
+
 
     "VINO.ACTORCONFIG.CoreSettings": "アクターコア設定",
     "VINO.ACTORCONFIG.Font": "字体",
