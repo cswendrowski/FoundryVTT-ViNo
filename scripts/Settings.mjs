@@ -1,5 +1,6 @@
 import SettingsForm from './SettingsForm.mjs';
-import constants from './Constants.mjs'
+import constants from './Constants.mjs';
+import Logger from './Logger.mjs';
 
 /**
  * Provides functionality for interaction with module settings
@@ -19,7 +20,7 @@ export default class Settings {
         let storedMoods = await this.get("defaultMoods");
         for (var x = 0; x < storedMoods.length; x++) {
             let mood = storedMoods[x];
-            console.log(mood);
+            Logger.log(mood);
             if (mood != "") {
                 defaultMoods.push(mood);
             }
@@ -32,7 +33,7 @@ export default class Settings {
         let storedMoods = game.settings.get(constants.moduleName, "defaultMoods");
         for (var x = 0; x < storedMoods.length; x++) {
             let mood = storedMoods[x];
-            console.log(mood);
+            Logger.log(mood);
             if (mood != "") {
                 defaultMoods.push(mood);
             }
@@ -49,7 +50,7 @@ export default class Settings {
         if (val == undefined) return;
         let storedMoods = await this.get("defaultMoods");
         storedMoods.push(val);
-        console.log("Adding defaultMood" + val);
+        Logger.log("Adding defaultMood" + val);
         await this.set('defaultMoods', storedMoods);
         this._scheduleRefresh();       
     }
@@ -57,15 +58,14 @@ export default class Settings {
     static async removeDefaultMood(value) {
         let storedMoods = await this.get("defaultMoods");
         let adjustedMoods = storedMoods.filter(x => x != value);
-        console.log("Removed moods " + value);
+        Logger.log("Removed moods " + value);
         await this.set('defaultMoods', adjustedMoods);
         this._scheduleRefresh();    
     }
 
     static _scheduleRefresh() { 
-        console.log("Refresh scheduled");
+        Logger.log("Refresh scheduled");
         game.actors.entities.forEach(actor => {
-            //console.log(actor);
             if (actor.data.flags.vino) {
                 actor.data.flags.vino.refreshNeeded = true;
             }

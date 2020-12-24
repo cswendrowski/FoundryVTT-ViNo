@@ -41,13 +41,13 @@ export default class ActorConfiguration extends FormApplication {
 
     
     if (flags.vino.refreshNeeded) {
-      console.log("Refreshing ViNo images");
+      Logger.log("Refreshing ViNo images");
       let moods = await Settings.getDisplayableDefaultMoods();
       let existingMoodImages = Object.values(flags.vino.images).filter(x => x.name != null && x.path != null);
-      console.log("Configured moods:");
-      console.log(moods);
-      console.log("Existing moods:");
-      console.log(existingMoodImages);
+      Logger.log("Configured moods:");
+      Logger.logObject(moods);
+      Logger.log("Existing moods:");
+      Logger.logObject(existingMoodImages);
 
       // Update existing moods
       for (let x = 0; x < moods.length; x++) {
@@ -57,8 +57,8 @@ export default class ActorConfiguration extends FormApplication {
 
           let existingMood = existingMoodImages.find(x => x.name == defaultMood);
 
-          console.log("Found matching existing mood:");
-          console.log(existingMood);
+          Logger.log("Found matching existing mood:");
+          Logger.logObject(existingMood);
 
           if (existingMood == undefined || existingMood.path == "") {
             let moodInfo = {
@@ -85,34 +85,22 @@ export default class ActorConfiguration extends FormApplication {
             flags.vino.images[x] = moodInfo;
             // this.actor.setFlag("vino", `images.${x}.name`, moodInfo.name);
             // this.actor.setFlag("vino", `images.${x}.path`, moodInfo.path);
-            console.log("Inserted new " + moodInfo.name);
-            console.log(moodInfo);
+            Logger.log("Inserted new " + moodInfo.name);
+            Logger.logObject(moodInfo);
           }
         }
        }
 
        // Remove moods that don't match
       let unmatchedMoods = existingMoodImages.filter(x => !moods.includes(x.name));
-      console.log(unmatchedMoods);
+      Logger.log(unmatchedMoods);
       for (let x = 0; x < unmatchedMoods.length; x++) {
         let unmatched = unmatchedMoods[x];
         let index = existingMoodImages.indexOf(unmatched);
         await this.actor.unsetFlag("vino", `images.${index}.name`);
         await this.actor.unsetFlag("vino", `images.${index}.path`);
-        console.log("Unset  vino.images." + index);
+        Logger.log("Unset vino.images." + index);
       }
-
-      // Ensure no bad data
-      // for (let x = 0; x < existingMoodImages.length; x++) {
-      //   let existing = existingMoodImages[x];
-
-      //   if (existing.name == undefined || existing.path == undefined) {
-      //     let index = existingMoodImages.indexOf(existing);
-      //     this.actor.unsetFlag("vino", `images.${index}.name`);
-      //     this.actor.unsetFlag("vino", `images.${index}.path`);
-      //     console.log("Unset Bad Data vino.images." + index);
-      //   } 
-      // }
     }
 
     return {
@@ -124,7 +112,7 @@ export default class ActorConfiguration extends FormApplication {
     formData["_id"] = this.actorId;
     let actor = game.actors.get(this.actorId);
 
-    console.log(formData);
+    Logger.logObject(formData);
 
     let displayableMoods = await Settings.getDisplayableDefaultMoods();
     for (var x = 0; x < displayableMoods.length; x++) {

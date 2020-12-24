@@ -12,22 +12,6 @@ export default class LayoutDrawer {
     static minimumTimeOnscreen = 5
     static timeBetweenScrolling = 0.5
 
-    // constructor() {
-    //     return (async () => {
-
-    //         LayoutDrawer.secondsPerWord = await Settings.get("secondsPerWord");
-    //         LayoutDrawer.animatedSecondsPerWord = await Settings.get("animatedSecondsPerWord");
-    //         LayoutDrawer.minimumTimeOnscreen = await Settings.get("minimumTimeOnScreen");
-    //         LayoutDrawer.timeBetweenScrolling = await Settings.get("timeBetweenScrolling");
-
-    //         if (!await Settings.get("debugMode")) {
-    //             LayoutDrawer.DEBUGGING_LAYOUT = false;
-    //         }
-
-    //         return this;
-    //     })();
-    // }
-
     static async addSpeakingActor(chatDisplayData) {
         var previousLength = QueueHandler.onscreen.length;
         QueueHandler.onscreen.push(chatDisplayData.name);

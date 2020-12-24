@@ -1,4 +1,5 @@
 import Settings from './Settings.mjs';
+import Logger from './Logger.mjs';
 
 export default class SettingsForm extends FormApplication {
 
@@ -28,7 +29,7 @@ export default class SettingsForm extends FormApplication {
             cantRemove: storedMoods.length == 0
         };
 
-        console.log(data);
+        Logger.log(data);
 
         return data;
     }
@@ -41,15 +42,15 @@ export default class SettingsForm extends FormApplication {
     async _updateObject(e, d) {
         var buttonPressed = $(document.activeElement).val();
 
-        console.log(buttonPressed);
+        Logger.logObject(buttonPressed);
 
         if (buttonPressed === "addMood") {
             Settings.addDefaultMood("");
         }
         
-        console.log(d);
+        Logger.logObject(d);
         let values = Object.values(d);
-        console.log(values);
+        Logger.logObject(values);
         await Settings.set("defaultMoods", values);
     }
 

@@ -48,7 +48,8 @@ Hooks.once('ready', async function() {
   Handlebars.registerHelper('isdefined', function (value) {
     return value !== undefined && value !== null;
   });
-  
+
+  Settings._scheduleRefresh();
 });
 
 Hooks.once('canvasReady', async () => {
