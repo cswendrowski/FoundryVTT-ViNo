@@ -1,4 +1,4 @@
-import constants from '../constants.js';
+import constants from '../scripts/Constants.mjs';
 
 export default class VNOverlay extends Application {
   /* const app = ;

@@ -18,10 +18,12 @@
     <h1>{{localize 'VINO.ACTORCONFIG.Moods'}}</h1>
     <div class="vino-actor-configuration-row">
     {{#each actor.data.flags.vino.images as |image i|}}
+        {{#if (isdefined image.name)}}
         <div class="vino-actor-configuration-row-item" >
             <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
             <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
         </div>
+        {{/if}}
     {{/each}}
     </div>
 

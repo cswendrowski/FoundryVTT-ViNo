@@ -1,6 +1,6 @@
-import { Settings } from '../settings.js';
+import Settings from './Settings.mjs';
 
-export class SettingsForm extends FormApplication {
+export default class SettingsForm extends FormApplication {
 
     constructor(object, options = {}) {
         super(object, options);
@@ -10,7 +10,6 @@ export class SettingsForm extends FormApplication {
     * Default Options for this FormApplication
     */
     static get defaultOptions() {
-        var me = this;
         return mergeObject(super.defaultOptions, {
             id: "defaultmoods-settings-form",
             title: "ViNo Default Moods",
@@ -21,17 +20,12 @@ export class SettingsForm extends FormApplication {
         });
     }
 
-    getData() {
-
-        var DefaultMoodsArray = [];
-
-        for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
-            DefaultMoodsArray.push(Settings.getDefaultMood(x));
-        }
+    async getData() {
+        let storedMoods = await Settings.getAllDefaultMoods();
 
         const data = {
-            moods: this.getIndexValueList(DefaultMoodsArray),
-            cantRemove: Settings.getMaxDefaultMoods() == 0
+            moods: this._getIndexValueList(storedMoods),
+            cantRemove: storedMoods.length == 0
         };
 
         console.log(data);
@@ -50,17 +44,13 @@ export class SettingsForm extends FormApplication {
         console.log(buttonPressed);
 
         if (buttonPressed === "addMood") {
-            Settings.addMaxDefaultMood();
+            Settings.addDefaultMood("");
         }
-        else if (buttonPressed === "removeMood") {
-            Settings.removeMaxDefaultMood();
-        }
-
-        for (var x = 1; x <= Settings.getMaxDefaultMoods(); x++) {
-            var toUpdate = d["defaultmood" + x];
-            console.log("ViNo | Adding Default Mood " + toUpdate);
-            Settings.setDefaultMood(x, toUpdate);
-        }
+        
+        console.log(d);
+        let values = Object.values(d);
+        console.log(values);
+        await Settings.set("defaultMoods", values);
     }
 
     activateListeners(html) {
@@ -69,25 +59,15 @@ export class SettingsForm extends FormApplication {
         $('.mood-delete').click(function() {
             var moodId = $(this).data('moodid');
             $(this).parent().remove();
-            Settings.setDefaultMood(moodId, '<DELETED>');
+            Settings.removeDefaultMood(moodId);
         });
 
     }
 
-    getIndexValueList(array) {
+    _getIndexValueList(array) {
         let options = [];
         array.forEach((x, i) => {
-            if (x != '<DELETED>') {
-                options.push({ value: x, index: i + 1 });
-            }
-        });
-        return options;
-    }
-
-    getSelectList(array, selected) {
-        let options = [];
-        array.forEach((x, i) => {
-            options.push({ value: x, selected: i == selected });
+            options.push({ value: x, index: i + 1 });
         });
         return options;
     }
