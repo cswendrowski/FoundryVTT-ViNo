@@ -1,4 +1,4 @@
-import constants from "./constants.mjs"
+import constants from "./Constants.mjs"
 
 export default class Logger {
     static DEBUG = false;
