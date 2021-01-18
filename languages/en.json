@@ -29,5 +29,20 @@
 
     "VINO.SETTINGS.QuoteClosingName": "When autoquoting, what character should the message be appended with?",
     "VINO.SETTINGS.QuoteClosingHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
-    "VINO.SETTINGS.QuoteClosingDefault": "\""
+    "VINO.SETTINGS.QuoteClosingDefault": "\"",
+
+    "VINO.SETTINGS.CommandKeyName": "What character should indicate the start of a command, such as /joy?",
+    "VINO.SETTINGS.CommandKeyHint": "Default: /",
+    "VINO.SETTINGS.CommandKeyDefault": "/",
+
+
+    "VINO.ACTORCONFIG.CoreSettings": "Actor Core Settings",
+    "VINO.ACTORCONFIG.Font": "Font",
+    "VINO.ACTORCONFIG.ActorPortrait": "Actor Portrait",
+    "VINO.ACTORCONFIG.AlternateDefault": "Alternate Default",
+    "VINO.ACTORCONFIG.Moods": "Moods",
+    "VINO.ACTORCONFIG.DefaultMoods.Mad": "mad",
+    "VINO.ACTORCONFIG.DefaultMoods.Sad": "sad",
+    "VINO.ACTORCONFIG.DefaultMoods.Joy": "joy",
+    "VINO.ACTORCONFIG.DefaultMoods.Fear": "fear"
 }

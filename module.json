@@ -2,14 +2,15 @@
   "name": "vino",
   "title": "ViNo - Visual Interactive Novel Overlay",
   "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "0.1.4",
+  "version": "0.2.2",
   "minimumCoreVersion": "0.6.2",
-  "compatibleCoreVersion": "0.7.5",
+  "compatibleCoreVersion": "0.7.9",
   "author": "Cody Swendrowski <cody@swendrowski.us>",
   "esmodules": [
     "./vino.js"
   ],
   "scripts": [
+    "scripts/greensock/dist/gsap.min"
   ],
   "styles": [
     "/styles/vino.css"

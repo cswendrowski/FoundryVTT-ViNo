@@ -1,25 +1,31 @@
 <form class="{{cssClass}}" autocomplete="off" onsubmit="event.preventDefault();">
 
-    <h2>Actor Font</h2>
+    <h1>{{localize 'VINO.ACTORCONFIG.CoreSettings'}}</h1>
+    <h2>{{localize 'VINO.ACTORCONFIG.Font'}}</h2>
     <h4><input name="flags.vino.font" type="text" value="{{actor.data.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
 
-    <h2>Actor Portrait</h2>
-    <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
+    <div class="vino-actor-configuration-row">
+        <div class="vino-actor-configuration-row-item" >
+            <h2>{{localize 'VINO.ACTORCONFIG.ActorPortrait'}}</h2>
+            <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
+        </div>
+        <div class="vino-actor-configuration-row-item" >
+            <h2>{{localize 'VINO.ACTORCONFIG.AlternateDefault'}}</h2>
+            <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
+        </div>
+    </div>
 
-    <h2>Alternate Default</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
-
-    <h2>Mad</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.madimg}}" title="{{actor.name}} mad" height="220" width="220" data-edit="flags.vino.madimg" />
-
-    <h2>Sad</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.sadimg}}" title="{{actor.name}} sad" height="220" width="220" data-edit="flags.vino.sadimg" />
-
-    <h2>Joy</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.joyimg}}" title="{{actor.name}} joy" height="220" width="220" data-edit="flags.vino.joyimg" />
-
-    <h2>Fear</h2>
-    <img class="sheet-profile" src="{{actor.data.flags.vino.fearimg}}" title="{{actor.name}} fear" height="220" width="220" data-edit="flags.vino.fearimg" />
+    <h1>{{localize 'VINO.ACTORCONFIG.Moods'}}</h1>
+    <div class="vino-actor-configuration-row">
+    {{#each actor.data.flags.vino.images as |image i|}}
+        {{#if (isdefined image.name)}}
+        <div class="vino-actor-configuration-row-item" >
+            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
+            <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
+        </div>
+        {{/if}}
+    {{/each}}
+    </div>
 
     <button type="submit" name="submit" class="btn btn-primary vino-configure-submit">Save</button>
 </form>
