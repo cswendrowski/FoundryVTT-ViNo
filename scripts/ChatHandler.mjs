@@ -24,6 +24,7 @@ export default class ChatHandler {
         let img = ChatHandler._getMoodImage(speakingActor, mood);
         let text = message.data.content;
         let font = ChatHandler._getFont(speakingActor);
+        let preferredSide = ChatHandler._getPreferredSide(speakingActor);
 
         let chatDisplayData = {
             name: speakingActor.name,
@@ -33,7 +34,8 @@ export default class ChatHandler {
             id: message.data._id,
             isEmoting: message.data.type == 3,
             message: message,
-            font: font
+            font: font,
+            preferredSide: preferredSide
         };
 
         Hooks.callAll("vinoPrepareChatDisplayData", chatDisplayData);
@@ -67,7 +69,16 @@ export default class ChatHandler {
             return "100% " + actorFont;
         }
 
-        return "100% " + Settings.get("defaultFont");
+        return "100% " + Settings.getSync("defaultFont");
+    }
+
+    static _getPreferredSide(actor) {
+        var preferredSide = actor.data.flags.vino?.preferredSide;
+        if (preferredSide != undefined && preferredSide != "") {
+            return preferredSide;
+        }
+
+        return "";
     }
 
     static _getMood(messageText) {

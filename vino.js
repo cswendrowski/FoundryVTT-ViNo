@@ -4,39 +4,9 @@ import ActorConfiguration from './apps/ActorConfiguration.mjs';
 import Settings from "./scripts/Settings.mjs";
 import ChatHandler from "./scripts/ChatHandler.mjs";
 import LayoutHandler from "./scripts/LayoutDrawer.mjs";
-//import QueueHandler from "./scripts/QueueHandler.mjs";
+import QueueHandler from "./scripts/QueueHandler.mjs";
 import Logger from "./scripts/Logger.mjs";
 
-//import TextPlugin from "./greensock/dist/plugins/TextPlugin.min.js";
-
-(() => { })();
-
-Hooks.once('init', async () => {
-
-});
-
-let DEBUG = true;
-let DEBUGGING_LAYOUT = true;
-let secondsPerWord = 0.5;
-let animatedSecondsPerWord = 0.3;
-let minimumTimeOnscreen = 5;
-let timeBetweenScrolling = 0.5;
-let onscreen = [];
-let queue = new Queue();
-let maxOnscreen = 4;
-let commandKey = "/";
-
-function log(message) {
-    if (DEBUG) {
-        console.log("VINO | " + message);
-    }
-}
-
-function logObject(object) {
-    if (DEBUG) {
-        console.log(object);
-    }
-}
 
 Hooks.on('renderActorSheet', function(sheet, html, data) {
 
@@ -74,7 +44,7 @@ Hooks.once('ready', async function() {
     LayoutHandler.DEBUGGING_LAYOUT = false;
   }
 
-  //QueueHandler.maxOnscreen = await Settings.get("maxOnscreen");
+  //QueueHandler.maxOnscreen = await Settings.get("maxOnScreen");
 
   Handlebars.registerHelper('isdefined', function (value) {
     return value !== undefined && value !== null;

@@ -6,18 +6,78 @@ import ChatHandler from "./ChatHandler.mjs";
 
 export default class LayoutDrawer {
 
-    static DEBUGGING_LAYOUT = false;
-    static secondsPerWord = 0.5
-    static animatedSecondsPerWord = 0.3
-    static minimumTimeOnscreen = 5
-    static timeBetweenScrolling = 0.5
+    static DEBUGGING_LAYOUT = true;
+    static secondsPerWord = 0.5;
+    static animatedSecondsPerWord = 0.3;
+    static minimumTimeOnscreen = 5;
+    static timeBetweenScrolling = 0.5;
 
     static async addSpeakingActor(chatDisplayData) {
         var previousLength = QueueHandler.onscreen.length;
         QueueHandler.onscreen.push(chatDisplayData.name);
-        Logger.log("Appending " + chatDisplayData.name);
 
-        let html = `<div id="V${chatDisplayData.id}" class="vino-chat-frame" style="display:none;">`;
+        let columnIdentifier = "ERROR";
+        let row = 0;
+        let column = 0;
+
+        if (chatDisplayData.preferredSide != undefined && chatDisplayData.preferredSide != "") {
+            if (chatDisplayData.preferredSide == "left") {
+                columnIdentifier = "L";
+                if (QueueHandler.leftScreen.length < 2) {
+                    row = 0;
+                }
+                else {
+                    row = 1;
+                }
+                column = QueueHandler.leftScreen.length % 2;
+            }
+            else {
+                columnIdentifier = "R";
+                if (QueueHandler.rightScreen.length < 2) {
+                    row = 0;
+                }
+                else {
+                    row = 1;
+                }
+                column = QueueHandler.rightScreen.length % 2;
+            }
+        }
+        else {
+            if (QueueHandler.leftScreen.length < 2) {
+                columnIdentifier = "L";
+                row = 0;
+                column = QueueHandler.leftScreen.length % 2;
+            }
+            else if (QueueHandler.rightScreen.length < 2) {
+                columnIdentifier = "R";
+                row = 0;
+                column = QueueHandler.rightScreen.length % 2;
+            }
+            else if (QueueHandler.leftScreen.length < QueueHandler.maxPerSide) {
+                columnIdentifier = "L";
+                row = 1;
+                column = QueueHandler.leftScreen.length % 2;
+            }
+            else if (QueueHandler.rightScreen.length < QueueHandler.maxPerSide) {
+                columnIdentifier = "R";
+                row = 1;
+                column = QueueHandler.rightScreen.length % 2;
+            }
+        }
+
+        if (columnIdentifier == "L") {
+            QueueHandler.leftScreen.push(chatDisplayData.name);
+        }
+        else {
+            QueueHandler.rightScreen.push(chatDisplayData.name);
+        }
+        Logger.log(columnIdentifier);
+        Logger.log(column);
+        let gridClass = `vino-${row}-${columnIdentifier}${column}`;
+
+        Logger.log("Appending " + chatDisplayData.name + " " + gridClass);
+
+        let html = `<div id="V${chatDisplayData.id}" class="vino-chat-frame ${gridClass}" style="display:none;">`;
         html += `<img src="${chatDisplayData.img}" class="vino-chat-actor-portrait" />`;
         html += `<div class="vino-chat-flexy-boi">`;
         html += `  <div class="vino-chat-body">`

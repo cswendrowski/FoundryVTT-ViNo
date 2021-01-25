@@ -3,6 +3,14 @@
     <h1>{{localize 'VINO.ACTORCONFIG.CoreSettings'}}</h1>
     <h2>{{localize 'VINO.ACTORCONFIG.Font'}}</h2>
     <h4><input name="flags.vino.font" type="text" value="{{actor.data.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
+    <h2>{{localize 'VINO.ACTORCONFIG.PreferredSide'}}</h2>
+    <select name="flags.vino.preferredSide" type="text">
+        {{#select actor.data.flags.vino.preferredSide}}
+        <option value="">Any</option>
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+        {{/select}}
+    </select>
 
     <div class="vino-actor-configuration-row">
         <div class="vino-actor-configuration-row-item" >

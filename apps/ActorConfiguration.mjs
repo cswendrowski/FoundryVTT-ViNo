@@ -32,7 +32,8 @@ export default class ActorConfiguration extends FormApplication {
         font: "",
         images: [],
         altdefault: "",
-        refreshNeeded: true
+        refreshNeeded: true,
+        preferredSide: ""
       };
     }
 
