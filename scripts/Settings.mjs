@@ -11,6 +11,10 @@ export default class Settings {
         return await game.settings.get(constants.moduleName, setting);
     }
 
+    static getSync(setting) {
+        return game.settings.get(constants.moduleName, setting);
+    }
+
     static async set(setting, value) {
         await game.settings.set(constants.moduleName, setting, value);
     }
@@ -158,14 +162,14 @@ export default class Settings {
             default: 0.5
         });
 
-        game.settings.register(constants.moduleName, "maxOnScreen", {
-            name: game.i18n.localize("VINO.SETTINGS.MaxOnscreenName"),
-            hint: game.i18n.localize("VINO.SETTINGS.MaxOnscreenHint"),
-            scope: 'client',
-            config: true,
-            type: Number,
-            default: 4
-        });
+        // game.settings.register(constants.moduleName, "maxOnScreen", {
+        //     name: game.i18n.localize("VINO.SETTINGS.MaxOnscreenName"),
+        //     hint: game.i18n.localize("VINO.SETTINGS.MaxOnscreenHint"),
+        //     scope: 'client',
+        //     config: true,
+        //     type: Number,
+        //     default: 4
+        // });
 
         game.settings.register(constants.moduleName, "autoQuote", {
             name: game.i18n.localize("VINO.SETTINGS.AutoQuoteName"),

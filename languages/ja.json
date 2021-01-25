@@ -4,6 +4,7 @@
 
     "VINO.SETTINGS.DefaultFontName": "発言テキストのデフォルトのフォントを指定できます。キャラクターがそれを上書きしない限りはここから使用します。",
     "VINO.SETTINGS.DefaultFontHint": "デフォルト:\"Signika, sans-serif;\"。 フォントファミリーやフォールバックも指定できます。https://github.com/Forien/foundryvtt-forien-custom-fonts より追加のフォントをインストール可能です。",
+    "VINO.ACTORCONFIG.PreferredSide": "この俳優は画面のどちら側に表示する必要がありますか？",
 
     "VINO.SETTINGS.SecondsToRenderName": "一文字の描画速度",
     "VINO.SETTINGS.SecondsToRenderHint": "デフォルト: 0.3 秒",

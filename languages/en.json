@@ -4,6 +4,7 @@
 
     "VINO.SETTINGS.DefaultFontName": "What should the default font for your ViNo messages be, if an Actor doesn't override it?",
     "VINO.SETTINGS.DefaultFontHint": "Default: \"Signika, sans-serif;\". Supports font families and fallbacks. https://github.com/Forien/foundryvtt-forien-custom-fonts can install additional fonts.",
+    "VINO.ACTORCONFIG.PreferredSide": "What side of the screen should this actor show up on?",
 
     "VINO.SETTINGS.SecondsToRenderName": "How many seconds should it take for a word to render?",
     "VINO.SETTINGS.SecondsToRenderHint": "Default: 0.3 seconds",

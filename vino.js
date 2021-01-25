@@ -4,8 +4,9 @@ import ActorConfiguration from './apps/ActorConfiguration.mjs';
 import Settings from "./scripts/Settings.mjs";
 import ChatHandler from "./scripts/ChatHandler.mjs";
 import LayoutHandler from "./scripts/LayoutDrawer.mjs";
-//import QueueHandler from "./scripts/QueueHandler.mjs";
+import QueueHandler from "./scripts/QueueHandler.mjs";
 import Logger from "./scripts/Logger.mjs";
+
 
 Hooks.on('renderActorSheet', function(sheet, html, data) {
 
@@ -43,7 +44,7 @@ Hooks.once('ready', async function() {
     LayoutHandler.DEBUGGING_LAYOUT = false;
   }
 
-  //QueueHandler.maxOnscreen = await Settings.get("maxOnscreen");
+  //QueueHandler.maxOnscreen = await Settings.get("maxOnScreen");
 
   Handlebars.registerHelper('isdefined', function (value) {
     return value !== undefined && value !== null;
