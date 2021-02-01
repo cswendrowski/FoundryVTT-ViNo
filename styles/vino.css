@@ -10,8 +10,8 @@
       "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
       "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
       "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane";
-    margin-top: 10%;
     margin-left: 5%;
+    padding-top: 10%;
   }
   #vino-overlay{
     height: 100%;
