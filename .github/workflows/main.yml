@@ -1,8 +1,10 @@
-name: Release Creation
+name: Private Release Creation
 
 on: 
   release:
     types: [published]
+    branches:
+      - master
 
 jobs:
   build:
