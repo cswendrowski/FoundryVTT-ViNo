@@ -2,9 +2,10 @@
   "name": "vino",
   "title": "ViNo - Visual Interactive Novel Overlay",
   "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "This is auto replaced",
+  "version": "alpha2-0.3.0",
   "library": "false",
   "manifestPlusVersion": "1.0.0",
+  "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
   "author": "Cody Swendrowski <cody@swendrowski.us>",
   "authors": [
