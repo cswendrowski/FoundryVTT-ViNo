@@ -7,8 +7,18 @@ export default class QueueHandler {
     static maxOnscreen = 8;
     static maxPerSide = 4;
     static onscreen = [];
-    static leftScreen = [];
-    static rightScreen = [];
+    static leftScreen = {
+        M1: undefined,
+        M2: undefined,
+        T1: undefined,
+        T2: undefined
+    };
+    static rightScreen = {
+        M1: undefined,
+        M2: undefined,
+        T1: undefined,
+        T2: undefined
+    };
 
     static leftQueue = new Queue();
     static rightQueue = new Queue();
@@ -80,6 +90,15 @@ export default class QueueHandler {
 
     static removeOnscreen(element) {
         QueueHandler._removeFromArray(QueueHandler.onscreen, element);
+        QueueHandler._removeFromOnscreen(QueueHandler.leftScreen, element);
+        QueueHandler._removeFromOnscreen(QueueHandler.rightScreen, element);
+    }
+
+    static _removeFromOnscreen(onscreen, element) {
+        if (onscreen.M1 == element) onscreen.M1 = undefined;
+        else if (onscreen.M2 == element) onscreen.M2 = undefined;
+        else if (onscreen.T1 == element) onscreen.T1 = undefined;
+        else if (onscreen.T2 == element) onscreen.T2 = undefined;
     }
 
     static _removeFromArray(array, element) {

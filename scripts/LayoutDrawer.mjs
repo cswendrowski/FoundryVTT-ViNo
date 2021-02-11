@@ -6,7 +6,7 @@ import ChatHandler from "./ChatHandler.mjs";
 
 export default class LayoutDrawer {
 
-    static DEBUGGING_LAYOUT = true;
+    static DEBUGGING_LAYOUT = false;
     static secondsPerWord = 0.5;
     static animatedSecondsPerWord = 0.3;
     static minimumTimeOnscreen = 5;
@@ -23,54 +23,31 @@ export default class LayoutDrawer {
         if (chatDisplayData.preferredSide != undefined && chatDisplayData.preferredSide != "") {
             if (chatDisplayData.preferredSide == "left") {
                 columnIdentifier = "L";
-                if (QueueHandler.leftScreen.length < 2) {
-                    row = 0;
-                }
-                else {
-                    row = 1;
-                }
-                column = QueueHandler.leftScreen.length % 2;
+                if (QueueHandler.leftScreen.M1 == undefined) { row = 0; column = 0; QueueHandler.leftScreen.M1 = chatDisplayData.name; }
+                else if (QueueHandler.leftScreen.M2 == undefined) { row = 0; column = 1; QueueHandler.leftScreen.M2 = chatDisplayData.name; }
+                else if (QueueHandler.leftScreen.T1 == undefined) { row = 1; column = 0; QueueHandler.leftScreen.T1 = chatDisplayData.name;}
+                else if (QueueHandler.leftScreen.T2 == undefined) { row = 1; column = 1; QueueHandler.leftScreen.T2 = chatDisplayData.name; }
             }
             else {
                 columnIdentifier = "R";
-                if (QueueHandler.rightScreen.length < 2) {
-                    row = 0;
-                }
-                else {
-                    row = 1;
-                }
-                column = QueueHandler.rightScreen.length % 2;
+                if (QueueHandler.rightScreen.M1 == undefined) { row = 0; column = 0; QueueHandler.rightScreen.M1 = chatDisplayData.name; }
+                else if (QueueHandler.rightScreen.M2 == undefined) { row = 0; column = 1; QueueHandler.rightScreen.M2 = chatDisplayData.name; }
+                else if (QueueHandler.rightScreen.T1 == undefined) { row = 1; column = 0; QueueHandler.rightScreen.T1 = chatDisplayData.name; }
+                else if (QueueHandler.rightScreen.T2 == undefined) { row = 1; column = 1; QueueHandler.rightScreen.T2 = chatDisplayData.name;}
             }
         }
         else {
-            if (QueueHandler.leftScreen.length < 2) {
-                columnIdentifier = "L";
-                row = 0;
-                column = QueueHandler.leftScreen.length % 2;
-            }
-            else if (QueueHandler.rightScreen.length < 2) {
-                columnIdentifier = "R";
-                row = 0;
-                column = QueueHandler.rightScreen.length % 2;
-            }
-            else if (QueueHandler.leftScreen.length < QueueHandler.maxPerSide) {
-                columnIdentifier = "L";
-                row = 1;
-                column = QueueHandler.leftScreen.length % 2;
-            }
-            else if (QueueHandler.rightScreen.length < QueueHandler.maxPerSide) {
-                columnIdentifier = "R";
-                row = 1;
-                column = QueueHandler.rightScreen.length % 2;
-            }
+            if (QueueHandler.leftScreen.M1 == undefined) { columnIdentifier = "L"; row = 0; column = 0; QueueHandler.leftScreen.M1 = chatDisplayData.name; }
+            else if (QueueHandler.leftScreen.M2 == undefined) { columnIdentifier = "L"; row = 0; column = 1; QueueHandler.leftScreen.M2 = chatDisplayData.name; }
+            else if (QueueHandler.rightScreen.M1 == undefined) { columnIdentifier = "R"; row = 0; column = 0; QueueHandler.rightScreen.M1 = chatDisplayData.name; }
+            else if (QueueHandler.rightScreen.M2 == undefined) { columnIdentifier = "R"; row = 0; column = 1; QueueHandler.rightScreen.M2 = chatDisplayData.name; }
+            else if (QueueHandler.leftScreen.T1 == undefined) { columnIdentifier = "L"; row = 1; column = 0; QueueHandler.leftScreen.T1 = chatDisplayData.name; }
+            else if (QueueHandler.leftScreen.T2 == undefined) { columnIdentifier = "L"; row = 1; column = 1; QueueHandler.leftScreen.T1 = chatDisplayData.name; }
+            else if (QueueHandler.rightScreen.T1 == undefined) { columnIdentifier = "R"; row = 1; column = 0; QueueHandler.rightScreen.T2 = chatDisplayData.name; }
+            else if (QueueHandler.rightScreen.T2 == undefined) { columnIdentifier = "R"; row = 1; column = 1; QueueHandler.rightScreen.T2 = chatDisplayData.name; }
         }
 
-        if (columnIdentifier == "L") {
-            QueueHandler.leftScreen.push(chatDisplayData.name);
-        }
-        else {
-            QueueHandler.rightScreen.push(chatDisplayData.name);
-        }
+
         Logger.log(columnIdentifier);
         Logger.log(column);
         let gridClass = `vino-${row}-${columnIdentifier}${column}`;
@@ -130,7 +107,7 @@ export default class LayoutDrawer {
                 let frame = $("#V" + chatDisplayData.id + ".vino-chat-frame");
                 frame.fadeOut(1000, function () {
                     frame.remove();
-                    QueueHandler.remove(chatDisplayData.name);
+                    QueueHandler.removeOnscreen(chatDisplayData.name);
                     QueueHandler.progress();
                 });
             }, timeout);
