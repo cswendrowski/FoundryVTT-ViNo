@@ -6,13 +6,17 @@ import ChatHandler from "./ChatHandler.mjs";
 
 export default class LayoutDrawer {
 
-    static DEBUGGING_LAYOUT = false;
+    static DEBUGGING_LAYOUT = true;
     static secondsPerWord = 0.5;
     static animatedSecondsPerWord = 0.3;
     static minimumTimeOnscreen = 5;
     static timeBetweenScrolling = 0.5;
 
     static async addSpeakingActor(chatDisplayData) {
+        if (await Settings.get("restrictVinoToSameScene")) {
+            if (chatDisplayData.message.user.viewedScene != game.user.viewedScene) return;
+        }
+
         var previousLength = QueueHandler.onscreen.length;
         QueueHandler.onscreen.push(chatDisplayData.name);
 

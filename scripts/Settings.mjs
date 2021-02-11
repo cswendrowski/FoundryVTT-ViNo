@@ -108,6 +108,15 @@ export default class Settings {
             default: [ "mad", "sad", "joy", "fear" ]
         })
 
+        game.settings.register(constants.moduleName, "restrictVinoToSameScene", {
+            name: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneName"),
+            hint: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneHint"),
+            scope: 'world',
+            config: true,
+            type: Boolean,
+            default: false
+        });
+
         game.settings.register(constants.moduleName, "commandKey", {
             name: game.i18n.localize("VINO.SETTINGS.CommandKeyName"),
             hint: game.i18n.localize("VINO.SETTINGS.CommandKeyHint"),

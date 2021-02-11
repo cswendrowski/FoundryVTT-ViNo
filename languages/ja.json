@@ -36,6 +36,9 @@
     "VINO.SETTINGS.CommandKeyHint": "デフォルト： /",
     "VINO.SETTINGS.CommandKeyDefault": "/",
 
+    "VINO.SETTINGS.RestrictVinoToSameSceneName": "チャットのポートレートは、表示しているのと同じシーンのものである場合にのみ表示されますか？",
+    "VINO.SETTINGS.RestrictVinoToSameSceneHint": "デフォルト：False。",
+
 
     "VINO.ACTORCONFIG.CoreSettings": "アクターコア設定",
     "VINO.ACTORCONFIG.Font": "字体",

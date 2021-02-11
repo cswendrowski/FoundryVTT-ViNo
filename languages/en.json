@@ -36,6 +36,9 @@
     "VINO.SETTINGS.CommandKeyHint": "Default: /",
     "VINO.SETTINGS.CommandKeyDefault": "/",
 
+    "VINO.SETTINGS.RestrictVinoToSameSceneName": "Should chat portraits only show up if they are from the same scene you are viewing?",
+    "VINO.SETTINGS.RestrictVinoToSameSceneHint": "Default: False.",
+
 
     "VINO.ACTORCONFIG.CoreSettings": "Actor Core Settings",
     "VINO.ACTORCONFIG.Font": "Font",
