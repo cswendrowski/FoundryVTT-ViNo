@@ -1,10 +1,9 @@
 name: Private Release Creation
 
 on: 
-  release:
-    types: [published]
+  push:
     branches:
-      - master
+      - alpha
 
 jobs:
   build:
