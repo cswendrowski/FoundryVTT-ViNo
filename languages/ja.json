@@ -41,6 +41,7 @@
 
 
     "VINO.ACTORCONFIG.CoreSettings": "アクターコア設定",
+    "VINO.ACTORCONFIG.VinoEnabled": "このアクターに対して有効になっていますか？",
     "VINO.ACTORCONFIG.Font": "字体",
     "VINO.ACTORCONFIG.ActorPortrait": "俳優の肖像画",
     "VINO.ACTORCONFIG.AlternateDefault": "代替デフォルト",

@@ -13,14 +13,14 @@ export default class ActorConfiguration extends FormApplication {
       popOut: true,
       width: 1000,
       height: 700,
-      closeOnSubmit: false
+      closeOnSubmit: false,
+      submitOnClose: true
     });
   }
 
-  constructor(actorId) {
+  constructor(actor) {
     super();
-    this.actorId = actorId;
-    this.actor = game.actors.get(actorId);
+    this.actor = actor;
     this.shouldClose = false;
   }
 
@@ -29,6 +29,7 @@ export default class ActorConfiguration extends FormApplication {
 
     if (flags.vino == undefined) {
       flags.vino = {
+        enabled: true,
         font: "",
         images: [],
         altdefault: "",
@@ -41,6 +42,9 @@ export default class ActorConfiguration extends FormApplication {
       flags.vino.images = [];
     }
 
+    if (flags.vino.enabled == undefined) {
+      flags.vino.enabled = true;
+    }
     
     if (flags.vino.refreshNeeded) {
       Logger.log("Refreshing ViNo images");
@@ -111,8 +115,7 @@ export default class ActorConfiguration extends FormApplication {
   }
 
   async _updateObject(event, formData) {
-    formData["_id"] = this.actorId;
-    let actor = game.actors.get(this.actorId);
+    //formData["_id"] = this.actorId;
 
     Logger.logObject(formData);
 
@@ -123,9 +126,9 @@ export default class ActorConfiguration extends FormApplication {
       }
     }
     
-    actor.update(formData);
+    await this.actor.update(formData);
     if (this.shouldClose) {
-      this.close();
+      await this.close();
     }
   }
 

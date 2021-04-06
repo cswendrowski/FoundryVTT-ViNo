@@ -41,6 +41,7 @@
 
 
     "VINO.ACTORCONFIG.CoreSettings": "Actor Core Settings",
+    "VINO.ACTORCONFIG.VinoEnabled": "Enabled for this Actor?",
     "VINO.ACTORCONFIG.Font": "Font",
     "VINO.ACTORCONFIG.ActorPortrait": "Actor Portrait",
     "VINO.ACTORCONFIG.AlternateDefault": "Alternate Default",

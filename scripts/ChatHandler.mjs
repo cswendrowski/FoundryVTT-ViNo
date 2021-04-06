@@ -15,9 +15,18 @@ export default class ChatHandler {
         }
 
         let speakingActor = game.actors.get(message.data.speaker.actor);
+
+        try {
+            if (message.data.speaker.token) {
+                speakingActor = canvas.tokens.get(message.data.speaker.token).actor;
+            }
+        }
+        catch {}
         Logger.logObject(speakingActor);
 
         if (!speakingActor) return;
+
+        if (!speakingActor.data.flags.vino.enabled) return;
 
         let mood = message.data.flags.vino?.mood;
         if (mood == undefined) mood = "";

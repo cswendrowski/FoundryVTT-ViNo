@@ -1,6 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off" onsubmit="event.preventDefault();">
 
     <h1>{{localize 'VINO.ACTORCONFIG.CoreSettings'}}</h1>
+    <h2>{{localize 'VINO.ACTORCONFIG.VinoEnabled'}}</h2>
+    <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.data.flags.vino.enabled}}/></h4>
     <h2>{{localize 'VINO.ACTORCONFIG.Font'}}</h2>
     <h4><input name="flags.vino.font" type="text" value="{{actor.data.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
     <h2>{{localize 'VINO.ACTORCONFIG.PreferredSide'}}</h2>
