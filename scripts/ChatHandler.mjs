@@ -26,7 +26,7 @@ export default class ChatHandler {
 
         if (!speakingActor) return;
 
-        if (speakingActor.data.flags.vino.enabled === false) return;
+        if (speakingActor.data.flags.vino?.enabled != undefined && speakingActor.data.flags.vino?.enabled === false) return;
 
         let mood = message.data.flags.vino?.mood;
         if (mood == undefined) mood = "";
