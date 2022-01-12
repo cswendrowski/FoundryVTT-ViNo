@@ -3,7 +3,7 @@ name: Public Release Creation
 on: 
   push:
     branches:
-      - public
+      - master
 
 jobs:
   build:
