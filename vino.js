@@ -19,9 +19,8 @@ Hooks.on('renderActorSheet', function(sheet, html, data) {
     configureSheet.before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
   }
   
-  html.find(".configure-vino").click(event => { 
-    let actorId = data.actor._id;
-    let configurationApp = new ActorConfiguration(actorId);
+  html.find(".configure-vino").click(event => {
+    let configurationApp = new ActorConfiguration(sheet.actor);
     configurationApp.render(true);
   });
 });

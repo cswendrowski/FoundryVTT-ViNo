@@ -12,13 +12,15 @@
       "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane";
     margin-left: 5%;
     padding-top: 10%;
-  }
-  #vino-overlay{
+}
+
+#vino-overlay{
     height: 100%;
     width: 85%;
     pointer-events: none;
     padding-left: 5%;
     zoom: 90%;
+    position: absolute;
 }
 
 #vino-chat-lane > div.vino-0-C0 > div > div > div > div.vino-chat-actor-name {
