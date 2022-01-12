@@ -69,14 +69,14 @@ export default class Settings {
 
     static _scheduleRefresh() { 
         Logger.log("Refresh scheduled");
-        game.actors.entities.forEach(actor => {
+        for (let actor of game.actors.values()) {
             if (actor.data.flags.vino) {
                 actor.data.flags.vino.refreshNeeded = true;
             }
             else {
                 actor.data.flags.vino = { refreshNeeded: true }
             }
-        })
+        }
     }
 
     /**

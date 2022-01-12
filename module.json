@@ -1,50 +1,50 @@
 {
-  "name": "vino",
-  "title": "ViNo - Visual Interactive Novel Overlay",
-  "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "alpha4-0.3.0",
-  "library": "false",
-  "manifestPlusVersion": "1.0.0",
-  "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.8.1",
-  "author": "Cody Swendrowski <cody@swendrowski.us>",
-  "authors": [
-    {
-      "name": "Cody Swendrowski",
-      "url": "https://swendrowski.us",
-      "email": "cody@swendrowski.us",
-      "discord": "cswendrowski#9701",
-      "patreon": "ironmoose"
-    }
-  ],
-  "esmodules": [
-    "./vino.js"
-  ],
-  "scripts": [
-    "scripts/greensock/dist/gsap.min"
-  ],
-  "styles": [
-    "/styles/vino.css"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    },
-    {
-      "lang": "ja",
-      "name": "日本語",
-      "path": "languages/ja.json"
-}
-  ],
-  "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
-  "manifest": "",
-  "download": "",
-  "media": [
-    {
-      "type": "cover",
-      "url": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo-Public/master/vino_cover.png"
-    }
-  ]
+    "name": "vino",
+    "title": "ViNo - Visual Interactive Novel Overlay",
+    "description": "An opinionated approach to the visual novel TTRPG experience.",
+    "version": "1.0.0",
+    "library": "false",
+    "manifestPlusVersion": "1.0.0",
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "9",
+    "author": "Cody Swendrowski <cody@swendrowski.us>",
+    "authors": [
+        {
+            "name": "Cody Swendrowski",
+            "url": "https://swendrowski.us",
+            "email": "cody@swendrowski.us",
+            "discord": "cswendrowski#9701",
+            "patreon": "ironmoose"
+        }
+    ],
+    "esmodules": [
+        "./vino.js"
+    ],
+    "scripts": [
+        "scripts/greensock/dist/gsap.min"
+    ],
+    "styles": [
+        "/styles/vino.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        },
+        {
+            "lang": "ja",
+            "name": "日本語",
+            "path": "languages/ja.json"
+        }
+    ],
+    "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
+    "manifest": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo-Public/master/module.json",
+    "download": "",
+    "media": [
+        {
+            "type": "cover",
+            "url": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo-Public/master/vino_cover.png"
+        }
+    ]
 }

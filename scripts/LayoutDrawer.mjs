@@ -6,7 +6,7 @@ import ChatHandler from "./ChatHandler.mjs";
 
 export default class LayoutDrawer {
 
-    static DEBUGGING_LAYOUT = true;
+    static DEBUGGING_LAYOUT = false;
     static secondsPerWord = 0.5;
     static animatedSecondsPerWord = 0.3;
     static minimumTimeOnscreen = 5;
