@@ -38,13 +38,18 @@
             "path": "languages/ja.json"
         }
     ],
-    "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
-    "manifest": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo-Public/master/module.json",
-    "download": "",
     "media": [
         {
             "type": "cover",
-            "url": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo-Public/master/vino_cover.png"
+            "url": "https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo/master/vino_cover.png"
         }
-    ]
+    ],
+    "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
+    "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.0.0/module.json",
+    "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.0.0/module.zip",
+    "readme": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/README.md",
+    "changelog": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/changelog.md",
+    "bugs": "https://github.com/cswendrowski/FoundryVTT-ViNo/issues",
+    "allowBugReporter": true,
+    "dependencies": []
 }
