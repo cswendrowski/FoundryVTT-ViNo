@@ -4,7 +4,7 @@
 
 An opinionated, mad, broken replacement for an abandoned module.
 
-<video src="https://www.youtube.com/embed/6A8ORdQG_RA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></video>
+<iframe width="1264" height="545" src="https://www.youtube.com/embed/6A8ORdQG_RA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ![Latest Release Download Count](https://img.shields.io/github/downloads/cswendrowski/FoundryVTT-ViNo/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) 
 
