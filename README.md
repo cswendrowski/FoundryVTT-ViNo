@@ -1,8 +1,10 @@
 # VINO - Visual Interactive Novel Overlay
 
+[![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%243-orange?style=for-the-badge)](https://www.buymeacoffee.com/T2tZvWJ) [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/ironmoose) 
+
 An opinionated, mad, broken replacement for an abandoned module.
 
-[![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%243-orange?style=for-the-badge)](https://www.buymeacoffee.com/T2tZvWJ)
+[![Watch the video](https://img.youtube.com/vi/6A8ORdQG_RA/maxresdefault.jpg)](https://youtu.be/6A8ORdQG_RA)
 
 ![Latest Release Download Count](https://img.shields.io/github/downloads/cswendrowski/FoundryVTT-ViNo/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) 
 
