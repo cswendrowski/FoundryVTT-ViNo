@@ -1,53 +1,52 @@
 {
-    "VINO.SETTINGS.ShowDebugLogsName": "Show debug logs?",
-    "VINO.SETTINGS.ShowDebugLogsHint": "Turn this on for bug reports",
+	"VINO.SETTINGS.ShowDebugLogsName": "Show debug logs?",
+	"VINO.SETTINGS.ShowDebugLogsHint": "Turn this on for bug reports",
 
-    "VINO.SETTINGS.DefaultFontName": "What should the default font for your ViNo messages be, if an Actor doesn't override it?",
-    "VINO.SETTINGS.DefaultFontHint": "Default: \"Signika, sans-serif;\". Supports font families and fallbacks. https://github.com/Forien/foundryvtt-forien-custom-fonts can install additional fonts.",
-    "VINO.ACTORCONFIG.PreferredSide": "What side of the screen should this actor show up on?",
+	"VINO.SETTINGS.DefaultFontName": "What should the default font for your ViNo messages be, if an Actor doesn't override it?",
+	"VINO.SETTINGS.DefaultFontHint": "Default: \"Signika, sans-serif;\". Supports font families and fallbacks. https://github.com/Forien/foundryvtt-forien-custom-fonts can install additional fonts.",
+	"VINO.ACTORCONFIG.PreferredSide": "What side of the screen should this actor show up on?",
 
-    "VINO.SETTINGS.SecondsToRenderName": "How many seconds should it take for a word to render?",
-    "VINO.SETTINGS.SecondsToRenderHint": "Default: 0.3 seconds",
+	"VINO.SETTINGS.SecondsToRenderName": "How many seconds should it take for a word to render?",
+	"VINO.SETTINGS.SecondsToRenderHint": "Default: 0.3 seconds",
 
-    "VINO.SETTINGS.SecondsOnscreenPerWordName": "How many seconds per word should the message remain onscreen?",
-    "VINO.SETTINGS.SecondsOnscreenPerWordHint": "Default: 1.0 seconds",
+	"VINO.SETTINGS.SecondsOnscreenPerWordName": "How many seconds per word should the message remain onscreen?",
+	"VINO.SETTINGS.SecondsOnscreenPerWordHint": "Default: 1.0 seconds",
 
-    "VINO.SETTINGS.MinimumTimeOnscreenName": "For short messages, what is the minimum number of seconds a message remains onscreen?",
-    "VINO.SETTINGS.MinimumTimeOnscreenHint": "Default: 5 seconds",
+	"VINO.SETTINGS.MinimumTimeOnscreenName": "For short messages, what is the minimum number of seconds a message remains onscreen?",
+	"VINO.SETTINGS.MinimumTimeOnscreenHint": "Default: 5 seconds",
 
-    "VINO.SETTINGS.SecondsBetweenScrollName": "How many seconds between each check on if a message should be scrolled?",
-    "VINO.SETTINGS.SecondsBetweenScrollHint": "Default: 0.5 seconds. Turning this down will increase smoothness of scrolling at the cost of performance.",
-    
-    "VINO.SETTINGS.MaxOnscreenName": "What is the max number of messages that should be shown onscreen before being put in the Queue?",
-    "VINO.SETTINGS.MaxOnscreenHint": "Default: 4. Lower this for small screens, increase for large screens.",
+	"VINO.SETTINGS.SecondsBetweenScrollName": "How many seconds between each check on if a message should be scrolled?",
+	"VINO.SETTINGS.SecondsBetweenScrollHint": "Default: 0.5 seconds. Turning this down will increase smoothness of scrolling at the cost of performance.",
 
-    "VINO.SETTINGS.AutoQuoteName": "Should messages be automatically wrapped in quote characters?",
-    "VINO.SETTINGS.AutoQuoteHint": "Default: True. Disable this if you tend to have longer messages that mix action and text",
+	"VINO.SETTINGS.MaxOnscreenName": "What is the max number of messages that should be shown onscreen before being put in the Queue?",
+	"VINO.SETTINGS.MaxOnscreenHint": "Default: 4. Lower this for small screens, increase for large screens.",
 
-    "VINO.SETTINGS.QuoteOpeningName": "When autoquoting, what character should the message be prepended with?",
-    "VINO.SETTINGS.QuoteOpeningHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
-    "VINO.SETTINGS.QuoteOpeningDefault": "\"",
+	"VINO.SETTINGS.AutoQuoteName": "Should messages be automatically wrapped in quote characters?",
+	"VINO.SETTINGS.AutoQuoteHint": "Default: True. Disable this if you tend to have longer messages that mix action and text",
 
-    "VINO.SETTINGS.QuoteClosingName": "When autoquoting, what character should the message be appended with?",
-    "VINO.SETTINGS.QuoteClosingHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
-    "VINO.SETTINGS.QuoteClosingDefault": "\"",
+	"VINO.SETTINGS.QuoteOpeningName": "When autoquoting, what character should the message be prepended with?",
+	"VINO.SETTINGS.QuoteOpeningHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+	"VINO.SETTINGS.QuoteOpeningDefault": "\"",
 
-    "VINO.SETTINGS.CommandKeyName": "What character should indicate the start of a command, such as /joy?",
-    "VINO.SETTINGS.CommandKeyHint": "Default: /",
-    "VINO.SETTINGS.CommandKeyDefault": "/",
+	"VINO.SETTINGS.QuoteClosingName": "When autoquoting, what character should the message be appended with?",
+	"VINO.SETTINGS.QuoteClosingHint": "English tends to use the same quote character for both opening and closing, while Japanese uses different ones.",
+	"VINO.SETTINGS.QuoteClosingDefault": "\"",
 
-    "VINO.SETTINGS.RestrictVinoToSameSceneName": "Should chat portraits only show up if they are from the same scene you are viewing?",
-    "VINO.SETTINGS.RestrictVinoToSameSceneHint": "Default: False.",
+	"VINO.SETTINGS.CommandKeyName": "What character should indicate the start of a command, such as /joy?",
+	"VINO.SETTINGS.CommandKeyHint": "Default: /",
+	"VINO.SETTINGS.CommandKeyDefault": "/",
 
+	"VINO.SETTINGS.RestrictVinoToSameSceneName": "Should chat portraits only show up if they are from the same scene you are viewing?",
+	"VINO.SETTINGS.RestrictVinoToSameSceneHint": "Default: False.",
 
-    "VINO.ACTORCONFIG.CoreSettings": "Actor Core Settings",
-    "VINO.ACTORCONFIG.VinoEnabled": "Enabled for this Actor?",
-    "VINO.ACTORCONFIG.Font": "Font",
-    "VINO.ACTORCONFIG.ActorPortrait": "Actor Portrait",
-    "VINO.ACTORCONFIG.AlternateDefault": "Alternate Default",
-    "VINO.ACTORCONFIG.Moods": "Moods",
-    "VINO.ACTORCONFIG.DefaultMoods.Mad": "mad",
-    "VINO.ACTORCONFIG.DefaultMoods.Sad": "sad",
-    "VINO.ACTORCONFIG.DefaultMoods.Joy": "joy",
-    "VINO.ACTORCONFIG.DefaultMoods.Fear": "fear"
+	"VINO.ACTORCONFIG.CoreSettings": "Actor Core Settings",
+	"VINO.ACTORCONFIG.VinoEnabled": "Enabled for this Actor?",
+	"VINO.ACTORCONFIG.Font": "Font",
+	"VINO.ACTORCONFIG.ActorPortrait": "Actor Portrait",
+	"VINO.ACTORCONFIG.AlternateDefault": "Alternate Default",
+	"VINO.ACTORCONFIG.Moods": "Moods",
+	"VINO.ACTORCONFIG.DefaultMoods.Mad": "mad",
+	"VINO.ACTORCONFIG.DefaultMoods.Sad": "sad",
+	"VINO.ACTORCONFIG.DefaultMoods.Joy": "joy",
+	"VINO.ACTORCONFIG.DefaultMoods.Fear": "fear"
 }

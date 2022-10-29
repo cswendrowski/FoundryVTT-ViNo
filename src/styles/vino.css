@@ -1,181 +1,195 @@
 .grid-container {
-    height: 80%;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
-      "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
-      "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
-      "vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane";
-    margin-left: 5%;
-    padding-top: 10%;
+	height: 80%;
+	width: 90%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	gap: 0px 0px;
+	grid-template-areas:
+		"vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
+		"vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
+		"vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane"
+		"vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane vino-chat-lane";
+	margin-left: 5%;
+	padding-top: 10%;
 }
 
-#vino-overlay{
-    height: 100%;
-    width: 85%;
-    pointer-events: none;
-    padding-left: 5%;
-    zoom: 90%;
-    position: absolute;
+#vino-overlay {
+	height: 100%;
+	width: 85%;
+	pointer-events: none;
+	padding-left: 5%;
+	zoom: 90%;
+	position: absolute;
 }
 
 #vino-chat-lane > div.vino-0-C0 > div > div > div > div.vino-chat-actor-name {
-    text-align: center !important;
+	text-align: center !important;
 }
 #vino-chat-lane > div.vino-0-R1 > div > div > div > div.vino-chat-actor-name {
-    text-align: right !important;   
+	text-align: right !important;
 }
 
 #vino-chat-lane > div.vino-0-R1 > div > div > div > div.vino-chat-actor-name {
-    text-align: right !important;   
+	text-align: right !important;
 }
 
 #vino-chat-lane > div.vino-0-C0 > div {
-    text-align: center;
+	text-align: center;
 }
 
 #vino-chat-lane > div.vino-0-R1 > div {
-    text-align: right;
+	text-align: right;
 }
 
 #vino-chat-lane > div.vino-0-R0 > div {
-    text-align: right;
+	text-align: right;
 }
 
 #vino-chat-lane > div.vino-1-R1 > div {
-    text-align: right;
+	text-align: right;
 }
 
 #vino-chat-lane > div.vino-1-R0 > div {
-    text-align: right;
+	text-align: right;
 }
 
 #vino-chat-lane {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.25fr 1.25fr 0.5fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        "vino-1-L0 vino-1-L1 vino-1-R0 vino-1-R1"
-        "vino-0-L0 vino-0-L1 vino-0-R0 vino-0-R1"
-        "vino-bottom-spacer vino-bottom-spacer vino-bottom-spacer vino-bottom-spacer";
-    grid-area: vino-chat-lane;
-    filter: drop-shadow(0px 0px 0px black);
-    color: rgba(225,225,200,1);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1.25fr 1.25fr 0.5fr;
+	gap: 0px 0px;
+	grid-template-areas:
+		"vino-1-L0 vino-1-L1 vino-1-R0 vino-1-R1"
+		"vino-0-L0 vino-0-L1 vino-0-R0 vino-0-R1"
+		"vino-bottom-spacer vino-bottom-spacer vino-bottom-spacer vino-bottom-spacer";
+	grid-area: vino-chat-lane;
+	filter: drop-shadow(0px 0px 0px black);
+	color: rgba(225, 225, 200, 1);
 }
 
-.vino-0-L0 { grid-area: vino-0-L0; }
+.vino-0-L0 {
+	grid-area: vino-0-L0;
+}
 
-.vino-0-L1 { grid-area: vino-0-L1; }
+.vino-0-L1 {
+	grid-area: vino-0-L1;
+}
 
 /* .vino-0-C0 { grid-area: vino-0-C0; } */
 
-.vino-0-R0 { grid-area: vino-0-R0; }
+.vino-0-R0 {
+	grid-area: vino-0-R0;
+}
 
-.vino-0-R1 { grid-area: vino-0-R1; }
+.vino-0-R1 {
+	grid-area: vino-0-R1;
+}
 
 /* .vino-1-C0 { grid-area: vino-1-C0; } */
 
-.vino-1-L0 { grid-area: vino-1-L0; }
+.vino-1-L0 {
+	grid-area: vino-1-L0;
+}
 
-.vino-1-R0 { grid-area: vino-1-R0; }
+.vino-1-R0 {
+	grid-area: vino-1-R0;
+}
 
-.vino-1-R1 { grid-area: vino-1-R1; }
+.vino-1-R1 {
+	grid-area: vino-1-R1;
+}
 
-.vino-bottom-spacer { grid-area: vino-bottom-spacer; }
-  
-  
+.vino-bottom-spacer {
+	grid-area: vino-bottom-spacer;
+}
+
 .vino-chat-body {
-    background: rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 50px 20px rgba(0,0,0,0.75);
-    padding: initial;
-    width: 100%;
-    position: relative;
+	background: rgba(0, 0, 0, 0.6);
+	box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.75);
+	padding: initial;
+	width: 100%;
+	position: relative;
 }
 
 .vino-chat-frame {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    position: relative;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 1 1 auto;
-    -webkit-align-self: baseline;
-    -ms-flex-item-align: baseline;
-    align-self: baseline;
-    z-index: 11;
-    max-width: 100%;
-    min-width: 100%;
-    /* background: rgba(0,0,0,.7); */
-    /* box-shadow: 0px 0px 50px 20px rgba(0,0,0,0.75); */
-    padding: 1rem;
-    bottom: 0;
-    max-height: 100%;
-    grid-column: 0;
-    width: 100%;
-    display: inline-grid;
-    grid-row: 0;
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order: 0;
+	position: relative;
+	-webkit-flex: 0 1 auto;
+	-ms-flex: 0 1 auto;
+	flex: 1 1 auto;
+	-webkit-align-self: baseline;
+	-ms-flex-item-align: baseline;
+	align-self: baseline;
+	z-index: 11;
+	max-width: 100%;
+	min-width: 100%;
+	/* background: rgba(0,0,0,.7); */
+	/* box-shadow: 0px 0px 50px 20px rgba(0,0,0,0.75); */
+	padding: 1rem;
+	bottom: 0;
+	max-height: 100%;
+	grid-column: 0;
+	width: 100%;
+	display: inline-grid;
+	grid-row: 0;
 }
 
 .vino-chat-actor-portrait {
-    position: relative;
-    top: 0;
-    object-fit: cover;
-    max-height: inherit;
-    max-height: 18.75rem;
-    z-index: -11;
-    filter: drop-shadow(.065rem .065rem 0.20rem black);
-    border: none;
+	position: relative;
+	top: 0;
+	object-fit: cover;
+	max-height: inherit;
+	max-height: 18.75rem;
+	z-index: -11;
+	filter: drop-shadow(0.065rem 0.065rem 0.2rem black);
+	border: none;
 }
 
 .vino-chat-flexy-boi {
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    flex-basis: 2, 1;
-    min-width: 100%;
-    /* padding-left: 2rem; */
-    /* padding-right: 2rem; */
-    max-height: 15vh;
-    width: 320px;
-    position: relative;
-    bottom: 50px;
-    min-height: fit-content;
-    max-height: 100%;
+	display: inline-flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	flex-basis: 2, 1;
+	min-width: 100%;
+	/* padding-left: 2rem; */
+	/* padding-right: 2rem; */
+	max-height: 15vh;
+	width: 320px;
+	position: relative;
+	bottom: 50px;
+	min-height: fit-content;
+	max-height: 100%;
 }
 
 .vino-chat-actor-name {
-
-    font-size: 1.25rem;
-    font-weight: bold;
+	font-size: 1.25rem;
+	font-weight: bold;
 }
 .vino-chat-emotion-flare {
-    font-size: .8rem;
-    font-style: italic;
+	font-size: 0.8rem;
+	font-style: italic;
 }
 .vino-chat-text-body {
-    font-size: 1.05rem;
-    max-height: 12vh;
-    overflow-y: hidden;
-    width: 100%;
-    position: relative;
-    bottom: 0;
+	font-size: 1.05rem;
+	max-height: 12vh;
+	overflow-y: hidden;
+	width: 100%;
+	position: relative;
+	bottom: 0;
 }
 
 .vino-actor-configuration-row {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .vino-actor-configuration-row-item {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-    margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	margin-bottom: 10px;
 }
