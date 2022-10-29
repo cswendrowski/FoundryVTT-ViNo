@@ -25,7 +25,7 @@ export default class ActorConfiguration extends FormApplication {
   }
 
   async getData() {
-    let flags = this.actor.data.flags;
+    let flags = this.actor.flags;
 
     if (flags.vino == undefined) {
       flags.vino = {
@@ -142,7 +142,7 @@ export default class ActorConfiguration extends FormApplication {
 
   _onEditImage(event) {
     const attr = event.currentTarget.dataset.edit;
-    const current = getProperty(this.actor.data, attr);
+    const current = getProperty(this.actor, attr);
     new FilePicker({
       type: "image",
       current: current,
