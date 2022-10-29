@@ -1,4 +1,4 @@
-import { gsap } from "/scripts/greensock/esm/all.js";
+import { gsap } from "scripts/greensock/esm/all.js";
 import Settings from "./Settings.mjs";
 import Logger from "./Logger.mjs";
 import QueueHandler from "./QueueHandler.mjs";
