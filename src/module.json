@@ -63,7 +63,7 @@
 			"path": "languages/ja.json"
 		}
 	],
-	"scripts": ["scripts/greensock/dist/gsap.min"],
+	"scripts": [],
 	"esmodules": ["./vino.js"],
 	"styles": ["/styles/vino.css"],
 	"compatibility": {
