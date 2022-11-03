@@ -1,4 +1,4 @@
-# Vino 
+# VINO - Visual Interactive Novel Overlay 
 
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/p4535992/foundryvtt-vino?style=for-the-badge)
