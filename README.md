@@ -38,6 +38,14 @@ To install this module manually:
 
 ### Features
 
+#### Chat commnads for different image
+
+```
+/sad
+/mad
+/joy
+/fear
+```
 
 # Build
 
