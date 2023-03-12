@@ -117,4 +117,4 @@ Any issues, bugs, or feature requests are always welcome to be reported directly
 
 ## License
 
-This package is under an [GPL v3 license](LICENSE) and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
+This package is under an [MIT](LICENSE) and the [Foundry Virtual Tabletop Limited License Agreement for module development](https://foundryvtt.com/article/license/).
