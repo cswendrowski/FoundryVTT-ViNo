@@ -2,12 +2,12 @@
 
     <h1>{{localize 'VINO.ACTORCONFIG.CoreSettings'}}</h1>
     <h2>{{localize 'VINO.ACTORCONFIG.VinoEnabled'}}</h2>
-    <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.data.flags.vino.enabled}}/></h4>
+    <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.flags.vino.enabled}}/></h4>
     <h2>{{localize 'VINO.ACTORCONFIG.Font'}}</h2>
-    <h4><input name="flags.vino.font" type="text" value="{{actor.data.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
+    <h4><input name="flags.vino.font" type="text" value="{{actor.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
     <h2>{{localize 'VINO.ACTORCONFIG.PreferredSide'}}</h2>
     <select name="flags.vino.preferredSide" type="text">
-        {{#select actor.data.flags.vino.preferredSide}}
+        {{#select actor.flags.vino.preferredSide}}
         <option value="">Any</option>
         <option value="left">Left</option>
         <option value="right">Right</option>
@@ -21,13 +21,13 @@
         </div>
         <div class="vino-actor-configuration-row-item" >
             <h2>{{localize 'VINO.ACTORCONFIG.AlternateDefault'}}</h2>
-            <img class="sheet-profile" src="{{actor.data.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
+            <img class="sheet-profile" src="{{actor.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
         </div>
     </div>
 
     <h1>{{localize 'VINO.ACTORCONFIG.Moods'}}</h1>
     <div class="vino-actor-configuration-row">
-    {{#each actor.data.flags.vino.images as |image i|}}
+    {{#each actor.flags.vino.images as |image i|}}
         {{#if (isdefined image.name)}}
         <div class="vino-actor-configuration-row-item" >
             <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
