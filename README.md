@@ -17,7 +17,7 @@
 
 [![Translation status](https://weblate.foundryvtt-hub.com/widgets/vino/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/vino/)
 
-This is a update version iof the [vino](https://github.com/cswendrowski/FoundryVTT-ViNo) i don't own any right to this module.
+## This is a update version of the [vino](https://github.com/cswendrowski/FoundryVTT-ViNo) module.
 
 ## NOTE: This module is **under maintenance**, I have no plans to update or add features. However, I will try to fix any bugs as possible. Any contribution is welcome.
 
