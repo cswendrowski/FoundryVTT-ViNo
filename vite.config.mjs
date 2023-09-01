@@ -183,10 +183,10 @@ export default () => {
         },
       }),
 
-      resolve(s_RESOLVE_CONFIG), // Necessary when bundling npm-linked packages.
+      // resolve(s_RESOLVE_CONFIG), // Necessary when bundling npm-linked packages.
       
       // When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.
-      s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
+      // s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
 
       cleanPlugin()
     ]
