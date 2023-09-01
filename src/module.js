@@ -1,4 +1,4 @@
-// import { gsap, ScrollToPlugin, TextPlugin } from "/scripts/greensock/esm/all.js";
+import { gsap, ScrollToPlugin, TextPlugin } from "/scripts/greensock/esm/all.js";
 import VNOverlay from "./apps/VNOverlay.mjs";
 import ActorConfiguration from "./apps/ActorConfiguration.mjs";
 import Settings from "./scripts/Settings.mjs";

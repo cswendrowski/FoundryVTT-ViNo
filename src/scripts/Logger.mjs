@@ -1,17 +1,17 @@
-import constants from "./Constants.mjs"
+import constants from "./Constants.mjs";
 
 export default class Logger {
-    static DEBUG = false;
+  static DEBUG = false;
 
-    static log(message) {
-        if (Logger.DEBUG) {
-            console.log(constants.moduleName + " | " + message);
-        }
+  static log(message) {
+    if (Logger.DEBUG) {
+      console.log(constants.moduleName + " | " + message);
     }
+  }
 
-    static logObject(object) {
-        if (Logger.DEBUG) {
-            console.log(object);
-        }
+  static logObject(object) {
+    if (Logger.DEBUG) {
+      console.log(object);
     }
+  }
 }

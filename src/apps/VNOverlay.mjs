@@ -1,4 +1,4 @@
-import constants from '../scripts/Constants.mjs';
+import constants from "../scripts/Constants.mjs";
 
 export default class VNOverlay extends Application {
   /* const app = ;
@@ -6,7 +6,7 @@ export default class VNOverlay extends Application {
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      id: 'vino-overlay',
+      id: "vino-overlay",
       template: `${constants.modulePath}/templates/vino-frame.html`,
       popOut: false,
     });
@@ -27,5 +27,4 @@ export default class VNOverlay extends Application {
   activateListeners(html) {
     super.activateListeners(html);
   }
-
 }
