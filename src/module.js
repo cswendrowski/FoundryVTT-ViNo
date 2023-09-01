@@ -1,11 +1,11 @@
 import { gsap, ScrollToPlugin, TextPlugin } from "/scripts/greensock/esm/all.js";
-import VNOverlay from "./apps/VNOverlay.mjs";
-import ActorConfiguration from "./apps/ActorConfiguration.mjs";
-import Settings from "./scripts/Settings.mjs";
-import ChatHandler from "./scripts/ChatHandler.mjs";
-import LayoutHandler from "./scripts/LayoutDrawer.mjs";
-import QueueHandler from "./scripts/QueueHandler.mjs";
-import Logger from "./scripts/Logger.mjs";
+import VNOverlay from "./apps/vino/VNOverlay.mjs";
+import ActorConfiguration from "./apps/vinoActorConfiguration.mjs";
+import Settings from "./scripts/vinoSettings.mjs";
+import ChatHandler from "./scripts/vino/ChatHandler.mjs";
+import LayoutHandler from "./scripts/vinoLayoutDrawer.mjs";
+import QueueHandler from "./scripts/vinoQueueHandler.mjs";
+import Logger from "./scripts/vinoLogger.mjs";
 
 Hooks.on("renderActorSheet", function (sheet, html, data) {
   let configureSheet = html.find(".configure-sheet");
