@@ -43,10 +43,6 @@ export default class SettingsForm extends FormApplication {
 
     Logger.logObject(buttonPressed);
 
-    if (buttonPressed === "addMood") {
-      Settings.addDefaultMood("");
-    }
-
     Logger.logObject(d);
     let values = Object.values(d);
     Logger.logObject(values);
@@ -56,6 +52,10 @@ export default class SettingsForm extends FormApplication {
   activateListeners(html) {
     super.activateListeners(html);
 
+    $(".mood-add").click(function () {
+     Settings.addDefaultMood("blank");
+    });
+      
     $(".mood-delete").click(function () {
       var moodId = $(this).data("moodid");
       $(this).parent().remove();
