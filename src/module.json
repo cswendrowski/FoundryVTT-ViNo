@@ -2,7 +2,7 @@
   "id": "vino",
   "title": "ViNo - Visual Interactive Novel Overlay",
   "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "authors": [
     {
       "name": "Cody Swendrowski",
@@ -67,9 +67,9 @@
     "greensock/dist/gsap.min.js",
     "greensock/dist/PixiPlugin.min.js",
     "greensock/dist/ScrollToPlugin.min.js",
-    "greensock/dist/SplitText.min.js"
+    "greensock/dist/SplitText.min.js",
+    "greensock/dist/TextPlugin.min.js"
   ],
-  "esmodules": ["module.js"],
   "esmodules": ["module.js"],
   "styles": ["styles/vino.css"],
   "compatibility": {
@@ -78,8 +78,8 @@
     "maximum": 11
   },
   "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
-  "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.1/module.json",
-  "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.1/module.zip",
+  "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.2/module.json",
+  "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.2/module.zip",
   "readme": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/README.md",
   "changelog": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master//changelog.md",
   "bugs": "https://github.com/cswendrowski/FoundryVTT-ViNo/issues",

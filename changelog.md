@@ -1,3 +1,7 @@
+### 1.1.2
+
+- bug fix https://github.com/cswendrowski/FoundryVTT-ViNo/issues/9 ty to @Lukasrygh23 
+- add vite integration
 
 ### 1.1.1
 

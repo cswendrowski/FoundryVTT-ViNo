@@ -1,6 +1,6 @@
-import constants from "../scripts/Constants.mjs";
-import Settings from "../scripts/Settings.mjs";
-import Logger from "../scripts/Logger.mjs";
+import CONSTANTS from "../Constants.mjs";
+import Settings from "../Settings.mjs";
+import Logger from "../Logger.mjs";
 
 export default class ActorConfiguration extends FormApplication {
   /* const app = ;
@@ -9,7 +9,7 @@ export default class ActorConfiguration extends FormApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "vino-actor-configuration",
-      template: `${constants.modulePath}/templates/actor-vino-configuration.html`,
+      template: `${CONSTANTS.modulePath}/templates/actor-vino-configuration.html`,
       popOut: true,
       width: 1000,
       height: 700,

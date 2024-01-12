@@ -75,8 +75,8 @@ export default class QueueHandler {
     } else if (element.preferredSide == "right") {
       QueueHandler.rightQueue.enqueue(element);
     } else {
-      Logger.log("ERROR - Unknown state for adding element");
-      Logger.logObject(element);
+      Logger.error("Unknown state for adding element");
+      Logger.errorObject(element);
     }
   }
 

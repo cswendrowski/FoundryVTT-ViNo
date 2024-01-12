@@ -1,5 +1,5 @@
-import VNOverlay from "./apps/VNOverlay.mjs";
-import ActorConfiguration from "./apps/ActorConfiguration.mjs";
+import VNOverlay from "./scripts/apps/VNOverlay.mjs";
+import ActorConfiguration from "./scripts/apps/ActorConfiguration.mjs";
 import Settings from "./scripts/Settings.mjs";
 import ChatHandler from "./scripts/ChatHandler.mjs";
 import LayoutHandler from "./scripts/LayoutDrawer.mjs";
@@ -25,8 +25,6 @@ Hooks.once("ready", async function () {
   await Settings.registerSettings();
 
   gsap.registerPlugin(ScrollToPlugin, TextPlugin);
-
-  Logger.DEBUG = await Settings.get("debugMode");
 
   ChatHandler.commandKey = await Settings.get("commandKey");
 
