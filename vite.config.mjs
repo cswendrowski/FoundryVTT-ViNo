@@ -160,6 +160,10 @@ export default () => {
             src: normalizePath(path.resolve(__dirname, './src/module.json')),
             dest: normalizePath(path.resolve(__dirname, `./dist/${s_MODULE_ID}/`)),
           },
+		  {
+            src: normalizePath(path.resolve(__dirname, './src/scripts/libs')) + '/[!.]*',
+            dest: normalizePath(path.resolve(__dirname, `./dist/${s_MODULE_ID}/scripts/libs`)),
+          },
         ],
       }),
       svelte({
@@ -183,10 +187,10 @@ export default () => {
         },
       }),
 
-      // resolve(s_RESOLVE_CONFIG), // Necessary when bundling npm-linked packages.
+      resolve(s_RESOLVE_CONFIG), // Necessary when bundling npm-linked packages.
       
       // When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.
-      // s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
+      s_TYPHONJS_MODULE_LIB && typhonjsRuntime(),
 
       cleanPlugin()
     ]

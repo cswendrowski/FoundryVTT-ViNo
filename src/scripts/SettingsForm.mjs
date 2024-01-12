@@ -53,9 +53,9 @@ export default class SettingsForm extends FormApplication {
     super.activateListeners(html);
 
     $(".mood-add").click(function () {
-     Settings.addDefaultMood("blank");
+      Settings.addDefaultMood("blank");
     });
-      
+
     $(".mood-delete").click(function () {
       var moodId = $(this).data("moodid");
       $(this).parent().remove();

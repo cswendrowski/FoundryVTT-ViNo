@@ -1,4 +1,3 @@
-import { gsap, ScrollToPlugin, TextPlugin } from "/scripts/greensock/esm/all.js";
 import Settings from "./Settings.mjs";
 import Logger from "./Logger.mjs";
 import QueueHandler from "./QueueHandler.mjs";
