@@ -71,14 +71,6 @@ npm run dev
 npm run build
 ```
 
-### build-watch
-
-`build-watch` will build and watch for changes, rebuilding automatically.
-
-```bash
-npm run build-watch
-```
-
 ### prettier-format
 
 `prettier-format` launch the prettier plugin based on the configuration [here](./.prettierrc)
