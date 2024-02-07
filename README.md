@@ -1,4 +1,4 @@
-# VINO - Visual Interactive Novel Overlay 
+# VINO - Visual Interactive Novel Overlay
 
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/cswendrowski/FoundryVTT-ViNo?style=for-the-badge)
@@ -18,6 +18,16 @@
 [![Translation status](https://weblate.foundryvtt-hub.com/widgets/vino/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/vino/)
 
 ## NOTE: This module is **under maintenance**, I have no plans to update or add features. However, I will try to fix any bugs as possible. Any contribution is welcome.
+
+For those who would like to support this module there are two ways to get it to help 4535992 with his wine integration PR directly on the [Theatre](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre) module here [integrate the FoundryVTT-ViNo project into theatre](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre/pull/160), or support cswendrowski's patreon here [Iron Moose Development](https://www.patreon.com/ironmoose/posts).
+If you are feeling particularly generous you can also buy 4535992 a coffee here [4535992](https://www.patreon.com/p4535992)
+
+
+### Support the development [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/ironmoose)
+
+### Buy a coffe to 4535992: [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/p4535992)
+
+
 
 ## Installation
 
@@ -61,8 +71,6 @@ npm install
 npm run dev
 ```
 
-## npm build scripts
-
 ### build
 
 `build` will build and set up a symlink between `dist` and your `dataPath`.
@@ -71,12 +79,36 @@ npm run dev
 npm run build
 ```
 
+### build:watch
+
+`build:watch` will build and watch for changes, rebuilding automatically.
+
+```bash
+npm run build:watch
+```
+
 ### prettier-format
 
 `prettier-format` launch the prettier plugin based on the configuration [here](./.prettierrc)
 
 ```bash
 npm run-script prettier-format
+```
+
+### lint
+
+`lint` launch the eslint process based on the configuration [here](./.eslintrc.json)
+
+```bash
+npm run-script lint
+```
+
+### lint:fix
+
+`lint:fix` launch the eslint process with the fix argument
+
+```bash
+npm run-script lint:fix
 ```
 
 
