@@ -13,6 +13,11 @@ export default class ChatHandler {
       return;
     }
 
+    if (message.flags.vino?.skip) {
+        Logger.log("Skipping message due to flag");
+        return;
+    }
+
     let speakingActor = game.actors.get(message.speaker.actor);
 
     try {
@@ -44,6 +49,10 @@ export default class ChatHandler {
       font: font,
       preferredSide: preferredSide,
     };
+
+    if (message.flags.vino?.skipAutoQuote) {
+        chatDisplayData.skipAutoQuote = true;
+    }
 
     Hooks.callAll("vinoPrepareChatDisplayData", chatDisplayData);
 
