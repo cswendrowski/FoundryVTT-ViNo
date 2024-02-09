@@ -180,6 +180,8 @@ export default class LayoutDrawer {
   static _removeExtraneousHtml(messageText) {
     messageText = ChatHandler._caseInsensitiveReplace(messageText, "<p>", "");
     messageText = ChatHandler._caseInsensitiveReplace(messageText, "</p>", "");
+    messageText = ChatHandler._caseInsensitiveReplace(messageText, "<div>", "");
+    messageText = ChatHandler._caseInsensitiveReplace(messageText, "</div>", "");
 
     return messageText.trim();
   }
