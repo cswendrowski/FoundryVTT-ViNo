@@ -1,3 +1,7 @@
+### 1.1.3
+
+- Little fix: https://github.com/cswendrowski/FoundryVTT-ViNo/pull/11 ty to @cswendrowski
+
 ### 1.1.2
 
 - bug fix https://github.com/cswendrowski/FoundryVTT-ViNo/issues/9 ty to @Lukasrygh23 

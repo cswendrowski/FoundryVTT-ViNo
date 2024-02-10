@@ -2,7 +2,7 @@
   "id": "vino",
   "title": "ViNo - Visual Interactive Novel Overlay",
   "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "authors": [
     {
       "name": "Cody Swendrowski",
@@ -78,8 +78,8 @@
     "maximum": 11
   },
   "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
-  "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.2/module.json",
-  "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.2/module.zip",
+  "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.3/module.json",
+  "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.3/module.zip",
   "readme": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/README.md",
   "changelog": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master//changelog.md",
   "bugs": "https://github.com/cswendrowski/FoundryVTT-ViNo/issues",

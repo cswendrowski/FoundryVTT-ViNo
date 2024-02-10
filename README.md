@@ -17,17 +17,22 @@
 
 [![Translation status](https://weblate.foundryvtt-hub.com/widgets/vino/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/vino/)
 
+
+ViNo is a module designed to offer a visual novel themed chat replacement system. 
+
+![](wiki/images/preview_video_vino.gif)
+
+
+![](wiki/images/preview_vino_1.png)
+
 ## NOTE: This module is **under maintenance**, I have no plans to update or add features. However, I will try to fix any bugs as possible. Any contribution is welcome.
 
-For those who would like to support this module there are two ways to get it to help 4535992 with his wine integration PR directly on the [Theatre](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre) module here [integrate the FoundryVTT-ViNo project into theatre](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre/pull/160), or support cswendrowski's patreon here [Iron Moose Development](https://www.patreon.com/ironmoose/posts).
+For those who would like to support this module there are two ways to get it to help 4535992 with his VINO integration directly on the [Theatre](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre), or support cswendrowski's patreon here [Iron Moose Development](https://www.patreon.com/ironmoose/posts).
 If you are feeling particularly generous you can also buy 4535992 a coffee here [4535992](https://www.patreon.com/p4535992)
 
-
-### Support the development [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/ironmoose)
+### Support the development: [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/ironmoose)
 
 ### Buy a coffe to 4535992: [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/p4535992)
-
-
 
 ## Installation
 
@@ -40,9 +45,6 @@ To install this module manually:
 `https://raw.githubusercontent.com/cswendrowski/FoundryVTT-ViNo/master/src/module.json`
 4. Click 'Install' and wait for installation to complete
 5. Don't forget to enable the module in game using the "Manage Module" button
-
-## Known issue
-
 
 ### Features
 
