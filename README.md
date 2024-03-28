@@ -18,7 +18,7 @@
 [![Translation status](https://weblate.foundryvtt-hub.com/widgets/vino/-/287x66-black.png)](https://weblate.foundryvtt-hub.com/engage/vino/)
 
 
-ViNo is a module designed to offer a visual novel themed chat replacement system. 
+ViNo is a module designed to offer a visual novel themed chat replacement system.
 
 ![](wiki/images/preview_video_vino.gif)
 
