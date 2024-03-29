@@ -1,5 +1,5 @@
-import Settings from "./Settings.mjs";
-import Logger from "./Logger.mjs";
+import Settings from "./Settings.js";
+import Logger from "./Logger.js";
 
 export default class SettingsForm extends FormApplication {
   constructor(object, options = {}) {

@@ -1,6 +1,6 @@
-import Settings from "./Settings.mjs";
-import Logger from "./Logger.mjs";
-import QueueHandler from "./QueueHandler.mjs";
+import Settings from "./Settings.js";
+import Logger from "./Logger.js";
+import QueueHandler from "./QueueHandler.js";
 
 export default class ChatHandler {
   static commandKey = "/";

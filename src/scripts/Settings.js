@@ -1,6 +1,6 @@
-import SettingsForm from "./SettingsForm.mjs";
-import CONSTANTS from "./Constants.mjs";
-import Logger from "./Logger.mjs";
+import SettingsForm from "./SettingsForm.js";
+import CONSTANTS from "./Constants.js";
+import Logger from "./Logger.js";
 
 /**
  * Provides functionality for interaction with module settings

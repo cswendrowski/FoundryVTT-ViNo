@@ -1,6 +1,6 @@
-import LayoutDrawer from "./LayoutDrawer.mjs";
-import Logger from "./Logger.mjs";
-import Queue from "./Queue.mjs";
+import LayoutDrawer from "./LayoutDrawer.js";
+import Logger from "./Logger.js";
+import Queue from "./Queue.js";
 
 export default class QueueHandler {
   static maxOnscreen = 8;

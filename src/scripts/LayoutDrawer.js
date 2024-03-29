@@ -1,7 +1,7 @@
-import Settings from "./Settings.mjs";
-import Logger from "./Logger.mjs";
-import QueueHandler from "./QueueHandler.mjs";
-import ChatHandler from "./ChatHandler.mjs";
+import Settings from "./Settings.js";
+import Logger from "./Logger.js";
+import QueueHandler from "./QueueHandler.js";
+import ChatHandler from "./ChatHandler.js";
 
 export default class LayoutDrawer {
   static DEBUGGING_LAYOUT = false;

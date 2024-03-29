@@ -1,10 +1,10 @@
-import VNOverlay from "./scripts/apps/VNOverlay.mjs";
-import ActorConfiguration from "./scripts/apps/ActorConfiguration.mjs";
-import Settings from "./scripts/Settings.mjs";
-import ChatHandler from "./scripts/ChatHandler.mjs";
-import LayoutHandler from "./scripts/LayoutDrawer.mjs";
-import QueueHandler from "./scripts/QueueHandler.mjs";
-import Logger from "./scripts/Logger.mjs";
+import VNOverlay from "./scripts/apps/VNOverlay.js";
+import ActorConfiguration from "./scripts/apps/ActorConfiguration.js";
+import Settings from "./scripts/Settings.js";
+import ChatHandler from "./scripts/ChatHandler.js";
+import LayoutHandler from "./scripts/LayoutDrawer.js";
+import QueueHandler from "./scripts/QueueHandler.js";
+import Logger from "./scripts/Logger.js";
 
 Hooks.on("renderActorSheet", function (sheet, html, data) {
   let configureSheet = html.find(".configure-sheet");
