@@ -4,22 +4,10 @@ import Settings from "./scripts/Settings.js";
 import ChatHandler from "./scripts/ChatHandler.js";
 import LayoutHandler from "./scripts/LayoutDrawer.js";
 import QueueHandler from "./scripts/QueueHandler.js";
-import Logger from "./scripts/Logger.js";
+import Logger from "./scripts/lib/Logger.js";
+import CONSTANTS from "./scripts/Constants.js";
+import {registerSocket} from "./scripts/socket.js"
 
-Hooks.on("renderActorSheet", function (sheet, html, data) {
-  let configureSheet = html.find(".configure-sheet");
-
-  if (configureSheet.length == 0) {
-    html.find(".close").before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
-  } else {
-    configureSheet.before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
-  }
-
-  html.find(".configure-vino").click((event) => {
-    let configurationApp = new ActorConfiguration(sheet.actor);
-    configurationApp.render(true);
-  });
-});
 
 Hooks.once("ready", async function () {
   await Settings.registerSettings();
@@ -44,6 +32,35 @@ Hooks.once("ready", async function () {
   });
 
   Settings._scheduleRefresh();
+});
+
+/* ------------------------------------ */
+/* Other Hooks */
+/* ------------------------------------ */
+
+
+Hooks.once("devModeReady", ({ registerPackageDebugFlag }) => {
+    registerPackageDebugFlag(CONSTANTS.MODULE_ID);
+});
+
+Hooks.once("socketlib.ready", () => {
+    registerSocket();
+});
+
+
+Hooks.on("renderActorSheet", function (sheet, html, data) {
+    let configureSheet = html.find(".configure-sheet");
+
+    if (configureSheet.length == 0) {
+      html.find(".close").before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
+    } else {
+      configureSheet.before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
+    }
+
+    html.find(".configure-vino").click((event) => {
+      let configurationApp = new ActorConfiguration(sheet.actor);
+      configurationApp.render(true);
+    });
 });
 
 Hooks.once("canvasReady", async () => {

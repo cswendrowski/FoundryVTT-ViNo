@@ -1,5 +1,5 @@
 import Settings from "./Settings.js";
-import Logger from "./Logger.js";
+import Logger from "./lib/Logger.js";
 import QueueHandler from "./QueueHandler.js";
 import ChatHandler from "./ChatHandler.js";
 

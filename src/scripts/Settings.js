@@ -1,6 +1,6 @@
 import SettingsForm from "./SettingsForm.js";
 import CONSTANTS from "./Constants.js";
-import Logger from "./Logger.js";
+import Logger from "./lib/Logger.js";
 
 /**
  * Provides functionality for interaction with module settings

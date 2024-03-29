@@ -1,5 +1,5 @@
 import LayoutDrawer from "./LayoutDrawer.js";
-import Logger from "./Logger.js";
+import Logger from "./lib/Logger.js";
 import Queue from "./Queue.js";
 
 export default class QueueHandler {

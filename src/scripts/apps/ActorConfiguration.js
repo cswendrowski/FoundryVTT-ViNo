@@ -1,6 +1,6 @@
 import CONSTANTS from "../Constants.js";
 import Settings from "../Settings.js";
-import Logger from "../Logger.js";
+import Logger from "../lib/Logger.js";
 
 export default class ActorConfiguration extends FormApplication {
   /* const app = ;
