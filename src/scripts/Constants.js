@@ -9,17 +9,19 @@ const CONSTANTS = {
         ENABLED: "enabled",
         //
         PREFERRED_SIDE: "preferredSide",
-        MOOD: "mood",
-        FONT: "font",
+        MOOD: "mood", // TODO to remove or better manage
+        FONT: "font", // TODO to remove or better manage
         SKIP_AUTO_QUOTE: "skipAutoQuote",
         REFRESH_NEEDED: "refreshNeeded",
-        IMAGES: "images",
+        IMAGES: "images", // TODO to remove or better manage
         // MOOD TYPE
-        MAD_IMG: "madimg",
-        SAD_IMG: "sadimg",
-        JOY_IMG: "joyimg",
-        FEAR_IMG: "fearimg",
+        MAD_IMG: "madimg", // TODO to remove or better manage
+        SAD_IMG: "sadimg", // TODO to remove or better manage
+        JOY_IMG: "joyimg", // TODO to remove or better manage
+        FEAR_IMG: "fearimg", // TODO to remove or better manage
         //TODO ADD OTHER FROM THEATRE LIST
+        // ADDED FORM 4535992
+        EMOTES: "emotes",
     },
     CHAT_DISPLAY_DATA: {
         ID: "id",

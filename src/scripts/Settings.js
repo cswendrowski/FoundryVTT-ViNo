@@ -18,6 +18,10 @@ export default class Settings {
         await game.settings.set(CONSTANTS.MODULE_ID, setting, value);
     }
 
+    /**
+     *
+     * @returns {}
+     */
     static async getDisplayableDefaultMoods() {
         var defaultMoods = [];
         let storedMoods = await this.get("defaultMoods");

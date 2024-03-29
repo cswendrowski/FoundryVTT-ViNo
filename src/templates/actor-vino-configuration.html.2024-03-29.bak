@@ -3,7 +3,8 @@
     <h1>{{localize 'VINO.ACTORCONFIG.CoreSettings'}}</h1>
     <h2>{{localize 'VINO.ACTORCONFIG.VinoEnabled'}}</h2>
     <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.flags.vino.enabled}}/></h4>
-
+    <h2>{{localize 'VINO.ACTORCONFIG.Font'}}</h2>
+    <h4><input name="flags.vino.font" type="text" value="{{actor.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
     <h2>{{localize 'VINO.ACTORCONFIG.PreferredSide'}}</h2>
     <select name="flags.vino.preferredSide" type="text">
         {{#select actor.flags.vino.preferredSide}}
@@ -26,15 +27,12 @@
 
     <h1>{{localize 'VINO.ACTORCONFIG.Moods'}}</h1>
     <div class="vino-actor-configuration-row">
-    {{#each actor.flags.vino.emotes as |emote i|}}
-        {{#if (isdefined emote.name)}}
-            <div class="vino-actor-configuration-row-item">
-                <img class="sheet-profile" src="{{emote.imageRef}}" title="{{actor.name}} {{emote.name}}" height="220" width="220" />
-                <input name="flags.vino.emotes.{{i}}.name" type="hidden" value="{{emote.name}}" style="width: inherit;" disabled />
-                <input name="flags.vino.emotes.{{i}}.label" type="text" value="{{emote.label}}" style="width: inherit;" disabled />
-                <input name="flags.vino.emotes.{{i}}.font" type="text" value="{{actor.flags.vino.emotes.{{i}}.font}}" placeholder="{{localize 'VINO.ACTORCONFIG.Font'}}"/>
-                <img class="sheet-profile" src="{{emote.image}}" title="{{actor.name}} {{emote.name}}" height="220" width="220" data-edit="flags.vino.emotes.{{i}}.image" />
-            </div>
+    {{#each actor.flags.vino.images as |image i|}}
+        {{#if (isdefined image.name)}}
+        <div class="vino-actor-configuration-row-item" >
+            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
+            <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
+        </div>
         {{/if}}
     {{/each}}
     </div>
