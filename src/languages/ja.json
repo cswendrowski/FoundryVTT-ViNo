@@ -33,8 +33,8 @@
     "VINO.SETTINGS.QuoteClosingDefault": "\"",
 
     "VINO.SETTINGS.CommandKeyName": "/ joyなど、コマンドの開始を示す文字はどれですか。",
-    "VINO.SETTINGS.CommandKeyHint": "デフォルト： /",
-    "VINO.SETTINGS.CommandKeyDefault": "/",
+    "VINO.SETTINGS.CommandKeyHint": "デフォルト： /vino",
+    "VINO.SETTINGS.CommandKeyDefault": "/vino",
 
     "VINO.SETTINGS.RestrictVinoToSameSceneName": "チャットのポートレートは、表示しているのと同じシーンのものである場合にのみ表示されますか？",
     "VINO.SETTINGS.RestrictVinoToSameSceneHint": "デフォルト：False。",

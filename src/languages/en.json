@@ -33,8 +33,8 @@
     "VINO.SETTINGS.QuoteClosingDefault": "\"",
 
     "VINO.SETTINGS.CommandKeyName": "What character should indicate the start of a command, such as /joy?",
-    "VINO.SETTINGS.CommandKeyHint": "Default: /",
-    "VINO.SETTINGS.CommandKeyDefault": "/",
+    "VINO.SETTINGS.CommandKeyHint": "Default: /vino",
+    "VINO.SETTINGS.CommandKeyDefault": "/vino",
 
     "VINO.SETTINGS.RestrictVinoToSameSceneName": "Should chat portraits only show up if they are from the same scene you are viewing?",
     "VINO.SETTINGS.RestrictVinoToSameSceneHint": "Default: False.",

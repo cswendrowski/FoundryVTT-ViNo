@@ -134,6 +134,7 @@ export default class LayoutDrawer {
         }
 
         let imageRef = TheatreHelpers._getDefaultEmotes()[mood]?.image || "modules/vino/assets/emotes/blank.png";
+        let labelRef = TheatreHelpers._getDefaultEmotes()[mood]?.label || chatDisplayData.mood;
 
         Logger.log(columnIdentifier);
         Logger.log(column);
@@ -147,8 +148,8 @@ export default class LayoutDrawer {
               <div class="vino-chat-body">
                 <div class="vino-chat-actor-name">${chatDisplayData.name}</div>
                 <div class="vino-chat-emotion-flare">
-                    <img src="${imageRef}" alt="" />
-                    <span>${chatDisplayData.mood}</span>
+                    <img src="${imageRef}" />
+                    <span>${labelRef}</span>
                 </div>
                 <div id="V${chatDisplayData.id}-vino-chat-text-body" class="vino-chat-text-body">
                   <p id="V${chatDisplayData.id}-vino-chat-text-paragraph" style="font: ${chatDisplayData.font}"></p>

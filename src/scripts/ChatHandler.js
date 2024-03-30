@@ -68,34 +68,33 @@ export default class ChatHandler {
     }
 
     static handleChatMessage(chatlog, messageText, chatData) {
-        let speakingActor = game.actors.get(chatData.speaker.actor);
-        if (!speakingActor) {
-            if (messageText.startsWith(Settings.commandKey)) {
-                Logger.debug(`No actor is been selected fo the vino message`);
+        if (messageText.startsWith(ChatHandler.commandKey)) {
+            let speakingActor = game.actors.get(chatData.speaker.actor);
+            if (!speakingActor) {
+                Logger.warn(`No actor is been selected fo the vino message`, true);
                 messageText = ChatHandler._removeCommands(messageText, "");
                 return false;
-            } else {
-                return;
             }
-        }
-        let mood = ChatHandler._getMood(messageText, speakingActor);
+            let mood = ChatHandler._getMood(messageText, speakingActor);
 
-        if (mood) {
-            chatData.content = ChatHandler._removeCommands(messageText, mood);
-            chatData.type = 2;
-            setProperty(chatData, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`, mood);
-            ChatMessage.create(chatData);
+            if (mood) {
+                chatData.content = ChatHandler._removeCommands(messageText, mood);
+                chatData.type = 2;
+                setProperty(chatData, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`, mood);
+                ChatMessage.create(chatData);
+                Logger.logObject(chatData);
+                Logger.debug("Canceling message");
+                return false;
+            }
+
+            chatData.flags = {
+                [CONSTANTS.MODULE_ID]: {
+                    [CONSTANTS.FLAGS.MOOD]: mood,
+                },
+            };
+            messageText = ChatHandler._removeCommands(messageText, "");
             Logger.logObject(chatData);
-            Logger.debug("Canceling message");
-            return false;
         }
-
-        chatData.flags = {
-            [CONSTANTS.MODULE_ID]: {
-                [CONSTANTS.FLAGS.MOOD]: mood,
-            },
-        };
-        Logger.logObject(chatData);
     }
 
     static _getFont(actor, mood) {
