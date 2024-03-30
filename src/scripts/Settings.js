@@ -1,6 +1,7 @@
-import SettingsForm from "./SettingsForm.js";
+// import SettingsForm from "./SettingsForm.js";
 import CONSTANTS from "./Constants.js";
 import Logger from "./lib/Logger.js";
+import TheatreHelpers from "./lib/theatre-helpers.js";
 
 /**
  * Provides functionality for interaction with module settings
@@ -18,23 +19,20 @@ export default class Settings {
         await game.settings.set(CONSTANTS.MODULE_ID, setting, value);
     }
 
-    // /**
-    //  *
-    //  * @returns {}
-    //  */
-    // static async getDisplayableDefaultMoods() {
-    //     var defaultMoods = [];
-    //     let storedMoods = await this.get("defaultMoods");
-    //     for (var x = 0; x < storedMoods.length; x++) {
-    //         let mood = storedMoods[x];
-    //         Logger.log(mood);
-    //         if (mood != "") {
-    //             defaultMoods.push(mood);
-    //         }
-    //     }
-    //     return defaultMoods;
-    // }
-
+    /*
+    static async getDisplayableDefaultMoods() {
+        var defaultMoods = [];
+        let storedMoods = await this.get("defaultMoods");
+        for (var x = 0; x < storedMoods.length; x++) {
+            let mood = storedMoods[x];
+            Logger.log(mood);
+            if (mood != "") {
+                defaultMoods.push(mood);
+            }
+        }
+        return defaultMoods;
+    }
+    
     static synchronousGetDisplayableDefaultMoods() {
         var defaultMoods = [];
         let storedMoods = game.settings.get(CONSTANTS.MODULE_ID, "defaultMoods");
@@ -47,12 +45,14 @@ export default class Settings {
         }
         return defaultMoods;
     }
+    */
 
     static async getAllDefaultMoods() {
         let moods = await this.get("defaultMoods");
         return moods;
     }
 
+    /*
     static async addDefaultMood(val) {
         if (val == undefined) return;
         let storedMoods = await this.get("defaultMoods");
@@ -80,6 +80,7 @@ export default class Settings {
             }
         }
     }
+    */
 
     /**
      * Registers all of the necessary game settings for the module
@@ -93,7 +94,7 @@ export default class Settings {
             type: Boolean,
             default: false,
         });
-
+        /* REMOVE IN FAVOR OF THE ONE ON THE ACTOR
         game.settings.registerMenu(CONSTANTS.MODULE_ID, "settingsMenu", {
             name: "Default Moods",
             label: "Default Moods",
@@ -101,14 +102,14 @@ export default class Settings {
             type: SettingsForm,
             restricted: true,
         });
-
+        
         game.settings.register(CONSTANTS.MODULE_ID, "defaultMoods", {
             scope: "world",
             config: false,
             type: Object,
             default: ["mad", "sad", "joy", "fear"],
         });
-
+        */
         game.settings.register(CONSTANTS.MODULE_ID, "restrictVinoToSameScene", {
             name: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneName"),
             hint: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneHint"),
@@ -124,7 +125,7 @@ export default class Settings {
             scope: "client",
             config: true,
             type: String,
-            default: game.i18n.localize("VINO.SETTINGS.CommandKeyDefault"),
+            default: "/vino", // game.i18n.localize("VINO.SETTINGS.CommandKeyDefault"),
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "defaultFont", {

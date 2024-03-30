@@ -9,15 +9,24 @@ const CONSTANTS = {
         ENABLED: "enabled",
         //
         PREFERRED_SIDE: "preferredSide",
-        MOOD: "mood", // TODO to remove or better manage
-        FONT: "font", // TODO to remove or better manage
+        MOOD: "mood",
+        FONT: "font",
+        IMAGE: "image",
+        LABEL: "label",
+        NAME: "name",
         SKIP_AUTO_QUOTE: "skipAutoQuote",
+        /** @deprecated */
         REFRESH_NEEDED: "refreshNeeded",
+        /** @deprecated */
         IMAGES: "images", // TODO to remove or better manage
         // MOOD TYPE
+        /** @deprecated */
         MAD_IMG: "madimg", // TODO to remove or better manage
+        /** @deprecated */
         SAD_IMG: "sadimg", // TODO to remove or better manage
+        /** @deprecated */
         JOY_IMG: "joyimg", // TODO to remove or better manage
+        /** @deprecated */
         FEAR_IMG: "fearimg", // TODO to remove or better manage
         //TODO ADD OTHER FROM THEATRE LIST
         // ADDED FORM 4535992

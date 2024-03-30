@@ -1,9 +1,11 @@
 import Settings from "./Settings.js";
 import Logger from "./lib/Logger.js";
 import QueueHandler from "./QueueHandler.js";
+import CONSTANTS from "./Constants.js";
+import TheatreHelpers from "./lib/theatre-helpers.js";
 
 export default class ChatHandler {
-    static commandKey = "/";
+    static commandKey = "/vino";
 
     static handleCreateChatMessage(message) {
         Logger.logObject(message);
@@ -37,19 +39,16 @@ export default class ChatHandler {
             Logger.warn(`Vino is not enabled by flag for actor '${speakingActor.name}'`, false);
             return;
         }
-        let mood = message.flags.vino?.mood;
-        if (mood == undefined) {
-            mood = "";
-        }
+        let mood = foundry.utils.getProperty(message, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`) || "";
         let img = ChatHandler._getMoodImage(speakingActor, mood);
-        let text = message.content;
-        let font = ChatHandler._getFont(speakingActor);
+        let messageText = message.content;
+        let font = ChatHandler._getFont(speakingActor, mood);
         let preferredSide = ChatHandler._getPreferredSide(speakingActor);
 
         let chatDisplayData = {
             name: speakingActor.name,
             mood: mood,
-            text: text,
+            text: messageText,
             img: img,
             id: message.id,
             isEmoting: message.type == 3,
@@ -69,11 +68,18 @@ export default class ChatHandler {
     }
 
     static handleChatMessage(chatlog, messageText, chatData) {
-        let mood = ChatHandler._getMood(messageText);
-        if (mood != "") {
+        let speakingActor = game.actors.get(chatData.speaker.actor);
+        if (!speakingActor) {
+            Logger.debug(`No actor is been selected fo the vino message`);
+            chatData.content = ChatHandler._removeCommands(messageText, "");
+            return;
+        }
+        let mood = ChatHandler._getMood(messageText, speakingActor);
+
+        if (mood) {
             chatData.content = ChatHandler._removeCommands(messageText, mood);
             chatData.type = 2;
-            setProperty(chatData, "flags.vino.mood", mood);
+            setProperty(chatData, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`, mood);
             ChatMessage.create(chatData);
             Logger.logObject(chatData);
             Logger.debug("Canceling message");
@@ -81,20 +87,24 @@ export default class ChatHandler {
         }
 
         chatData.flags = {
-            vino: {
-                mood: "",
+            [CONSTANTS.MODULE_ID]: {
+                [CONSTANTS.FLAGS.MOOD]: mood,
             },
         };
         Logger.logObject(chatData);
     }
 
-    static _getFont(actor) {
-        var actorFont = actor.flags.vino?.font;
-        if (actorFont != undefined && actorFont != "") {
-            return "100% " + actorFont;
-        }
+    static _getFont(actor, mood) {
+        const fontByMood = foundry.utils.getProperty(
+            actor,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.EMOTES}.${mood}.${CONSTANTS.FLAGS.FONT}`,
+        );
 
-        return "100% " + Settings.getSync("defaultFont");
+        var actorFont = actor.flags.vino?.font;
+
+        const fontFounded = fontByMood ?? actorFont ?? Settings.getSync("defaultFont");
+
+        return "100% " + fontFounded;
     }
 
     static _getPreferredSide(actor) {
@@ -106,14 +116,13 @@ export default class ChatHandler {
         return "";
     }
 
-    static _getMood(messageText) {
+    static _getMood(messageText, actor) {
         var matchString = messageText.toLowerCase();
-
-        let moods = Settings.synchronousGetDisplayableDefaultMoods();
-
+        //let moods = Settings.synchronousGetDisplayableDefaultMoods();
+        let moods = TheatreHelpers.getSimpleEmotes(actor);
         for (var x = 0; x < moods.length; x++) {
-            var defaultMood = moods[x].toLowerCase();
-            if (defaultMood != "" && matchString.startsWith(ChatHandler.commandKey + defaultMood)) {
+            var defaultMood = moods[x].key.toLowerCase();
+            if (defaultMood != "" && matchString.startsWith(ChatHandler.commandKey + " " + defaultMood)) {
                 return defaultMood;
             }
         }
@@ -124,6 +133,15 @@ export default class ChatHandler {
         Logger.logObject(actor);
         Logger.debug(mood);
 
+        const imageByMood = foundry.utils.getProperty(
+            actor,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.EMOTES}.${mood}.${CONSTANTS.FLAGS.IMAGE}`,
+        );
+        const altdefault = foundry.utils.getProperty(
+            actor,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.ALT_DEFAULT}`,
+        );
+        /*
         if (mood != undefined && mood != "") {
             let images = actor.flags.vino?.images;
 
@@ -145,12 +163,11 @@ export default class ChatHandler {
                 }
             }
         }
-
         if (actor.flags.vino?.altdefault && actor.flags.vino.altdefault != "") {
             return actor.flags.vino.altdefault;
         }
-
-        return actor.img;
+        */
+        return imageByMood ?? altdefault ?? actor.img;
     }
 
     static _caseInsensitiveReplace(line, word, replaceWith) {
@@ -159,7 +176,7 @@ export default class ChatHandler {
     }
 
     static _removeCommands(messageText, mood) {
-        messageText = ChatHandler._caseInsensitiveReplace(messageText, ChatHandler.commandKey + mood, "");
+        messageText = ChatHandler._caseInsensitiveReplace(messageText, ChatHandler.commandKey + " " + mood, "");
 
         return messageText.trim();
     }

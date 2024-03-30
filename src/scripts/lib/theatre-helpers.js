@@ -33,7 +33,7 @@ export default class TheatreHelpers {
      *
      * @param {string} actorId The actorId of the actor to get emotes from.
      * @param {boolean} disableDefault Wither or not default emotes are disabled. in which case, we don't merge the actor emotes with the default ones.
-     * @return {{name:string;imageRef:string;image:string;label:string;font:string}}
+     * @return {{key:string;name:string;imageRef:string;image:string;label:string;font:string}}
      */
     static getSimpleEmotes(actorId, disableDefault) {
         const actor = RetrieveHelpers.getActorSync(actorId);
@@ -64,9 +64,11 @@ export default class TheatreHelpers {
         if (game.modules.get("theatre")?.active) {
             return game.modules.get("theatre").api.getFonts();
         } else {
-            return [];
+            return CONFIG.fontFamilies;
         }
     }
+
+    // "mad", "sad", "joy", "fear"
 
     /**
      * Get default emotes, immutable

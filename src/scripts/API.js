@@ -37,7 +37,7 @@ const API = {
             }
             sceneViewedId = tokenTmp.scene.id;
             nameTmp = tokenTmp.name;
-            imgTmp = ChatHandler._getMoodImage(speakingActor, mood) ?? tokenTmp.img;
+            imgTmp = options.img ?? ChatHandler._getMoodImage(speakingActor, mood) ?? tokenTmp.img;
             idTmp = tokenTmp.uuid;
             enabled = foundry.utils.getProperty(
                 speakingActor,
@@ -51,7 +51,7 @@ const API = {
             }
             sceneViewedId = game.scenes.viewed.id ?? game.users.get(game.user.id).viewedScene;
             nameTmp = speakingActor.name;
-            imgTmp = ChatHandler._getMoodImage(speakingActor, mood) ?? speakingActor.img;
+            imgTmp = options.img ?? ChatHandler._getMoodImage(speakingActor, mood) ?? speakingActor.img;
             idTmp = speakingActor.uuid;
             enabled = foundry.utils.getProperty(
                 speakingActor,
@@ -67,7 +67,7 @@ const API = {
         }
 
         let mood = "";
-        let font = ChatHandler._getFont(speakingActor); // TODO add theatre integration
+        let font = ChatHandler._getFont(speakingActor, mood); // TODO add theatre integration
         let preferredSide = ChatHandler._getPreferredSide(speakingActor); // TODO add theatre integration
         let textTmp = options.text || content || "";
 

@@ -205,3 +205,12 @@
     align-items: center;
     font-size: medium;
 }
+
+.vino-actor-configuration-row-item.emote > h3 > span,
+.vino-actor-configuration-row-item.emote > h3 > span > i {
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
