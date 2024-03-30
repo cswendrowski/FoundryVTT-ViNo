@@ -61,7 +61,7 @@ const API = {
 
         Logger.logObject(speakingActor);
 
-        if (enabled) {
+        if (!enabled) {
             Logger.warn(`Vino is not enabled by flag for actor '${speakingActor.name}'`, false);
             return;
         }

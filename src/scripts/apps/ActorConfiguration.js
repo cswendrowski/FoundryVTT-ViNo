@@ -28,24 +28,25 @@ export default class ActorConfiguration extends FormApplication {
     async getData() {
         let flags = this.actor.flags;
 
-        if (flags.vino == undefined) {
-            flags.vino = {
+        if (!flags[CONSTANTS.MODULE_ID]) {
+            setProperty(flags, CONSTANTS.MODULE_ID, {
                 enabled: true,
                 font: "",
-                images: [],
+                // images: [],
                 altdefault: "",
-                refreshNeeded: true,
+                // refreshNeeded: true,
                 preferredSide: "",
                 emotes: {},
-            };
+            });
         }
-
-        if (flags.vino.images == undefined) {
-            flags.vino.images = [];
+        /*
+        if (flags[CONSTANTS.MODULE_ID].images == undefined) {
+            flags[CONSTANTS.MODULE_ID].images = [];
         }
+        */
 
-        if (flags.vino.enabled == undefined) {
-            flags.vino.enabled = true;
+        if (flags[CONSTANTS.MODULE_ID].enabled == undefined) {
+            flags[CONSTANTS.MODULE_ID].enabled = true;
         }
         // let actorId = this.actor.id;
         let emotes = {};
@@ -54,10 +55,10 @@ export default class ActorConfiguration extends FormApplication {
         emotes = TheatreHelpers.getSimpleEmotes(this.actor);
         fonts = TheatreHelpers.getFonts();
         /*
-        if (flags.vino.refreshNeeded) {
+        if (flags[CONSTANTS.MODULE_ID].refreshNeeded) {
             Logger.log("Refreshing ViNo images");
             let moods = await Settings.getDisplayableDefaultMoods();
-            let existingMoodImages = Object.values(flags.vino.images).filter((x) => x.name != null && x.path != null);
+            let existingMoodImages = Object.values(flags[CONSTANTS.MODULE_ID].images).filter((x) => x.name != null && x.path != null);
             Logger.log("Configured moods:");
             Logger.logObject(moods);
             Logger.log("Existing moods:");
@@ -81,18 +82,18 @@ export default class ActorConfiguration extends FormApplication {
 
                         // Migration from old paths
                         if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Mad")) {
-                            moodInfo.path = flags.vino.madimg;
+                            moodInfo.path = flags[CONSTANTS.MODULE_ID].madimg;
                         } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Sad")) {
-                            moodInfo.path = flags.vino.sadimg;
+                            moodInfo.path = flags[CONSTANTS.MODULE_ID].sadimg;
                         } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Joy")) {
-                            moodInfo.path = flags.vino.joyimg;
+                            moodInfo.path = flags[CONSTANTS.MODULE_ID].joyimg;
                         } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Fear")) {
-                            moodInfo.path = flags.vino.fearimg;
+                            moodInfo.path = flags[CONSTANTS.MODULE_ID]fearimg;
                         }
 
                         if (moodInfo.path == undefined) moodInfo.path = "";
 
-                        flags.vino.images[x] = moodInfo;
+                        flags[CONSTANTS.MODULE_ID].images[x] = moodInfo;
                         // this.actor.setFlag("vino", `images.${x}.name`, moodInfo.name);
                         // this.actor.setFlag("vino", `images.${x}.path`, moodInfo.path);
                         Logger.log("Inserted new " + moodInfo.name);
@@ -127,8 +128,8 @@ export default class ActorConfiguration extends FormApplication {
         /*
         let displayableMoods = await Settings.getDisplayableDefaultMoods();
         for (var x = 0; x < displayableMoods.length; x++) {
-            if (formData["flags.vino.emotes." + x + ".image"] != undefined) {
-                formData["flags.vino.emotes." + x + ".name"] = displayableMoods[x].toLowerCase();
+            if (formData["flags[CONSTANTS.MODULE_ID].emotes." + x + ".image"] != undefined) {
+                formData["flags[CONSTANTS.MODULE_ID].emotes." + x + ".name"] = displayableMoods[x].toLowerCase();
             }
         }
         */

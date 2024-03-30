@@ -148,8 +148,7 @@ export default class LayoutDrawer {
               <div class="vino-chat-body">
                 <div class="vino-chat-actor-name">${chatDisplayData.name}</div>
                 <div class="vino-chat-emotion-flare">
-                    <img src="${imageRef}" />
-                    <span>${labelRef}</span>
+                    ${mood != "" ? `<img src="${imageRef}" /><span>${labelRef}</span>` : ""}
                 </div>
                 <div id="V${chatDisplayData.id}-vino-chat-text-body" class="vino-chat-text-body">
                   <p id="V${chatDisplayData.id}-vino-chat-text-paragraph" style="font: ${chatDisplayData.font}"></p>

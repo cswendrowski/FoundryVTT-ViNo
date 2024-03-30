@@ -15,7 +15,8 @@ export default class ChatHandler {
             return;
         }
 
-        if (message.flags.vino?.skip) {
+        const skip = foundry.utils.getProperty(message, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.SKIP}`);
+        if (skip) {
             Logger.debug("Skipping message due to flag");
             return;
         }
@@ -35,7 +36,12 @@ export default class ChatHandler {
             Logger.warn(`No actor is been found with reference`, false, message);
             return;
         }
-        if (speakingActor.flags.vino?.enabled != undefined && speakingActor.flags.vino?.enabled === false) {
+
+        const enabled = foundry.utils.getProperty(
+            speakingActor,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.ENABLED}`,
+        );
+        if (!enabled) {
             Logger.warn(`Vino is not enabled by flag for actor '${speakingActor.name}'`, false);
             return;
         }
@@ -58,7 +64,11 @@ export default class ChatHandler {
             preferredSide: preferredSide,
         };
 
-        if (message.flags.vino?.skipAutoQuote) {
+        const skipAutoQuote = foundry.utils.getProperty(
+            message,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.SKIP_AUTO_QUOTE}`,
+        );
+        if (skipAutoQuote) {
             chatDisplayData.skipAutoQuote = true;
         }
 
@@ -103,7 +113,7 @@ export default class ChatHandler {
             `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.EMOTES}.${mood}.${CONSTANTS.FLAGS.FONT}`,
         );
 
-        var actorFont = actor.flags.vino?.font;
+        var actorFont = foundry.utils.getProperty(actor, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.FONT}`);
 
         const fontFounded = fontByMood ?? actorFont ?? Settings.getSync("defaultFont");
 
@@ -111,8 +121,11 @@ export default class ChatHandler {
     }
 
     static _getPreferredSide(actor) {
-        var preferredSide = actor.flags.vino?.preferredSide;
-        if (preferredSide != undefined && preferredSide != "") {
+        var preferredSide = foundry.utils.getProperty(
+            actor,
+            `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.PREFERRED_SIDE}`,
+        );
+        if (preferredSide) {
             return preferredSide;
         }
 
@@ -148,7 +161,7 @@ export default class ChatHandler {
         );
         /*
         if (mood != undefined && mood != "") {
-            let images = actor.flags.vino?.images;
+            let images = actor.flags[CONSTANTS.MODULE_ID]?.images;
 
             Logger.logObject(images);
 
@@ -168,8 +181,8 @@ export default class ChatHandler {
                 }
             }
         }
-        if (actor.flags.vino?.altdefault && actor.flags.vino.altdefault != "") {
-            return actor.flags.vino.altdefault;
+        if (actor.flags[CONSTANTS.MODULE_ID]?.altdefault && actor.flags[CONSTANTS.MODULE_ID].altdefault != "") {
+            return actor.flags[CONSTANTS.MODULE_ID].altdefault;
         }
         */
         return imageByMood ?? altdefault ?? actor.img;

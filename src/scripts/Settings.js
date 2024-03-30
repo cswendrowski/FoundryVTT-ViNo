@@ -73,10 +73,10 @@ export default class Settings {
     static _scheduleRefresh() {
         Logger.log("Refresh scheduled");
         for (let actor of game.actors.values()) {
-            if (actor.flags.vino) {
-                actor.flags.vino.refreshNeeded = true;
+            if (actor.flags[CONSTANTS.MODULE_ID]) {
+                actor.flags[CONSTANTS.MODULE_ID].refreshNeeded = true;
             } else {
-                actor.flags.vino = { refreshNeeded: true };
+                actor.flags[CONSTANTS.MODULE_ID] = { refreshNeeded: true };
             }
         }
     }
