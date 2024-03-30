@@ -35,11 +35,14 @@
                 </h3>
                 <input name="flags.vino.emotes.{{emote.key}}.name" type="hidden" value="{{emote.name}}" style="width: inherit;" disabled />
                 <input name="flags.vino.emotes.{{emote.key}}.label" type="hidden" value="{{emote.label}}" style="width: inherit;" disabled />
-                <select data-key="{{emote.key}}" name="flags.vino.emotes.{{emote.key}}.font" type="text">
+                <select name="flags.vino.emotes.{{emote.key}}.font" data-key="{{emote.key}}" type="text">
+                    {{#select emote.font}}
                     <option value="">None</option>
                     {{#each @root.fonts as | font i | }}
-                        <option value="{{font}}" {{#vino-ifEquals ../emote.font font}} selected {{/vino-ifEquals}} >{{font}}</option>
+                        <option value="{{font}}" {{#if (eq ../emote.font font)}} selected {{/if}} >{{font}}</option>
                     {{/each}}
+                    {{/select}}
+
                 </select>
                 <img class="sheet-profile" src="{{emote.image}}" title="{{actor.name}} {{emote.name}}"  style="width: inherit;" data-edit="flags.vino.emotes.{{emote.key}}.image" />
             </div>

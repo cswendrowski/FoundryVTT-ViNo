@@ -145,17 +145,17 @@ export default class ActorConfiguration extends FormApplication {
             this.shouldClose = true;
         });
 
-        html.find(".vino-actor-configuration-row-item.emote > select").on("change", async (event) => {
-            let valueFlag = event.currentTarget.selectedOptions[0].value;
-            let keyMood = event.currentTarget.dataset.key;
-            // let keyFlag = event.currentTarget.name;
-            // Logger.debug(valueFlag);
-            await this.actor.setFlag(
-                CONSTANTS.MODULE_ID,
-                `${CONSTANTS.FLAGS.EMOTES}.${keyMood}.${CONSTANTS.FLAGS.FONT}`,
-                valueFlag,
-            );
-        });
+        // html.find(".vino-actor-configuration-row-item.emote > select").on("change", async (event) => {
+        //     let valueFlag = event.currentTarget.selectedOptions[0].value;
+        //     let keyMood = event.currentTarget.dataset.key;
+        //     // let keyFlag = event.currentTarget.name;
+        //     // Logger.debug(valueFlag);
+        //     await this.actor.setFlag(
+        //         CONSTANTS.MODULE_ID,
+        //         `${CONSTANTS.FLAGS.EMOTES}.${keyMood}.${CONSTANTS.FLAGS.FONT}`,
+        //         valueFlag,
+        //     );
+        // });
     }
 
     _onEditImage(event) {
