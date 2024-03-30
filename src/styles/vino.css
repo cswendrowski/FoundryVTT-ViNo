@@ -171,8 +171,10 @@
     font-weight: bold;
 }
 .vino-chat-emotion-flare {
-    font-size: 0.8rem;
+    font-size: 0.1rem; /* 0.8rem */
     font-style: italic;
+    display: inline-flex;
+    align-items: center;
 }
 .vino-chat-text-body {
     font-size: 1.05rem;

@@ -2,6 +2,7 @@ import Settings from "./Settings.js";
 import Logger from "./lib/Logger.js";
 import QueueHandler from "./QueueHandler.js";
 import ChatHandler from "./ChatHandler.js";
+import TheatreHelpers from "./lib/theatre-helpers.js";
 
 export default class LayoutDrawer {
     static DEBUGGING_LAYOUT = false;
@@ -30,6 +31,7 @@ export default class LayoutDrawer {
         const autoQuote = await Settings.get("autoQuote");
         const quoteOpening = await Settings.get("quoteOpening");
         const quoteClosing = await Settings.get("quoteClosing");
+        const mood = chatDisplayData.mood || "";
 
         if (restrictVinoToSameScene) {
             // MOD 4535992 ADD CHECK FOR CURRENT SCENE
@@ -131,6 +133,8 @@ export default class LayoutDrawer {
             }
         }
 
+        let imageRef = TheatreHelpers._getDefaultEmotes()[mood]?.image || "modules/vino/assets/emotes/blank.png";
+
         Logger.log(columnIdentifier);
         Logger.log(column);
         let gridClass = `vino-${row}-${columnIdentifier}${column}`;
@@ -142,7 +146,10 @@ export default class LayoutDrawer {
             <div class="vino-chat-flexy-boi">
               <div class="vino-chat-body">
                 <div class="vino-chat-actor-name">${chatDisplayData.name}</div>
-                <div class="vino-chat-emotion-flare">${chatDisplayData.mood}</div>
+                <div class="vino-chat-emotion-flare">
+                    <img src="${imageRef}" alt="" />
+                    <span>${chatDisplayData.mood}</span>
+                </div>
                 <div id="V${chatDisplayData.id}-vino-chat-text-body" class="vino-chat-text-body">
                   <p id="V${chatDisplayData.id}-vino-chat-text-paragraph" style="font: ${chatDisplayData.font}"></p>
                 </div>

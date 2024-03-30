@@ -70,9 +70,13 @@ export default class ChatHandler {
     static handleChatMessage(chatlog, messageText, chatData) {
         let speakingActor = game.actors.get(chatData.speaker.actor);
         if (!speakingActor) {
-            Logger.debug(`No actor is been selected fo the vino message`);
-            chatData.content = ChatHandler._removeCommands(messageText, "");
-            return;
+            if (messageText.startsWith(Settings.commandKey)) {
+                Logger.debug(`No actor is been selected fo the vino message`);
+                messageText = ChatHandler._removeCommands(messageText, "");
+                return false;
+            } else {
+                return;
+            }
         }
         let mood = ChatHandler._getMood(messageText, speakingActor);
 
@@ -117,12 +121,14 @@ export default class ChatHandler {
     }
 
     static _getMood(messageText, actor) {
-        var matchString = messageText.toLowerCase();
+        var matchStringTmp = messageText.toLowerCase();
+        var matchStringArr = matchStringTmp.split(" ");
+        var matchString = matchStringArr[0] + " " + matchStringArr[1];
         //let moods = Settings.synchronousGetDisplayableDefaultMoods();
         let moods = TheatreHelpers.getSimpleEmotes(actor);
         for (var x = 0; x < moods.length; x++) {
             var defaultMood = moods[x].key.toLowerCase();
-            if (defaultMood != "" && matchString.startsWith(ChatHandler.commandKey + " " + defaultMood)) {
+            if (defaultMood && matchString === ChatHandler.commandKey + " " + defaultMood) {
                 return defaultMood;
             }
         }
@@ -177,7 +183,6 @@ export default class ChatHandler {
 
     static _removeCommands(messageText, mood) {
         messageText = ChatHandler._caseInsensitiveReplace(messageText, ChatHandler.commandKey + " " + mood, "");
-
         return messageText.trim();
     }
 }
