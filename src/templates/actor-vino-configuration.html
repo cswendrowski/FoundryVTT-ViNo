@@ -26,14 +26,22 @@
 
     <h1>{{localize 'VINO.ACTORCONFIG.Moods'}}</h1>
     <div class="vino-actor-configuration-row">
-    {{#each actor.flags.vino.emotes as |emote i|}}
+    {{#each @root.emotes as | emote i|}}
         {{#if (isdefined emote.name)}}
-            <div class="vino-actor-configuration-row-item">
-                <img class="sheet-profile" src="{{emote.imageRef}}" title="{{actor.name}} {{emote.name}}" height="220" width="220" />
-                <input name="flags.vino.emotes.{{i}}.name" type="hidden" value="{{emote.name}}" style="width: inherit;" disabled />
-                <input name="flags.vino.emotes.{{i}}.label" type="text" value="{{emote.label}}" style="width: inherit;" disabled />
-                <input name="flags.vino.emotes.{{i}}.font" type="text" value="{{actor.flags.vino.emotes.{{i}}.font}}" placeholder="{{localize 'VINO.ACTORCONFIG.Font'}}"/>
-                <img class="sheet-profile" src="{{emote.image}}" title="{{actor.name}} {{emote.name}}" height="220" width="220" data-edit="flags.vino.emotes.{{i}}.image" />
+            <div class="vino-actor-configuration-row-item emote">
+                <h3>
+                    <img src="{{emote.imageRef}}" alt=""> 
+                    <span>{{emote.label}}</span>
+                </h3>
+                <input name="flags.vino.emotes.{{emote.key}}.name" type="hidden" value="{{emote.name}}" style="width: inherit;" disabled />
+                <input name="flags.vino.emotes.{{emote.key}}.label" type="hidden" value="{{emote.label}}" style="width: inherit;" disabled />
+                <select data-key="{{emote.key}}" name="flags.vino.emotes.{{emote.key}}.font" type="text">
+                    <option value="">None</option>
+                    {{#each @root.fonts as | font i | }}
+                        <option value="{{font}}" {{#vino-ifEquals ../emote.font font}} selected {{/vino-ifEquals}} >{{font}}</option>
+                    {{/each}}
+                </select>
+                <img class="sheet-profile" src="{{emote.image}}" title="{{actor.name}} {{emote.name}}"  style="width: inherit;" data-edit="flags.vino.emotes.{{emote.key}}.image" />
             </div>
         {{/if}}
     {{/each}}

@@ -35,7 +35,6 @@ const API = {
                 Logger.warn(`No actor is been found with reference`, true, tokenOrActor);
                 return;
             }
-            // TODO check if is correct
             sceneViewedId = tokenTmp.scene.id;
             nameTmp = tokenTmp.name;
             imgTmp = ChatHandler._getMoodImage(speakingActor, mood) ?? tokenTmp.img;
@@ -50,8 +49,7 @@ const API = {
                 Logger.warn(`No actor is been found with reference`, true, tokenOrActor);
                 return;
             }
-            // TODO check if is correct
-            sceneViewedId = game.scenes.viewed.id; // game.users.get(game.user.id).viewedScene.id;
+            sceneViewedId = game.scenes.viewed.id ?? game.users.get(game.user.id).viewedScene;
             nameTmp = speakingActor.name;
             imgTmp = ChatHandler._getMoodImage(speakingActor, mood) ?? speakingActor.img;
             idTmp = speakingActor.uuid;
@@ -82,8 +80,8 @@ const API = {
             isEmoting: false,
             // message: message,
             viewedScene: message.user.viewedScene,
-            font: "",
-            preferredSide: "",
+            font: font || "",
+            preferredSide: preferredSide || "",
             skipAutoQuote: true,
         };
 

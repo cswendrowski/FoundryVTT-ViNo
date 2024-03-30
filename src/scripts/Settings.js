@@ -18,22 +18,22 @@ export default class Settings {
         await game.settings.set(CONSTANTS.MODULE_ID, setting, value);
     }
 
-    /**
-     *
-     * @returns {}
-     */
-    static async getDisplayableDefaultMoods() {
-        var defaultMoods = [];
-        let storedMoods = await this.get("defaultMoods");
-        for (var x = 0; x < storedMoods.length; x++) {
-            let mood = storedMoods[x];
-            Logger.log(mood);
-            if (mood != "") {
-                defaultMoods.push(mood);
-            }
-        }
-        return defaultMoods;
-    }
+    // /**
+    //  *
+    //  * @returns {}
+    //  */
+    // static async getDisplayableDefaultMoods() {
+    //     var defaultMoods = [];
+    //     let storedMoods = await this.get("defaultMoods");
+    //     for (var x = 0; x < storedMoods.length; x++) {
+    //         let mood = storedMoods[x];
+    //         Logger.log(mood);
+    //         if (mood != "") {
+    //             defaultMoods.push(mood);
+    //         }
+    //     }
+    //     return defaultMoods;
+    // }
 
     static synchronousGetDisplayableDefaultMoods() {
         var defaultMoods = [];

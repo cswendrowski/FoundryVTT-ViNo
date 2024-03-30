@@ -12,7 +12,7 @@ export default class ActorConfiguration extends FormApplication {
             id: "vino-actor-configuration",
             template: `${CONSTANTS.modulePath}/templates/actor-vino-configuration.html`,
             popOut: true,
-            width: 1000,
+            width: 800, // 1000,
             height: 700,
             closeOnSubmit: false,
             submitOnClose: true,
@@ -47,14 +47,15 @@ export default class ActorConfiguration extends FormApplication {
         if (flags.vino.enabled == undefined) {
             flags.vino.enabled = true;
         }
-
+        // let actorId = this.actor.id;
         let emotes = {};
         let fonts = [];
+
+        emotes = TheatreHelpers.getSimpleEmotes(this.actor);
+        fonts = TheatreHelpers.getFonts();
+        /*
         if (flags.vino.refreshNeeded) {
             Logger.log("Refreshing ViNo images");
-            emotes = TheatreHelpers.getSimpleEmotes(actorId);
-            fonts = TheatreHelpers.getFonts();
-            /*
             let moods = await Settings.getDisplayableDefaultMoods();
             let existingMoodImages = Object.values(flags.vino.images).filter((x) => x.name != null && x.path != null);
             Logger.log("Configured moods:");
@@ -110,9 +111,8 @@ export default class ActorConfiguration extends FormApplication {
                 await this.actor.unsetFlag("vino", `images.${index}.path`);
                 Logger.log("Unset vino.images." + index);
             }
-            */
         }
-
+        */
         return {
             actor: this.actor,
             emotes: emotes,
@@ -124,14 +124,14 @@ export default class ActorConfiguration extends FormApplication {
         //formData["_id"] = this.actorId;
 
         Logger.logObject(formData);
-
+        /*
         let displayableMoods = await Settings.getDisplayableDefaultMoods();
         for (var x = 0; x < displayableMoods.length; x++) {
             if (formData["flags.vino.emotes." + x + ".image"] != undefined) {
                 formData["flags.vino.emotes." + x + ".name"] = displayableMoods[x].toLowerCase();
             }
         }
-
+        */
         await this.actor.update(formData);
         if (this.shouldClose) {
             await this.close();
@@ -143,6 +143,18 @@ export default class ActorConfiguration extends FormApplication {
         html.find("img[data-edit]").click((ev) => this._onEditImage(ev));
         html.find(".vino-configure-submit").click((event) => {
             this.shouldClose = true;
+        });
+
+        html.find(".vino-actor-configuration-row-item.emote > select").on("change", async (event) => {
+            let valueFlag = event.currentTarget.selectedOptions[0].value;
+            let keyMood = event.currentTarget.dataset.key;
+            // let keyFlag = event.currentTarget.name;
+            // Logger.debug(valueFlag);
+            await this.actor.setFlag(
+                CONSTANTS.MODULE_ID,
+                `${CONSTANTS.FLAGS.EMOTES}.${keyMood}.${CONSTANTS.FLAGS.FONT}`,
+                valueFlag,
+            );
         });
     }
 

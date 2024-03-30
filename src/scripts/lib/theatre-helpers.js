@@ -44,13 +44,15 @@ export default class TheatreHelpers {
         for (const [key, value] of Object.entries(emotes)) {
             const currentEmote = vinoMoods[key];
             moods.push({
-                name: value.name ?? currentEmote.name,
-                imageRef: value.image ?? "modules/vino/assets/emotes/none.png",
-                image: currentEmote.image ?? actor.img,
-                label: value.label ?? currentEmote.label ?? value.name,
-                font: value.font ?? currentEmote.font ?? "Signika, sans-serif;",
+                key: key,
+                name: value.name ?? currentEmote?.name ?? "",
+                imageRef: value.image ?? "modules/vino/assets/emotes/blank.png",
+                image: currentEmote?.image ?? actor.img ?? "",
+                label: value.label ?? currentEmote?.label ?? value.name ?? "",
+                font: value.font ?? currentEmote?.font ?? "", // ?? "Signika, sans-serif;",
             });
         }
+        return moods;
     }
 
     /**

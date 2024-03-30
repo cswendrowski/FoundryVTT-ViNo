@@ -24,10 +24,14 @@ Hooks.once("ready", async function () {
         LayoutHandler.DEBUGGING_LAYOUT = false;
     }
 
-    //QueueHandler.maxOnscreen = await Settings.get("maxOnScreen");
+    // QueueHandler.maxOnscreen = await Settings.get("maxOnScreen");
 
     Handlebars.registerHelper("isdefined", function (value) {
         return value !== undefined && value !== null;
+    });
+
+    Handlebars.registerHelper("vino-ifEquals", function (arg1, arg2, options) {
+        return arg1 === arg2 ? options.fn(this) : options.inverse(this);
     });
 
     Settings._scheduleRefresh();
@@ -48,7 +52,7 @@ Hooks.once("socketlib.ready", () => {
 Hooks.on("renderActorSheet", function (sheet, html, data) {
     let configureSheet = html.find(".configure-sheet");
 
-    if (configureSheet.length == 0) {
+    if (configureSheet.length === 0) {
         html.find(".close").before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
     } else {
         configureSheet.before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');

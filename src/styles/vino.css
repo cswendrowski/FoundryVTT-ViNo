@@ -195,3 +195,13 @@
     flex: 1;
     margin-bottom: 10px;
 }
+
+.vino-actor-configuration-row-item.emote {
+    max-width: 20%;
+}
+
+.vino-actor-configuration-row-item.emote > h3 {
+    display: flex;
+    align-items: center;
+    font-size: medium;
+}
