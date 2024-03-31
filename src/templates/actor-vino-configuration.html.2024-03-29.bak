@@ -1,0 +1,41 @@
+<form class="{{cssClass}}" autocomplete="off" onsubmit="event.preventDefault();">
+
+    <h1>{{localize 'vino.actorconfig.CoreSettings'}}</h1>
+    <h2>{{localize 'vino.actorconfig.VinoEnabled'}}</h2>
+    <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.flags.vino.enabled}}/></h4>
+    <h2>{{localize 'vino.actorconfig.Font'}}</h2>
+    <h4><input name="flags.vino.font" type="text" value="{{actor.flags.vino.font}}" placeholder="Signika, sans-serif;"/></h4>
+    <h2>{{localize 'vino.actorconfig.PreferredSide'}}</h2>
+    <select name="flags.vino.preferredSide" type="text">
+        {{#select actor.flags.vino.preferredSide}}
+        <option value="">Any</option>
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+        {{/select}}
+    </select>
+
+    <div class="vino-actor-configuration-row">
+        <div class="vino-actor-configuration-row-item" >
+            <h2>{{localize 'vino.actorconfig.ActorPortrait'}}</h2>
+            <img class="sheet-profile" src="{{actor.img}}" title="{{actor.name}} default" height="220" width="220" data-edit="img" />
+        </div>
+        <div class="vino-actor-configuration-row-item" >
+            <h2>{{localize 'vino.actorconfig.AlternateDefault'}}</h2>
+            <img class="sheet-profile" src="{{actor.flags.vino.altdefault}}" title="{{actor.name}} alt default" height="220" width="220" data-edit="flags.vino.altdefault" />
+        </div>
+    </div>
+
+    <h1>{{localize 'vino.actorconfig.Moods'}}</h1>
+    <div class="vino-actor-configuration-row">
+    {{#each actor.flags.vino.images as |image i|}}
+        {{#if (isdefined image.name)}}
+        <div class="vino-actor-configuration-row-item" >
+            <h2><input name="flags.vino.images.{{i}}.name" type="text" value="{{image.name}}" style="width: inherit;" disabled /></h2>
+            <img class="sheet-profile" src="{{image.path}}" title="{{actor.name}} {{image.name}}" height="220" width="220" data-edit="flags.vino.images.{{i}}.path" />
+        </div>
+        {{/if}}
+    {{/each}}
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-primary vino-configure-submit">Save</button>
+</form>

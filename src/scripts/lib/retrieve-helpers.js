@@ -882,14 +882,14 @@ export class RetrieveHelpers {
             targetTmp = targetTmp?.object ?? targetTmp;
         }
         // Type checking
-        // if (!(targetTmp instanceof Token)) {
-        //   if (ignoreError) {
-        //     Logger.warn(`Invalid Token`, false, targetTmp);
-        //     return;
-        //   } else {
-        //     throw Logger.error(`Invalid Token`, true, targetTmp);
-        //   }
-        // }
+        if (!(targetTmp instanceof Token)) {
+            if (ignoreError) {
+                Logger.warn(`Invalid Token`, false, targetTmp);
+                return;
+            } else {
+                throw Logger.error(`Invalid Token`, true, targetTmp);
+            }
+        }
         return targetTmp;
     }
 

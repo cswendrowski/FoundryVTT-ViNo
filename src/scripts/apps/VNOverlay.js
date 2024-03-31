@@ -1,30 +1,30 @@
 import CONSTANTS from "../Constants.js";
 
 export default class VNOverlay extends Application {
-  /* const app = ;
+    /* const app = ;
     static app; */
 
-  static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
-      id: "vino-overlay",
-      template: `${CONSTANTS.modulePath}/templates/vino-frame.html`,
-      popOut: false,
-    });
-  }
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            id: "vino-overlay",
+            template: `${CONSTANTS.modulePath}/templates/vino-frame.html`,
+            popOut: false,
+        });
+    }
 
-  getData(options = {}) {
-    options = super.getData(options);
-    return options;
-  }
+    getData(options = {}) {
+        options = super.getData(options);
+        return options;
+    }
 
-  static init() {
-    const instance = new this();
-    ui.vinoOverlay = instance;
+    static init() {
+        const instance = new this();
+        ui.vinoOverlay = instance;
 
-    instance.render(true);
-  }
+        instance.render(true);
+    }
 
-  activateListeners(html) {
-    super.activateListeners(html);
-  }
+    activateListeners(html) {
+        super.activateListeners(html);
+    }
 }

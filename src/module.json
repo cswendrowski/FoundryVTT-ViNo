@@ -1,94 +1,94 @@
 {
-  "id": "vino",
-  "title": "ViNo - Visual Interactive Novel Overlay",
-  "description": "An opinionated approach to the visual novel TTRPG experience.",
-  "version": "1.1.3",
-  "authors": [
-    {
-      "name": "Cody Swendrowski",
-      "url": "https://swendrowski.us",
-      "email": "cody@swendrowski.us",
-      "discord": "cswendrowski#9701",
-      "patreon": "ironmoose"
+    "id": "vino",
+    "title": "ViNo - Visual Interactive Novel Overlay",
+    "description": "An opinionated approach to the visual novel TTRPG experience.",
+    "version": "1.2.0",
+    "authors": [
+        {
+            "name": "Cody Swendrowski",
+            "url": "https://swendrowski.us",
+            "email": "cody@swendrowski.us",
+            "discord": "cswendrowski#9701",
+            "patreon": "ironmoose"
+        },
+        {
+            "name": "p4535992",
+            "url": "https://github.com/p4535992",
+            "discord": "",
+            "twitter": "",
+            "patreon": "p4535992",
+            "github": "p4535992",
+            "ko-fi": "",
+            "reddit": "",
+            "email": ""
+        }
+    ],
+    "type": "module",
+    "socket": true,
+    "includes": [
+        "./assets/**",
+        "./lang/**",
+        "./languages/**",
+        "./scripts/**",
+        "./styles/**",
+        "./templates/**",
+        "./module.json",
+        "./README.md",
+        "./icons/**",
+        "./packs/**"
+    ],
+    "media": [
+        {
+            "type": "screenshot",
+            "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/create_pin.png"
+        },
+        {
+            "type": "screenshot",
+            "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/note-config.png"
+        },
+        {
+            "type": "screenshot",
+            "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/journal-preview.png"
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        },
+        {
+            "lang": "ja",
+            "name": "日本語",
+            "path": "languages/ja.json"
+        }
+    ],
+    "scripts": [
+        "greensock/dist/gsap.min.js",
+        "greensock/dist/PixiPlugin.min.js",
+        "greensock/dist/ScrollToPlugin.min.js",
+        "greensock/dist/SplitText.min.js",
+        "greensock/dist/TextPlugin.min.js"
+    ],
+    "esmodules": ["module.js"],
+    "styles": ["styles/vino.css"],
+    "compatibility": {
+        "minimum": 11,
+        "verified": 11,
+        "maximum": 11
     },
-    {
-      "name": "p4535992",
-      "url": "https://github.com/p4535992",
-      "discord": "",
-      "twitter": "",
-      "patreon": "p4535992",
-      "github": "p4535992",
-      "ko-fi": "",
-      "reddit": "",
-      "email": ""
+    "license": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/LICENSE",
+    "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
+    "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.2.0/module.json",
+    "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.2.0/module.zip",
+    "readme": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/README.md",
+    "changelog": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master//changelog.md",
+    "bugs": "https://github.com/cswendrowski/FoundryVTT-ViNo/issues",
+    "allowBugReporter": true,
+    "manifestPlusVersion": "1.2.0",
+    "relationships": {
+        "systems": [],
+        "requires": [],
+        "conflicts": []
     }
-  ],
-  "type": "module",
-  "socket": true,
-  "includes": [
-    "./assets/**",
-    "./lang/**",
-    "./languages/**",
-    "./scripts/**",
-    "./styles/**",
-    "./templates/**",
-    "./module.json",
-    "./README.md",
-    "./icons/**",
-    "./packs/**"
-  ],
-  "media": [
-    {
-      "type": "screenshot",
-      "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/create_pin.png"
-    },
-    {
-      "type": "screenshot",
-      "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/note-config.png"
-    },
-    {
-      "type": "screenshot",
-      "url": "https://github.com/cswendrowski/media/raw/master/FoundryVTT-ViNo/journal-preview.png"
-    }
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    },
-    {
-      "lang": "ja",
-      "name": "日本語",
-      "path": "languages/ja.json"
-    }
-  ],
-  "scripts": [
-    "greensock/dist/gsap.min.js",
-    "greensock/dist/PixiPlugin.min.js",
-    "greensock/dist/ScrollToPlugin.min.js",
-    "greensock/dist/SplitText.min.js",
-    "greensock/dist/TextPlugin.min.js"
-  ],
-  "esmodules": ["module.js"],
-  "styles": ["styles/vino.css"],
-  "compatibility": {
-    "minimum": 11,
-    "verified": 11,
-    "maximum": 11
-  },
-  "license": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/LICENSE",
-  "url": "https://github.com/cswendrowski/FoundryVTT-ViNo",
-  "manifest": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.3/module.json",
-  "download": "https://github.com/cswendrowski/FoundryVTT-ViNo/releases/download/1.1.3/module.zip",
-  "readme": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master/README.md",
-  "changelog": "https://github.com/cswendrowski/FoundryVTT-ViNo/blob/master//changelog.md",
-  "bugs": "https://github.com/cswendrowski/FoundryVTT-ViNo/issues",
-  "allowBugReporter": true,
-  "manifestPlusVersion": "1.2.0",
-  "relationships": {
-    "systems": [],
-    "requires": [],
-    "conflicts": []
-  }
 }
