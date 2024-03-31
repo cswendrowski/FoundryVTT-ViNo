@@ -1,3 +1,13 @@
+TODO ADD DOCUMENTATION FOR API
+
+### 1.2.0 [BREAKING CHANGES]
+
+- Big rewrite of all the code
+- Integration with the [Theatre Module](https://github.com/League-of-Foundry-Developers/fvtt-module-theatre) (if present and active) for Fonts and Moods
+- Add API with first method
+- Transfer all the actor settings from the module to the actor for better import/export the actors between the worlds
+- Add for each mood a font to use togheter with a image
+
 ### 1.1.3
 
 - Little fix: https://github.com/cswendrowski/FoundryVTT-ViNo/pull/11 ty to @cswendrowski
