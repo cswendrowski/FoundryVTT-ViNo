@@ -28,7 +28,7 @@ export default class LayoutDrawer {
      */
     static async addSpeakingActor(chatDisplayData) {
         if (!chatDisplayData) {
-            Logger.warn(`This shouldn't be happened why is happening ?`);
+            // Logger.warn(`This shouldn't be happened why is happening ?`);
             return;
         }
         const restrictVinoToSameScene = await Settings.get("restrictVinoToSameScene");

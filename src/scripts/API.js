@@ -37,7 +37,7 @@ const API = {
             }
             sceneViewedId = tokenTmp.scene.id;
             nameTmp = tokenTmp.name;
-            imgTmp = options.img ?? ChatHandler._getMoodImage(speakingActor, mood) ?? tokenTmp.img;
+            imgTmp = options.img || ChatHandler._getMoodImage(speakingActor, mood) || tokenTmp.img;
             idTmp = tokenTmp.uuid;
             enabled = foundry.utils.getProperty(
                 speakingActor,
@@ -49,9 +49,9 @@ const API = {
                 Logger.warn(`No actor is been found with reference`, true, tokenOrActor);
                 return;
             }
-            sceneViewedId = game.scenes.viewed.id ?? game.users.get(game.user.id).viewedScene;
+            sceneViewedId = game.scenes.viewed.id || game.users.get(game.user.id).viewedScene;
             nameTmp = speakingActor.name;
-            imgTmp = options.img ?? ChatHandler._getMoodImage(speakingActor, mood) ?? speakingActor.img;
+            imgTmp = options.img || ChatHandler._getMoodImage(speakingActor, mood) || speakingActor.img;
             idTmp = speakingActor.uuid;
             enabled = foundry.utils.getProperty(
                 speakingActor,

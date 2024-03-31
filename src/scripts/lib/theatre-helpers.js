@@ -44,14 +44,14 @@ export default class TheatreHelpers {
         const fonts = TheatreHelpers.getFonts();
         for (const [key, value] of Object.entries(emotes)) {
             const currentEmote = vinoMoods[key];
-            const myFont = value.font ?? currentEmote?.font ?? ""; // ?? "Signika, sans-serif;",
+            const myFont = value.font || currentEmote?.font || ""; // || "Signika, sans-serif;",
             const isValidFont = fonts.includes(myFont);
             moods.push({
                 key: key,
-                name: value.name ?? currentEmote?.name ?? "",
-                imageRef: value.image ?? "modules/vino/assets/emotes/blank.png",
-                image: currentEmote?.image ?? actor.img ?? "",
-                label: value.label ?? currentEmote?.label ?? value.name ?? "",
+                name: value.name || currentEmote?.name || "",
+                imageRef: value.image || "modules/vino/assets/emotes/blank.png",
+                image: currentEmote?.image || actor.img || "",
+                label: value.label || currentEmote?.label || value.name || "",
                 font: isValidFont ? myFont : "Signika, sans-serif;",
             });
         }
@@ -67,7 +67,7 @@ export default class TheatreHelpers {
         if (game.modules.get("theatre")?.active) {
             return game.modules.get("theatre").api.getFonts() || [];
         } else {
-            return CONFIG.fontFamilies || [];
+            return Object.keys(CONFIG.fontDefinitions) || [];
         }
     }
 

@@ -3,6 +3,16 @@
     <h1>{{localize 'vino.actorconfig.CoreSettings'}}</h1>
     <h2>{{localize 'vino.actorconfig.VinoEnabled'}}</h2>
     <h4><input type="checkbox" name="flags.vino.enabled" data-dtype="Boolean" {{checked actor.flags.vino.enabled}}/></h4>
+    
+    <h2>{{localize 'vino.actorconfig.Font'}}</h2>
+    <select name="flags.vino.font" data-key="{{font}}" type="text">
+        {{#select actor.flags.vino.font}}
+        <option value="">None</option>
+        {{#each @root.fonts as | font i | }}
+            <option value="{{font}}" {{#if (eq ../actor.flags.vino.font font)}} selected {{/if}} >{{font}}</option>
+        {{/each}}
+        {{/select}}
+    </select>
 
     <h2>{{localize 'vino.actorconfig.PreferredSide'}}</h2>
     <select name="flags.vino.preferredSide" type="text">

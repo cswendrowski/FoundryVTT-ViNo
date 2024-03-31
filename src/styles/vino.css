@@ -167,12 +167,13 @@
 }
 
 .vino-chat-actor-name {
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
+    font-size: large;
     font-weight: bold;
 }
 .vino-chat-emotion-flare {
     /* font-size: 0.8rem; */
-    font-size: 1rem;
+    font-size: small;
     font-style: italic;
     display: inline-flex;
     align-items: center;
@@ -183,8 +184,9 @@
 }
 
 .vino-chat-text-body {
-    font-size: 1.05rem;
-    max-height: 12vh;
+    /* font-size: 1.05rem; */
+    font-size: larger;
+    /* max-height: 12vh; */
     overflow-y: hidden;
     width: 100%;
     position: relative;

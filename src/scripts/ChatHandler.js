@@ -105,7 +105,7 @@ export default class ChatHandler {
 
         var actorFont = foundry.utils.getProperty(actor, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.FONT}`);
 
-        const fontFounded = fontByMood ?? actorFont ?? Settings.getSync("defaultFont");
+        const fontFounded = fontByMood || actorFont || Settings.getSync("defaultFont");
 
         return "100% " + fontFounded;
     }
@@ -175,7 +175,7 @@ export default class ChatHandler {
             return actor.flags[CONSTANTS.MODULE_ID].altdefault;
         }
         */
-        return imageByMood ?? altdefault ?? actor.img;
+        return imageByMood || altdefault || actor.img;
     }
 
     static _caseInsensitiveReplace(line, word, replaceWith) {
