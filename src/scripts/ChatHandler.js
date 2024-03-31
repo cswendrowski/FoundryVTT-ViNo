@@ -81,29 +81,19 @@ export default class ChatHandler {
         if (messageText.startsWith(ChatHandler.commandKey)) {
             let speakingActor = game.actors.get(chatData.speaker.actor);
             if (!speakingActor) {
-                Logger.warn(`No actor is been selected fo the vino message`, true);
+                Logger.warn(`No actor is been selected for the vino message`, true);
                 messageText = ChatHandler._removeCommands(messageText, "");
                 return false;
             }
-            let mood = ChatHandler._getMood(messageText, speakingActor);
+            let mood = ChatHandler._getMood(messageText, speakingActor) || "";
 
-            if (mood) {
-                chatData.content = ChatHandler._removeCommands(messageText, mood);
-                chatData.type = 2;
-                setProperty(chatData, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`, mood);
-                ChatMessage.create(chatData);
-                Logger.logObject(chatData);
-                Logger.debug("Canceling message");
-                return false;
-            }
-
-            chatData.flags = {
-                [CONSTANTS.MODULE_ID]: {
-                    [CONSTANTS.FLAGS.MOOD]: mood,
-                },
-            };
-            messageText = ChatHandler._removeCommands(messageText, "");
+            chatData.content = ChatHandler._removeCommands(messageText, mood);
+            chatData.type = 2;
+            setProperty(chatData, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.MOOD}`, mood);
+            ChatMessage.create(chatData);
             Logger.logObject(chatData);
+            Logger.debug("Canceling message");
+            return false;
         }
     }
 

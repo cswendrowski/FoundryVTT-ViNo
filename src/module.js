@@ -49,9 +49,9 @@ Hooks.on("renderActorSheet", function (sheet, html, data) {
     let configureSheet = html.find(".configure-sheet");
 
     if (configureSheet.length === 0) {
-        html.find(".close").before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
+        html.find(".close").before('<a class="configure-vino"><i class="fas fa-chalkboard-user"></i>ViNo</a>');
     } else {
-        configureSheet.before('<a class="configure-vino"><i class="fas fa-address-book"></i>ViNo</a>');
+        configureSheet.before('<a class="configure-vino"><i class="fas fa-chalkboard-user"></i>ViNo</a>');
     }
 
     html.find(".configure-vino").click((event) => {

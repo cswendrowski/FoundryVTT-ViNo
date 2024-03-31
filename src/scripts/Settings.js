@@ -47,12 +47,12 @@ export default class Settings {
     }
     */
 
+    /*
     static async getAllDefaultMoods() {
         let moods = await this.get("defaultMoods");
         return moods;
     }
 
-    /*
     static async addDefaultMood(val) {
         if (val == undefined) return;
         let storedMoods = await this.get("defaultMoods");
@@ -87,8 +87,8 @@ export default class Settings {
      */
     static async registerSettings() {
         game.settings.register(CONSTANTS.MODULE_ID, "debug", {
-            name: game.i18n.localize("VINO.SETTINGS.ShowDebugLogsName"),
-            hint: game.i18n.localize("VINO.SETTINGS.ShowDebugLogsHint"),
+            name: game.i18n.localize("vino.settings.ShowDebugLogsName"),
+            hint: game.i18n.localize("vino.settings.ShowDebugLogsHint"),
             scope: "client",
             config: true,
             type: Boolean,
@@ -98,7 +98,7 @@ export default class Settings {
         game.settings.registerMenu(CONSTANTS.MODULE_ID, "settingsMenu", {
             name: "Default Moods",
             label: "Default Moods",
-            icon: "fas fa-address-book",
+            icon: "fas fa-chalkboard-user",
             type: SettingsForm,
             restricted: true,
         });
@@ -111,8 +111,8 @@ export default class Settings {
         });
         */
         game.settings.register(CONSTANTS.MODULE_ID, "restrictVinoToSameScene", {
-            name: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneName"),
-            hint: game.i18n.localize("VINO.SETTINGS.RestrictVinoToSameSceneHint"),
+            name: game.i18n.localize("vino.settings.RestrictVinoToSameSceneName"),
+            hint: game.i18n.localize("vino.settings.RestrictVinoToSameSceneHint"),
             scope: "world",
             config: true,
             type: Boolean,
@@ -120,17 +120,17 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "commandKey", {
-            name: game.i18n.localize("VINO.SETTINGS.CommandKeyName"),
-            hint: game.i18n.localize("VINO.SETTINGS.CommandKeyHint"),
+            name: game.i18n.localize("vino.settings.CommandKeyName"),
+            hint: game.i18n.localize("vino.settings.CommandKeyHint"),
             scope: "client",
             config: true,
             type: String,
-            default: "/vino", // game.i18n.localize("VINO.SETTINGS.CommandKeyDefault"),
+            default: "/vino", // game.i18n.localize("vino.settings.CommandKeyDefault"),
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "defaultFont", {
-            name: game.i18n.localize("VINO.SETTINGS.DefaultFontName"),
-            hint: game.i18n.localize("VINO.SETTINGS.DefaultFontHint"),
+            name: game.i18n.localize("vino.settings.DefaultFontName"),
+            hint: game.i18n.localize("vino.settings.DefaultFontHint"),
             scope: "client",
             config: true,
             type: String,
@@ -138,8 +138,8 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "animatedSecondsPerWord", {
-            name: game.i18n.localize("VINO.SETTINGS.SecondsToRenderName"),
-            hint: game.i18n.localize("VINO.SETTINGS.SecondsToRenderHint"),
+            name: game.i18n.localize("vino.settings.SecondsToRenderName"),
+            hint: game.i18n.localize("vino.settings.SecondsToRenderHint"),
             scope: "client",
             config: true,
             type: Number,
@@ -147,8 +147,8 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "secondsPerWord", {
-            name: game.i18n.localize("VINO.SETTINGS.SecondsOnscreenPerWordName"),
-            hint: game.i18n.localize("VINO.SETTINGS.SecondsOnscreenPerWordHint"),
+            name: game.i18n.localize("vino.settings.SecondsOnscreenPerWordName"),
+            hint: game.i18n.localize("vino.settings.SecondsOnscreenPerWordHint"),
             scope: "client",
             config: true,
             type: Number,
@@ -156,8 +156,8 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "minimumTimeOnScreen", {
-            name: game.i18n.localize("VINO.SETTINGS.MinimumTimeOnscreenName"),
-            hint: game.i18n.localize("VINO.SETTINGS.MinimumTimeOnscreenHint"),
+            name: game.i18n.localize("vino.settings.MinimumTimeOnscreenName"),
+            hint: game.i18n.localize("vino.settings.MinimumTimeOnscreenHint"),
             scope: "client",
             config: true,
             type: Number,
@@ -165,8 +165,8 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "timeBetweenScrolling", {
-            name: game.i18n.localize("VINO.SETTINGS.SecondsBetweenScrollName"),
-            hint: game.i18n.localize("VINO.SETTINGS.SecondsBetweenScrollHint"),
+            name: game.i18n.localize("vino.settings.SecondsBetweenScrollName"),
+            hint: game.i18n.localize("vino.settings.SecondsBetweenScrollHint"),
             scope: "client",
             config: true,
             type: Number,
@@ -174,8 +174,8 @@ export default class Settings {
         });
 
         // game.settings.register(constants.moduleName, "maxOnScreen", {
-        //     name: game.i18n.localize("VINO.SETTINGS.MaxOnscreenName"),
-        //     hint: game.i18n.localize("VINO.SETTINGS.MaxOnscreenHint"),
+        //     name: game.i18n.localize("vino.settings.MaxOnscreenName"),
+        //     hint: game.i18n.localize("vino.settings.MaxOnscreenHint"),
         //     scope: 'client',
         //     config: true,
         //     type: Number,
@@ -183,8 +183,8 @@ export default class Settings {
         // });
 
         game.settings.register(CONSTANTS.MODULE_ID, "autoQuote", {
-            name: game.i18n.localize("VINO.SETTINGS.AutoQuoteName"),
-            hint: game.i18n.localize("VINO.SETTINGS.AutoQuoteHint"),
+            name: game.i18n.localize("vino.settings.AutoQuoteName"),
+            hint: game.i18n.localize("vino.settings.AutoQuoteHint"),
             scope: "client",
             config: true,
             type: Boolean,
@@ -192,21 +192,21 @@ export default class Settings {
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "quoteOpening", {
-            name: game.i18n.localize("VINO.SETTINGS.QuoteOpeningName"),
-            hint: game.i18n.localize("VINO.SETTINGS.QuoteOpeningHint"),
+            name: game.i18n.localize("vino.settings.QuoteOpeningName"),
+            hint: game.i18n.localize("vino.settings.QuoteOpeningHint"),
             scope: "client",
             config: true,
             type: String,
-            default: game.i18n.localize("VINO.SETTINGS.QuoteOpeningDefault"),
+            default: game.i18n.localize("vino.settings.QuoteOpeningDefault"),
         });
 
         game.settings.register(CONSTANTS.MODULE_ID, "quoteClosing", {
-            name: game.i18n.localize("VINO.SETTINGS.QuoteClosingName"),
-            hint: game.i18n.localize("VINO.SETTINGS.QuoteClosingHint"),
+            name: game.i18n.localize("vino.settings.QuoteClosingName"),
+            hint: game.i18n.localize("vino.settings.QuoteClosingHint"),
             scope: "client",
             config: true,
             type: String,
-            default: game.i18n.localize("VINO.SETTINGS.QuoteClosingDefault"),
+            default: game.i18n.localize("vino.settings.QuoteClosingDefault"),
         });
     }
 }

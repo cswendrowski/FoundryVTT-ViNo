@@ -41,15 +41,18 @@ export default class TheatreHelpers {
         const moods = [];
         const vinoMoods =
             foundry.utils.getProperty(actor, `flags.${CONSTANTS.MODULE_ID}.${CONSTANTS.FLAGS.EMOTES}`) || {};
+        const fonts = TheatreHelpers.getFonts();
         for (const [key, value] of Object.entries(emotes)) {
             const currentEmote = vinoMoods[key];
+            const myFont = value.font ?? currentEmote?.font ?? ""; // ?? "Signika, sans-serif;",
+            const isValidFont = fonts.includes(myFont);
             moods.push({
                 key: key,
                 name: value.name ?? currentEmote?.name ?? "",
                 imageRef: value.image ?? "modules/vino/assets/emotes/blank.png",
                 image: currentEmote?.image ?? actor.img ?? "",
                 label: value.label ?? currentEmote?.label ?? value.name ?? "",
-                font: value.font ?? currentEmote?.font ?? "", // ?? "Signika, sans-serif;",
+                font: isValidFont ? myFont : "Signika, sans-serif;",
             });
         }
         return moods;
@@ -62,9 +65,9 @@ export default class TheatreHelpers {
      */
     static getFonts() {
         if (game.modules.get("theatre")?.active) {
-            return game.modules.get("theatre").api.getFonts();
+            return game.modules.get("theatre").api.getFonts() || [];
         } else {
-            return CONFIG.fontFamilies;
+            return CONFIG.fontFamilies || [];
         }
     }
 
@@ -82,7 +85,7 @@ export default class TheatreHelpers {
                 name: "smile",
                 fatype: "far",
                 faname: "fa-smile",
-                label: game.i18n.localize("Theatre.Emote.Smile"),
+                label: game.i18n.localize("vino.emote.Smile"),
                 rigging: {
                     animations: [{ name: "smile", syntax: "smile|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" }],
                 },
@@ -91,7 +94,7 @@ export default class TheatreHelpers {
                 name: "grin",
                 fatype: "far",
                 faname: "fa-grin",
-                label: game.i18n.localize("Theatre.Emote.Grin"),
+                label: game.i18n.localize("vino.emote.Grin"),
                 rigging: {
                     animations: [{ name: "grin", syntax: "grin|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" }],
                 },
@@ -100,7 +103,7 @@ export default class TheatreHelpers {
                 name: "happy",
                 fatype: "far",
                 faname: "fa-smile-beam",
-                label: game.i18n.localize("Theatre.Emote.Happy"),
+                label: game.i18n.localize("vino.emote.Happy"),
                 rigging: {
                     animations: [
                         { name: "happy", syntax: "happy|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -115,7 +118,7 @@ export default class TheatreHelpers {
                 name: "happytears",
                 fatype: "far",
                 faname: "fa-grin-tears",
-                label: game.i18n.localize("Theatre.Emote.HappyTears"),
+                label: game.i18n.localize("vino.emote.HappyTears"),
                 rigging: {
                     animations: [
                         { name: "happytears", syntax: "happytears|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -150,7 +153,7 @@ export default class TheatreHelpers {
                 name: "dissatisfied",
                 fatype: "far",
                 faname: "fa-frown-open",
-                label: game.i18n.localize("Theatre.Emote.Dissatisfied"),
+                label: game.i18n.localize("vino.emote.Dissatisfied"),
                 rigging: {
                     animations: [
                         { name: "dissatisfied", syntax: "dissatisfied|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -161,7 +164,7 @@ export default class TheatreHelpers {
                 name: "frown",
                 fatype: "far",
                 faname: "fa-frown",
-                label: game.i18n.localize("Theatre.Emote.Frown"),
+                label: game.i18n.localize("vino.emote.Frown"),
                 rigging: {
                     animations: [
                         { name: "frown", syntax: "frown|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -173,7 +176,7 @@ export default class TheatreHelpers {
                 name: "sad",
                 fatype: "far",
                 faname: "fa-sad-tear",
-                label: game.i18n.localize("Theatre.Emote.Sad"),
+                label: game.i18n.localize("vino.emote.Sad"),
                 rigging: {
                     animations: [
                         { name: "sad", syntax: "sad|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -232,7 +235,7 @@ export default class TheatreHelpers {
                 name: "cry",
                 fatype: "far",
                 faname: "fa-sad-cry",
-                label: game.i18n.localize("Theatre.Emote.Cry"),
+                label: game.i18n.localize("vino.emote.Cry"),
                 rigging: {
                     animations: [
                         { name: "cry", syntax: "cry|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -268,7 +271,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-meh-rolling-eyes",
                 image: "modules/vino/assets/emotes/serious.png",
-                label: game.i18n.localize("Theatre.Emote.Serious"),
+                label: game.i18n.localize("vino.emote.Serious"),
                 rigging: {
                     animations: [{ name: "serious", syntax: "serious|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" }],
                 },
@@ -277,7 +280,7 @@ export default class TheatreHelpers {
                 name: "annoyed",
                 fatype: "far",
                 faname: "fa-meh-rolling-eyes",
-                label: game.i18n.localize("Theatre.Emote.Annoyed"),
+                label: game.i18n.localize("vino.emote.Annoyed"),
                 rigging: {
                     animations: [
                         { name: "annoyed", syntax: "annoyed|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -297,7 +300,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-meh-rolling-eyes",
                 image: "modules/vino/assets/emotes/frustrated.png",
-                label: game.i18n.localize("Theatre.Emote.Frustrated"),
+                label: game.i18n.localize("vino.emote.Frustrated"),
                 rigging: {
                     animations: [
                         { name: "frustrated", syntax: "frustrated|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -312,7 +315,7 @@ export default class TheatreHelpers {
                 name: "angry",
                 fatype: "far",
                 faname: "fa-angry",
-                label: game.i18n.localize("Theatre.Emote.Angry"),
+                label: game.i18n.localize("vino.emote.Angry"),
                 rigging: {
                     animations: [
                         { name: "angry", syntax: "angry|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -343,7 +346,7 @@ export default class TheatreHelpers {
                 name: "laughing",
                 fatype: "far",
                 faname: "fa-laugh-beam",
-                label: game.i18n.localize("Theatre.Emote.Laughing"),
+                label: game.i18n.localize("vino.emote.Laughing"),
                 rigging: {
                     animations: [
                         { name: "laughing", syntax: "laughing|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -358,7 +361,7 @@ export default class TheatreHelpers {
                 name: "laughingsquint",
                 fatype: "far",
                 faname: "fa-laugh-squint",
-                label: game.i18n.localize("Theatre.Emote.LaughingSquint"),
+                label: game.i18n.localize("vino.emote.LaughingSquint"),
                 rigging: {
                     animations: [
                         {
@@ -376,7 +379,7 @@ export default class TheatreHelpers {
                 name: "rofl",
                 fatype: "far",
                 faname: "fa-grin-squint-tears",
-                label: game.i18n.localize("Theatre.Emote.ROFL"),
+                label: game.i18n.localize("vino.emote.ROFL"),
                 rigging: {
                     animations: [
                         { name: "rofl", syntax: "rofl|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -411,7 +414,7 @@ export default class TheatreHelpers {
                 name: "worried",
                 fatype: "far",
                 faname: "fa-grin-beam-sweat",
-                label: game.i18n.localize("Theatre.Emote.Worried"),
+                label: game.i18n.localize("vino.emote.Worried"),
                 rigging: {
                     animations: [
                         { name: "worried", syntax: "worried|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -423,7 +426,7 @@ export default class TheatreHelpers {
                 name: "surprised",
                 fatype: "far",
                 faname: "fa-surprise",
-                label: game.i18n.localize("Theatre.Emote.Surprised"),
+                label: game.i18n.localize("vino.emote.Surprised"),
                 rigging: {
                     animations: [
                         { name: "surprised", syntax: "surprised|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -438,7 +441,7 @@ export default class TheatreHelpers {
                 name: "awe-struck",
                 fatype: "far",
                 faname: "fa-grin-stars",
-                label: game.i18n.localize("Theatre.Emote.Awe-Struck"),
+                label: game.i18n.localize("vino.emote.Awe-Struck"),
                 rigging: {
                     animations: [
                         { name: "awe-struck", syntax: "awe-struck|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -497,7 +500,7 @@ export default class TheatreHelpers {
                 name: "blushing",
                 fatype: "far",
                 faname: "fa-flushed",
-                label: game.i18n.localize("Theatre.Emote.Blushing"),
+                label: game.i18n.localize("vino.emote.Blushing"),
                 rigging: {
                     animations: [
                         { name: "blushing", syntax: "blushing|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -512,7 +515,7 @@ export default class TheatreHelpers {
                 name: "hearts",
                 fatype: "far",
                 faname: "fa-grin-hearts",
-                label: game.i18n.localize("Theatre.Emote.Hearts"),
+                label: game.i18n.localize("vino.emote.Hearts"),
                 rigging: {
                     animations: [
                         { name: "hearts", syntax: "hearts|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -567,7 +570,7 @@ export default class TheatreHelpers {
                 name: "kiss",
                 fatype: "far",
                 faname: "fa-kiss-wink-heart",
-                label: game.i18n.localize("Theatre.Emote.Kiss"),
+                label: game.i18n.localize("vino.emote.Kiss"),
                 rigging: {
                     animations: [
                         { name: "kiss", syntax: "kiss|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -583,7 +586,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-blank",
                 image: "modules/vino/assets/emotes/thinking.png",
-                label: game.i18n.localize("Theatre.Emote.Thinking"),
+                label: game.i18n.localize("vino.emote.Thinking"),
                 rigging: {
                     animations: [
                         { name: "thinking", syntax: "thinking|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -611,7 +614,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-question-circle",
                 image: "modules/vino/assets/emotes/confused.png",
-                label: game.i18n.localize("Theatre.Emote.Confused"),
+                label: game.i18n.localize("vino.emote.Confused"),
                 rigging: {
                     animations: [
                         { name: "confused", syntax: "confused|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -627,7 +630,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-lightbulb",
                 image: "modules/vino/assets/emotes/idea.png",
-                label: game.i18n.localize("Theatre.Emote.Idea"),
+                label: game.i18n.localize("vino.emote.Idea"),
                 rigging: {
                     animations: [
                         { name: "idea", syntax: "idea|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -642,7 +645,7 @@ export default class TheatreHelpers {
                 name: "meh",
                 fatype: "far",
                 faname: "fa-meh",
-                label: game.i18n.localize("Theatre.Emote.Meh"),
+                label: game.i18n.localize("vino.emote.Meh"),
                 rigging: {
                     animations: [
                         { name: "meh", syntax: "meh|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -658,7 +661,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-grin-tongue-wink",
                 image: "modules/vino/assets/emotes/smug.png",
-                label: game.i18n.localize("Theatre.Emote.Smug"),
+                label: game.i18n.localize("vino.emote.Smug"),
                 rigging: {
                     animations: [{ name: "smug", syntax: "smug|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" }],
                 },
@@ -667,7 +670,7 @@ export default class TheatreHelpers {
                 name: "wink",
                 fatype: "far",
                 faname: "fa-grin-wink",
-                label: game.i18n.localize("Theatre.Emote.Wink"),
+                label: game.i18n.localize("vino.emote.Wink"),
                 rigging: {
                     animations: [
                         { name: "wink", syntax: "wink|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -690,7 +693,7 @@ export default class TheatreHelpers {
                 name: "tongue",
                 fatype: "far",
                 faname: "fa-grin-tongue",
-                label: game.i18n.localize("Theatre.Emote.Tongue"),
+                label: game.i18n.localize("vino.emote.Tongue"),
                 rigging: {
                     animations: [
                         { name: "tongue", syntax: "tongue|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -705,7 +708,7 @@ export default class TheatreHelpers {
                 name: "playful",
                 fatype: "far",
                 faname: "fa-grin-tongue-wink",
-                label: game.i18n.localize("Theatre.Emote.Playful"),
+                label: game.i18n.localize("vino.emote.Playful"),
                 rigging: {
                     animations: [
                         { name: "playful", syntax: "playful|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -749,7 +752,7 @@ export default class TheatreHelpers {
                 fatype: "fas",
                 faname: "fa-book-dead",
                 image: "modules/vino/assets/emotes/evil.png",
-                label: game.i18n.localize("Theatre.Emote.Mischevious"),
+                label: game.i18n.localize("vino.emote.Mischevious"),
                 rigging: {
                     animations: [
                         { name: "evil", syntax: "evil|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -822,7 +825,7 @@ export default class TheatreHelpers {
                 fatype: "fas",
                 faname: "fa-book-dead",
                 image: "modules/vino/assets/emotes/innocent.png",
-                label: game.i18n.localize("Theatre.Emote.Innocent"),
+                label: game.i18n.localize("vino.emote.Innocent"),
                 rigging: {
                     animations: [
                         { name: "innocent", syntax: "innocent|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -838,7 +841,7 @@ export default class TheatreHelpers {
                 fatype: "fas",
                 faname: "fa-book-dead",
                 image: "modules/vino/assets/emotes/carefree.png",
-                label: game.i18n.localize("Theatre.Emote.CareFree"),
+                label: game.i18n.localize("vino.emote.CareFree"),
                 rigging: {
                     animations: [
                         { name: "carefree", syntax: "carefree|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -861,7 +864,7 @@ export default class TheatreHelpers {
                 name: "panic",
                 fatype: "far",
                 faname: "fa-tired",
-                label: game.i18n.localize("Theatre.Emote.Panic"),
+                label: game.i18n.localize("vino.emote.Panic"),
                 rigging: {
                     animations: [
                         { name: "panic", syntax: "panic|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -910,7 +913,7 @@ export default class TheatreHelpers {
                 name: "dizzy",
                 fatype: "far",
                 faname: "fa-dizzy",
-                label: game.i18n.localize("Theatre.Emote.Dizzy"),
+                label: game.i18n.localize("vino.emote.Dizzy"),
                 rigging: {
                     animations: [
                         { name: "dizzy", syntax: "dizzy|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -938,7 +941,7 @@ export default class TheatreHelpers {
                 fatype: "far",
                 faname: "fa-comment-dots",
                 image: "modules/vino/assets/emotes/speechless.png",
-                label: game.i18n.localize("Theatre.Emote.Speechless"),
+                label: game.i18n.localize("vino.emote.Speechless"),
                 rigging: {
                     animations: [
                         { name: "speechless", syntax: "speechless|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -961,7 +964,7 @@ export default class TheatreHelpers {
                 name: "scared",
                 fatype: "far",
                 faname: "fa-grimace",
-                label: game.i18n.localize("Theatre.Emote.Scared"),
+                label: game.i18n.localize("vino.emote.Scared"),
                 rigging: {
                     animations: [
                         { name: "scared", syntax: "scared|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },
@@ -1005,7 +1008,7 @@ export default class TheatreHelpers {
                 fatype: "fas",
                 faname: "fa-bed",
                 image: "modules/vino/assets/emotes/sleeping.png",
-                label: game.i18n.localize("Theatre.Emote.Sleeping"),
+                label: game.i18n.localize("vino.emote.Sleeping"),
                 rigging: {
                     animations: [
                         { name: "sleeping", syntax: "sleeping|1;(ease:elastic);x:80%,80%;y:0%,25%;alpha:0,1" },

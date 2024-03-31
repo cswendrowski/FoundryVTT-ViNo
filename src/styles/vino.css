@@ -211,7 +211,7 @@
 .vino-actor-configuration-row-item.emote > h3 {
     display: flex;
     align-items: center;
-    font-size: medium;
+    font-size: small;
 }
 
 .vino-actor-configuration-row-item.emote > h3 > span,

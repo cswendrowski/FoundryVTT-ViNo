@@ -81,13 +81,13 @@ export default class ActorConfiguration extends FormApplication {
                         };
 
                         // Migration from old paths
-                        if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Mad")) {
+                        if (defaultMood == game.i18n.localize("vino.actorconfig.DefaultMoods.Mad")) {
                             moodInfo.path = flags[CONSTANTS.MODULE_ID].madimg;
-                        } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Sad")) {
+                        } else if (defaultMood == game.i18n.localize("vino.actorconfig.DefaultMoods.Sad")) {
                             moodInfo.path = flags[CONSTANTS.MODULE_ID].sadimg;
-                        } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Joy")) {
+                        } else if (defaultMood == game.i18n.localize("vino.actorconfig.DefaultMoods.Joy")) {
                             moodInfo.path = flags[CONSTANTS.MODULE_ID].joyimg;
-                        } else if (defaultMood == game.i18n.localize("VINO.ACTORCONFIG.DefaultMoods.Fear")) {
+                        } else if (defaultMood == game.i18n.localize("vino.actorconfig.DefaultMoods.Fear")) {
                             moodInfo.path = flags[CONSTANTS.MODULE_ID]fearimg;
                         }
 

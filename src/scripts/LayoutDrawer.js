@@ -27,6 +27,10 @@ export default class LayoutDrawer {
      * @returns {Promise<void>}
      */
     static async addSpeakingActor(chatDisplayData) {
+        if (!chatDisplayData) {
+            Logger.warn(`This shouldn't be happened why is happening ?`);
+            return;
+        }
         const restrictVinoToSameScene = await Settings.get("restrictVinoToSameScene");
         const autoQuote = await Settings.get("autoQuote");
         const quoteOpening = await Settings.get("quoteOpening");
