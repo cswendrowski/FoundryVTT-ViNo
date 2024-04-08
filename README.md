@@ -48,13 +48,10 @@ To install this module manually:
 
 ### Features
 
-#### Chat commnads for different image
+#### Chat commnads for different image and font
 
 ```
-/sad
-/mad
-/joy
-/fear
+/vino [emote key]
 ```
 
 # Build
