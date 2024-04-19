@@ -54,6 +54,10 @@ To install this module manually:
 /vino [emote key]
 ```
 
+#### Integration with the [Theatre](https://github.com/p4535992/fvtt-module-theatre/) module
+
+If the Theatre modules is present and acitve all the fonts and moods are syncronized betweens these two module, so you can have more choices about the styling.
+
 # Build
 
 ## Install all packages
