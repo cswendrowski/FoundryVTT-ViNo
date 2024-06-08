@@ -1,5 +1,9 @@
 TODO ADD DOCUMENTATION FOR API
 
+### 1.2.1
+
+- Update manifest for v12
+
 ### 1.2.0 [BREAKING CHANGES]
 
 - Big rewrite of all the code
