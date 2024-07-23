@@ -1,4 +1,7 @@
 TODO ADD DOCUMENTATION FOR API
+### 1.3.0 [BREAKING CHANGES]
+
+- Full v12 upgrade
 
 ### 1.2.1
 
